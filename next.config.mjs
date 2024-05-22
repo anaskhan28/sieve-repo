@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+    images: {
+        domains: ['pbs.twigm.com']
+    }
+};
 
 export default nextConfig;
