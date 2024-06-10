@@ -14,9 +14,9 @@ export function BentoGrids() {
     <>
      <div className="text-3xl md:text-5xl sm:max-w-[45rem] mt-20 mb-12 text-center font-bold ">We offer a way for a students 
 to get precise resources</div>
-   <div className="flex h-screen w-full max-7xl items-center justify-center p-6 ">
+   <div className="flex h-screen w-full items-center justify-center p-6 ">
    
-    <div className="h-full w-full justify-center max-w-4xl grid grid-cols-1  md:grid-cols-10 md:grid-rows-6 mt-6 gap-6">
+    <div className=" w-full h-full justify-center max-w-4xl grid grid-cols-1  md:grid-cols-10 md:grid-rows-6 mt-6 gap-6">
       <div className="bg-[#2A2A3C] text-white flex flex-col relative justify-center rounded-3xl items-center  md:col-span-4 md:row-span-4 ">
         <Image src="/rocket.png" className="  md:block max-w-sm md:max-w-xl mb-16" width={400}height={400} alt="rocket" priority={true}/>
         <div className=" absolute bottom-5 text-white left-5 font-bold pl-2 w-60 text-wrap text-2xl md:text-4xl">

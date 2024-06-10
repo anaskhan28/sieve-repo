@@ -1,9 +1,48 @@
-import React from 'react'
+'use client'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import NameLogo from '@/public/name.png'
+import useSupabaseClient from '@/utils/supabase/client';
+import { User } from '@supabase/supabase-js'
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/ui/avatar"
+ 
 
 const Navbar = () => {
+const [user, setUser] = useState<User>();
+const [isMounted, setIsMounted] = useState(false);
+const supabase = useSupabaseClient();
+
+const handleSignout = async () =>{
+  const {error} = await supabase.auth.signOut();
+  if(!error) setUser(undefined)
+}
+
+ useEffect(() =>{
+  const getCurrentUser = async() =>{
+    const {data: {session},} = await supabase.auth.getSession();
+    
+    if(session){
+      setUser(session.user)
+    }
+  };
+
+  getCurrentUser();
+  setIsMounted(true);
+
+  console.log(user, 'userdata')
+
+ }, []);
+
+ if(!isMounted) return null
+ console.log(user, 'userdata')
+
+
+
   return (
     <nav className="flex relative z-10 shadow-md items-center justify-around h-16 px-4 md:px-6 bg-[#12121b]">
       <Link className="flex items-center gap-2" href="#">
@@ -17,12 +56,29 @@ const Navbar = () => {
         <Link className="text-gray-400 hover:text-gray-200 dark:text-gray-400 dark:hover:text-gray-200" href="#">
           Playlist
         </Link>
-        <Link className="text-gray-400 hover:text-gray-200 dark:text-gray-400 dark:hover:text-gray-200" href="#">
+      
+          {!user && (
+            <>
+             <Link className="text-gray-400 hover:text-gray-200 dark:text-gray-400 dark:hover:text-gray-200" href="/signup">
           Signup
         </Link>
-        <Link className="text-gray-400 hover:text-gray-200 dark:text-gray-400 dark:hover:text-gray-200" href="#">
+        <Link className="text-gray-400 hover:text-gray-200 dark:text-gray-400 dark:hover:text-gray-200" href="/login">
           Login
         </Link>
+            </>
+          )
+
+          }
+           { user && (
+            <>
+
+        <Avatar>
+      <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+      <AvatarFallback>CN</AvatarFallback>
+    </Avatar>
+        </>
+           )}
+        
       
         <button>
             

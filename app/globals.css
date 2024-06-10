@@ -1,23 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-.hero-background {
-  background: radial-gradient(circle, rgba(62,24,119,1) 0%, rgba(34,0,102,1) 100%);
-}
-
-.tagline{
- 
+  :root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+  }
+  
+  .hero-background {
+    background: radial-gradient(circle, rgba(62,24,119,1) 0%, rgba(34,0,102,1) 100%);
+  }
+  
+  .tagline{
+   
+      font-family: var(--font-tenor_sans), sans-serif;
+  
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-tenor_sans), sans-serif;
-
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-tenor_sans), sans-serif;
-}
+  }
