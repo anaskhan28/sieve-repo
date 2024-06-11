@@ -15,8 +15,7 @@ const Hero: React.FC = () => {
           <h1 className="tagline font-black text-3xl  text-gray-50 max-w-2xl tracking-wider sm:text-xl md:text-3xl lg:text-5xl">
             Curate, Rate, and Master Your Tech Learning</h1>
           <p className="mt-4 text-md md:text-lg text-gray-400 max-w-2xl mx-auto">
-            Sieve is the ultimate platform for tech enthusiasts to discover, rate, and master their learning playlists.
-            Unlock your full potential with our curated content and powerful tools.
+          Your Gateway to the Best Tech Learning Playlists. Sieve is the IMDB for YouTube learning, helping you find the best content effortlessly
           </p>
           <button className="group/button relative overflow-hidden border-purple-300 bg-white
           transition-all duration-150 hover:border-purple-500 active:scale-95

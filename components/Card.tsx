@@ -39,17 +39,17 @@ export const Cards = () =>{
           
             image='/custom.png'
             title='Custom Playlist'
-            paragraph='Best playlist by the students for other students'
+            paragraph='Personalize your learning experience with best playlist'
             />
             <Card
             image='/rate.png'
-            title='Rate Playlist'
-            paragraph='Students rate the playlists and make other students life easy'
+            title='Rate and Review'
+            paragraph='Contribute to the community by rating and reviewing playlists.'
             />
             <Card
             image='/watch.png'
             title='Watch & Learn'
-            paragraph='Now you got the best playlist to level up your skill'
+            paragraph='With Sieve top-rated playlists, you can efficiently level up your skills'
             />
           </div>
           </div>

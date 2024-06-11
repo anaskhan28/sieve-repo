@@ -4,23 +4,29 @@ import Link from 'next/link'
 import Image from 'next/image'
 import NameLogo from '@/public/name.png'
 import useSupabaseClient from '@/utils/supabase/client';
-import { User } from '@supabase/supabase-js'
+import {User} from '@supabase/supabase-js'
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
 } from "@/components/ui/avatar"
+import getUserData from '@/app/actions/getUserData'
  
 
-const Navbar = () => {
+const Navbar =  () => {
 const [user, setUser] = useState<User>();
 const [isMounted, setIsMounted] = useState(false);
 const supabase = useSupabaseClient();
+
 
 const handleSignout = async () =>{
   const {error} = await supabase.auth.signOut();
   if(!error) setUser(undefined)
 }
+
+
+
+
 
  useEffect(() =>{
   const getCurrentUser = async() =>{
@@ -30,16 +36,16 @@ const handleSignout = async () =>{
       setUser(session.user)
     }
   };
-
   getCurrentUser();
+ 
   setIsMounted(true);
 
-  console.log(user, 'userdata')
+  // console.log(user, 'userdata')
 
  }, []);
 
  if(!isMounted) return null
- console.log(user, 'userdata')
+ console.log(user?.user_metadata?.avatar_url, 'userdata')
 
 
 
@@ -53,7 +59,7 @@ const handleSignout = async () =>{
         <Link className="text-white hover:text-gray-200 dark:text-gray-400 dark:hover:text-gray-200" href="#">
           Home
         </Link>
-        <Link className="text-gray-400 hover:text-gray-200 dark:text-gray-400 dark:hover:text-gray-200" href="#">
+        <Link className="text-gray-400 hover:text-gray-200 dark:text-gray-400 dark:hover:text-gray-200" href="/playlist">
           Playlist
         </Link>
       
@@ -71,18 +77,19 @@ const handleSignout = async () =>{
           }
            { user && (
             <>
-
+ <button className="text-gray-400 hover:text-gray-200 dark:text-gray-400 dark:hover:text-gray-200" onClick={handleSignout}>
+            Logout
+        </button>
         <Avatar>
-      <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-      <AvatarFallback>CN</AvatarFallback>
+      <AvatarImage src={user.user_metadata.avatar_url}alt="profile" />
+      <AvatarFallback>User Profile</AvatarFallback>
     </Avatar>
+   
         </>
            )}
         
       
-        <button>
-            
-        </button>
+        
       </nav>
     </nav>
   )

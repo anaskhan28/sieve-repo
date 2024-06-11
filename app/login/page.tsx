@@ -22,15 +22,17 @@ const Login = (props: Props) => {
    })
   }
   return (
-    <div className=' container flex flex-col md:flex-row justify-center md:justify-normal items-center w-full'>
-        <div className='hidden sm:flex flex-col relative w-1/2 bg-[#F7FAFC] h-screen p-6 '>
+    <div className=' flex flex-col md:flex-row justify-center md:justify-normal items-center w-full'>
+        <div className='hidden md:flex flex-col  w-1/2 bg-[#F7FAFC] h-screen p-6 '>
             <Link href="/"><Image src='/sieve.svg' className='h-12' width={150} height={150} alt='sieve'/>
 </Link>
-            <Image src='/signup.svg' className='absolute top-64 max-w-full left-52' width={400} height={330} alt='sieve'/>
-            
+<div className='flex justify-center items-center h-full w-full'>
+            <Image src='/signup.svg' className='' width={400} height={330} alt='sieve'/>
+
+            </div>
         </div>
 
-        <div className='flex flex-col gap-8 md:gap-16 p-12 mt-[7rem] justify-center md:justify-between items-center'>
+        <div className='flex flex-col gap-8 md:gap-16 p-12 mt-[7rem] justify-center md:justify-between items-center w-1/2'>
             <div className='flex flex-col gap-1 px-8 md:px-24  md:mt-[-12rem]'>
                 <span className='md:text-lg text-md font-light space-x-2'>Welcome back to Sieve</span>
                 <h1 className='text-lg md:text-2xl font-bold '>Continue a journey with us</h1>

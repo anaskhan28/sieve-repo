@@ -2,21 +2,21 @@ import { cn } from "@/utils/cn";
 import Marquee from "./ui/Marquee";
 const category = [
 {
-    name: 'Frontend Development',
+    name: 'Frontend',
     circleColour: 'D8A953',
     background: 'F6F3F0',
     textColor: 'D8A953',
 
 },
 {
-    name: 'Backend Development',
+    name: 'Backend',
     circleColour: 'AB7FE6',
     background: 'F3F1FA',
     textColor: 'AB7FE6',
 
 },
 {
-    name: 'Android Development',
+    name: 'Android',
     circleColour: '57CBD0',
     background: 'EEF6F8',
     textColor: '57CBD0',
@@ -85,7 +85,7 @@ const CategoryCard = ({
 
 const Categories = () => {
   return (
-    <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden  py-20 ">
+    <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden  pb-12 ">
       <Marquee pauseOnHover className="[--duration:20s]">
       {
         firstRow.map((category, i) =>(

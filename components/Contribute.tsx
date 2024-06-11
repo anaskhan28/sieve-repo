@@ -20,11 +20,12 @@ export function Contrbute() {
         }}
         className="relative flex flex-col gap-1 sm:gap-4 items-center text-center justify-center px-4"
       >
-        <div className="text-2xl md:text-6xl font-bold dark:text-white text-center">
-          Want to contribute your playlist?
+        <div className="text-2xl md:text-4xl font-bold dark:text-white text-center">
+        Join the community and contribute your own learning
         </div>
-        <div className="font-extralight text-base md:text-3xl dark:text-neutral-200 py-4">
-          Click here to follow the steps and make your first contribution!
+        <div className="font-extralight text-base md:text-2xl text-wrap w-1/2 dark:text-neutral-200 py-4">
+          Click here to follow the steps to share your playlists with fellow 
+          students to help them find the best resources
         </div>
         
         <button className="group/button relative overflow-hidden border-purple-300 bg-white
