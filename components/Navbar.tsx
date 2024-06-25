@@ -45,7 +45,8 @@ const handleSignout = async () =>{
  }, []);
 
  if(!isMounted) return null
- console.log(user?.user_metadata?.avatar_url, 'userdata')
+const userProfile = user?.user_metadata?.avatar_url
+console.log(userProfile, 'userProfile')
 
 
 
@@ -81,7 +82,7 @@ const handleSignout = async () =>{
             Logout
         </button>
         <Avatar>
-      <AvatarImage src={user.user_metadata.avatar_url}alt="profile" />
+      <AvatarImage src={userProfile} alt="profile" />
       <AvatarFallback>User Profile</AvatarFallback>
     </Avatar>
    

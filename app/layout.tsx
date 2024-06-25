@@ -1,6 +1,7 @@
 import { Tenor_Sans } from 'next/font/google'
 import { Libre_Franklin } from 'next/font/google'
 import './globals.css'
+import Navbar from '@/components/Navbar'
 
 const tenor_sans = Tenor_Sans({
   subsets: ['latin'],
@@ -24,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={tenor_sans.variable + ' ' + libre_franklin.variable}>
-        
+      
         {children}
         </body>
     </html>
