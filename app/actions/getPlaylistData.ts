@@ -1,9 +1,10 @@
-import { User } from "@/types/Types";
+import { PlaylistType } from "@/types/Types";
 import SupabaseServerClient from "@/utils/supabase/server";
 
 
-const getUserData = async(): Promise<User | null> => {
+const getPlaylistData = async(): Promise<PlaylistType[] | null> => {
 const supabase = await SupabaseServerClient();
+
 
 const{ data: {user}} = await supabase.auth.getUser();
 
@@ -11,13 +12,14 @@ if(!user){
     console.log('NO USER', user);
     return null;
 }
-const {data, error} = await supabase.from('users').select('*').eq('id', user.id);
+const {data, error} = await supabase.from('playlistsInfo').select();
 console.log(data, 'data')
 if(error){
     console.log(error, 'error');
     return null
 }
-return data ? data[0] :null;
+console.log(data, 'Playlistdata')
+return data ?? [];
 }
 
-export default getUserData;
+export default getPlaylistData;

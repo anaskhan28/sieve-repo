@@ -1,0 +1,136 @@
+
+   [
+      {
+        "id":1,
+        "name": "John Doe",
+        "playlist_link": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ",
+        "summary": "In-depth project tutorial on Frontend Development.",
+        "title": "Frontend Development",
+        "category": "Development",
+        "user_profile_link": "https://github.com/johndoe",
+        "image": "/playlist.png",
+        "views": "2.5k",
+        "user_Image": "/user.png"
+
+      },
+      {
+        "id":2,
+        "name": "John Doe",
+        "playlist_link": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ",
+        "summary": "In-depth project tutorial on Frontend Development.",
+        "title": "Frontend Development",
+        "category": "Development",
+        "user_profile_link": "https://github.com/johndoe",
+        "views": "2.5k",
+        "image": "/playlist.png" ,
+         "user_Image": "/user.png"
+
+      },
+      {
+        "id":3,
+        "name": "John Doe",
+        "playlist_link": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ",
+        "summary": "In-depth project tutorial on Frontend Development.",
+        "title": "Frontend Development",
+        "category": "Development",
+        "user_profile_link": "https://github.com/johndoe",
+        "views": "2.5k",
+        "image": "/playlist.png" ,
+         "user_Image": "/user.png"
+
+      },
+      {
+        "id":4,
+        "name": "Anas Khan",
+        "playlist_link": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ",
+        "summary": "In-depth project tutorial on Frontend Development.",
+        "title": "Frontend Development",
+        "category": "Development",
+        "user_profile_link": "https://github.com/johndoe",
+        "views": "2.5k",
+        "image": "/playlist.png",
+        "user_Image": "/user.png" 
+
+      },
+      {
+        "id":5,
+        "name": "Anas Khan",
+        "playlist_link": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ",
+        "summary": "In-depth project tutorial on Frontend Development.",
+        "title": "Frontend Development",
+        "category": "Development",
+        "user_profile_link": "https://github.com/johndoe",
+        "views": "2.5k",
+        "image": "/playlist.png",
+        "user_Image": "/user.png" 
+
+      },
+      {
+        "id":6,
+        "name": "Anas Khan",
+        "playlist_link": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ",
+        "summary": "In-depth project tutorial on Frontend Development.",
+        "title": "Frontend Development",
+        "category": "Development",
+        "user_profile_link": "https://github.com/johndoe",
+        "views": "2.5k",
+        "image": "/playlist.png",
+        "user_Image": "/user.png" 
+
+      },
+      {
+        "id":7,
+        "name": "Arshad Khan",
+        "playlist_link": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ",
+        "summary": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam exercitationem accusantium nobis dolorum, vitae quas enim quae rem nam temporibus voluptates eum expedita? Molestias facilis est voluptatibus ipsum, cupiditate doloribus.",
+        "title": "Frontend Development",
+        "category": "Development",
+        "user_profile_link": "https://github.com/johndoe",
+        "views": "2.5k",
+        "image": "/playlist.png",
+        "user_Image": "/user.png" 
+
+      },
+      {
+        "id":8,
+        "name": "Ahmed Khan",
+        "playlist_link": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ",
+        "summary": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam exercitationem accusantium nobis dolorum, vitae quas enim quae rem nam temporibus voluptates eum expedita? Molestias facilis est voluptatibus ipsum, cupiditate doloribus.",
+        "title": "Frontend Development",
+        "category": "Development",
+        "user_profile_link": "https://github.com/johndoe",
+        "views": "2.5k",
+        "image": "/playlist.png",
+        "user_Image": "/user.png" 
+
+      },
+      {
+        "id":9,
+        "name": "Ayaan Khan",
+        "playlist_link": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ",
+        "summary": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam exercitationem accusantium nobis dolorum, vitae quas enim quae rem nam temporibus voluptates eum expedita? Molestias facilis est voluptatibus ipsum, cupiditate doloribus.",
+        "title": "Frontend Development",
+        "category": "Development",
+        "user_profile_link": "https://github.com/johndoe",
+        "views": "2.5k",
+        "image": "/playlist.png",
+        "user_Image": "/user.png" 
+
+      },
+      {
+        "id":10,
+        "name": "Ayaan Khan",
+        "playlist_link": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ",
+        "summary": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam exercitationem accusantium nobis dolorum, vitae quas enim quae rem nam temporibus voluptates eum expedita? Molestias facilis est voluptatibus ipsum, cupiditate doloribus.",
+        "title": "Frontend Development",
+        "category": "Development",
+        "user_profile_link": "https://github.com/johndoe",
+        "views": "2.5k",
+        "image": "/playlist.png",
+        "user_Image": "/user.png" 
+
+      }
+      
+    ]
+  
+  
