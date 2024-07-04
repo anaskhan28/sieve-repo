@@ -129,7 +129,34 @@
         "image": "/playlist.png",
         "user_Image": "/user.png" 
 
+      },
+      {
+        "id":11,
+        "name": "Anas Khan",
+        "playlist_link": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ",
+        "summary": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam exercitationem accusantium nobis dolorum, vitae quas enim quae rem nam temporibus voluptates eum expedita? Molestias facilis est voluptatibus ipsum, cupiditate doloribus.",
+        "title": "Frontend Development",
+        "category": "Development",
+        "user_profile_link": "https://github.com/johndoe",
+        "views": "2.5k",
+        "image": "/playlist.png",
+        "user_Image": "/user.png" 
+
+      },
+      {
+        "id":12,
+        "name": "Salam Khan",
+        "playlist_link": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ",
+        "summary": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam exercitationem accusantium nobis dolorum, vitae quas enim quae rem nam temporibus voluptates eum expedita? Molestias facilis est voluptatibus ipsum, cupiditate doloribus.",
+        "title": "Backend Development",
+        "category": "Development",
+        "user_profile_link": "https://github.com/johndoe",
+        "views": "2.5k",
+        "image": "/playlist.png",
+        "user_Image": "/user.png" 
+
       }
+
       
     ]
   

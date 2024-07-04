@@ -6,11 +6,12 @@ import { Star, Eye } from 'lucide-react'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import Link from 'next/link'
 import getPlaylistData from '@/app/actions/getPlaylistData'
+import Rate from '@/components/Rate'
 
 type Props = {}
 
 const PlaylistDetail = async ({params}: {
-    params: {playlistId: number}
+    params: {playlistId: string}
 }) => {
   const dataPlaylist = await getPlaylistData();
 
@@ -34,8 +35,7 @@ const PlaylistDetail = async ({params}: {
              <span className='text-md md:text-xl self-start text-[#D9D9D9]'>{playlist.playlist_title} Full Course Playlist</span>
             
              <span className='flex text-[#D9D9D9] justify-center items-center text-md md:text-lg gap-2'><Star fill='#FAC815' className='text-yellow-300' width={25} height={25} />8.2</span>
-             <Star   className='text-yellow-300' width={25} height={25} />
-             
+             <Rate {...playlist}/>
           <div className='flex flex-row justify-center items-center gap-2'>
           <span className="text-md md:text-lg text-gray-400 ">2.1k</span>
           <Eye className='text-gray-400' width={25} height={25}/>

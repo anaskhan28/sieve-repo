@@ -19,7 +19,7 @@ const playlist = async (props: Props) => {
 
   if(!data) return null;
 
-  console.log(data, 'existingdata')
+  
   
 if(!userData){
 

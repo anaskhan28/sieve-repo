@@ -19,11 +19,12 @@ const PlaylistCards = async () => {
         <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
             {data.map((playlist) => (
                 <PlaylistCard
-                    key={playlist.id}
-                    playlistId={playlist.id}
-                    playlistImage={playlist.playlist_image}
-                    playlistTitle={playlist.playlist_title}
-                    plyalistName={playlist.playlist_title}
+                   key={playlist.id}
+                   id={playlist.id}
+                   playlist_title={playlist.playlist_title}
+                   playlist_image={playlist.playlist_image}
+
+                    
                 />
             ))}
         </div>
