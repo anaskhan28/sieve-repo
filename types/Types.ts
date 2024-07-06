@@ -6,7 +6,7 @@ export interface User {
 }
 export interface PlaylistType {
     id?: string,
-    playlist_id?: string;
+    playlist_id?: number;
     user_name?: string;
     playlist_url?: string;
     playlist_summary?: string;
@@ -15,6 +15,7 @@ export interface PlaylistType {
     playlist_image: string;
     user_profile_link?: string;
     user_profile_Image_link?: string
+    playlistRating?: number,
 }
 
 export interface RatingType {

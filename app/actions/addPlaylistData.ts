@@ -1,8 +1,10 @@
 import { PlaylistType } from "@/types/Types";
 import SupabaseServerClient from "@/utils/supabase/server";
 import playlists from "@/playlist.json";
+import {getThumbnailUrl} from './fetchThumbnails'
 
-const addOrUpdatePlaylistData = async(): Promise<PlaylistType[] | null> => {
+
+const addOrUpdatePlaylistData = async (): Promise<PlaylistType[] | null> => {
   const supabase = await SupabaseServerClient();
 
   const { data: { user } } = await supabase.auth.getUser();
@@ -20,12 +22,11 @@ const addOrUpdatePlaylistData = async(): Promise<PlaylistType[] | null> => {
     return null;
   }
 
-  console.log(existingPlaylists, 'existingPlaylists');
-
   const existingPlaylistIds = existingPlaylists.map(playlist => playlist.playlist_id);
 
   const newPlaylists = playlists.filter(playlist => !existingPlaylistIds.includes(playlist.id));
 
+  
   const updatedPlaylists = playlists.filter(playlist => {
     const existingPlaylist = existingPlaylists.find(ep => ep.playlist_id === playlist.id);
     return existingPlaylist && (
@@ -34,7 +35,6 @@ const addOrUpdatePlaylistData = async(): Promise<PlaylistType[] | null> => {
       existingPlaylist.playlist_summary !== playlist.summary ||
       existingPlaylist.playlist_title !== playlist.title ||
       existingPlaylist.playlist_category !== playlist.category ||
-      existingPlaylist.playlist_image !== playlist.image ||
       existingPlaylist.user_profile_link !== playlist.user_profile_link ||
       existingPlaylist.user_profile_Image_link !== playlist.user_Image
     );
@@ -45,49 +45,62 @@ const addOrUpdatePlaylistData = async(): Promise<PlaylistType[] | null> => {
     return [];
   }
 
-  const playlistDataToInsert = newPlaylists.map(({ name, id, user_Image, playlist_link, summary, title, category, user_profile_link, image }) => ({
-    playlist_id: id,
-    user_name: name,
-    playlist_url: playlist_link,
-    playlist_summary: summary,
-    playlist_title: title,
-    playlist_category: category,
-    playlist_image: image,
-    user_profile_link,
-    user_profile_Image_link: user_Image
-  }));
 
-  const playlistDataToUpdate = updatedPlaylists.map(({ name, id, user_Image, playlist_link, summary, title, category, user_profile_link, image }) => ({
+  const playlistDataToUpdate =  await Promise.all(updatedPlaylists.map(async({ name, id, user_Image, playlist_link, summary, title, category, user_profile_link }) => {
+    const thumbnailUrl = await getThumbnailUrl(playlist_link);
+return {
     playlist_id: id,
     user_name: name,
     playlist_url: playlist_link,
     playlist_summary: summary,
     playlist_title: title,
     playlist_category: category,
-    playlist_image: image,
+    playlist_image: thumbnailUrl,
     user_profile_link,
     user_profile_Image_link: user_Image
-  }));
+  }}));
+  const playlistDataToInsert = await Promise.all(newPlaylists.map(async ({ name, id, user_Image, playlist_link, summary, title, category, user_profile_link }) => {
+      const thumbnailUrl = await getThumbnailUrl(playlist_link);
+      return {
+        playlist_id: id,
+        user_name: name,
+        playlist_url: playlist_link,
+        playlist_summary: summary,
+        playlist_title: title,
+        playlist_category: category,
+        playlist_image: thumbnailUrl,
+        user_profile_link,
+        user_profile_Image_link: user_Image
+      };
+    }));
+
+    
+
+
 
   // Insert new playlists
   if (playlistDataToInsert.length > 0) {
     const { data, error } = await supabase.from('playlistsInfo').insert(playlistDataToInsert).select();
+ 
     if (error) {
       console.log(error, 'insertError');
       return [];
     }
+   
   }
 
-  // Update existing playlists
-  if (playlistDataToUpdate.length > 0) {
-    for (const playlistData of playlistDataToUpdate) {
-      const { error } = await supabase.from('playlistsInfo').update(playlistData).eq('playlist_id', playlistData.playlist_id);
-      if (error) {
-        console.log(error, 'updateError');
-        return [];
+    // Update existing playlists
+    if (playlistDataToUpdate.length > 0) {
+      for (const playlistData of playlistDataToUpdate) {
+        const { data, error } = await supabase.from('playlistsInfo').update(playlistData).eq('playlist_id', playlistData.playlist_id);
+        if (error) {
+          console.log(error, 'updateError');
+          return [];
+        }
+        
       }
+      
     }
-  }
 
   return [...playlistDataToInsert, ...playlistDataToUpdate];
 }

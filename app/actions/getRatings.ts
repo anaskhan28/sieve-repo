@@ -1,10 +1,12 @@
-"use server"
-import { User } from "@/types/Types";
+'use server'
+import { RatingType } from "@/types/Types";
 import SupabaseServerClient from "@/utils/supabase/server";
+import { revalidatePath } from "next/cache";
 
 
-const getUserData = async(): Promise<User | null> => {
+const getRatings = async(): Promise<RatingType[] | null> => {
 const supabase = await SupabaseServerClient();
+
 
 const{ data: {user}} = await supabase.auth.getUser();
 
@@ -12,13 +14,14 @@ if(!user){
     console.log('NO USER', user);
     return null;
 }
-const {data, error} = await supabase.from('users').select('*').eq('id', user.id);
-
+const {data, error} = await supabase.from('ratings').select();
 if(error){
     console.log(error, 'error');
     return null
 }
-return data ? data[0] :null;
+
+revalidatePath('/')
+return data
 }
 
-export default getUserData;
+export default getRatings;

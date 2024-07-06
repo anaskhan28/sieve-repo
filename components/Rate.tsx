@@ -9,13 +9,16 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { useState, useCallback } from "react"
+import { useState, useCallback, useEffect } from "react"
 import { Star } from 'lucide-react'
 import { Rating } from "@smastrom/react-rating"
 import { PlaylistType, RatingType } from "@/types/Types"
 
 import addRatings from "@/app/actions/addRatings"
 import getUserData from "@/app/actions/getUserData"
+import getRatings from "@/app/actions/getRatings"
+import { revalidatePath } from "next/cache"
+import { DialogClose } from "@radix-ui/react-dialog"
 
 export default function Rate(playlist: PlaylistType) {
     const [rating, setRating] = useState<number>();
@@ -27,7 +30,8 @@ export default function Rate(playlist: PlaylistType) {
 
     const onSubmit = useCallback(async () => {
       const userData:any = await getUserData();
-
+     
+  
       if(!userData) return null
 
       await addRatings({
@@ -35,20 +39,24 @@ export default function Rate(playlist: PlaylistType) {
         playlist_id: playlist.id || "",
         rating: rating || 0
       })
+     
+
 
     }, [rating, playlist.id])
 
 
 
 
-    console.log(playlist.id, 'playlistId rate')
+
+
+
   
   return (
     <Dialog >
       <DialogTrigger asChild>
-   
-      <Star  className='text-yellow-300 cursor-pointer hover:bg-gray-600 hover:' width={20} height={20} />
-        
+      <p className="text-white flex gap-1 justify-center items-center">
+      <Star fill={playlist.playlistRating? "#FAC815" : ""}  className='text-yellow-300 cursor-pointer hover:bg-gray-600 hover:' width={20} height={20} />
+        {playlist.playlistRating? playlist.playlistRating: " "}</p>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] bg-[#1f1f1f] ">
         <DialogHeader className="relative flex flex-col justify-center items-center gap-4">
@@ -59,7 +67,7 @@ export default function Rate(playlist: PlaylistType) {
            fill='#d2861b' className="  absolute -top-16 left-36 right-36 lucide lucide-star">
   <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
   <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="currentColor" className=" text-[7px] text-white font-bold">
-    {rating? rating: "?"}</text>
+    {rating? rating: playlist.playlistRating ? playlist.playlistRating: "?"}</text>
 </svg>
 
          <div className="flex flex-col justify-center items-center gap-2">
@@ -68,8 +76,9 @@ export default function Rate(playlist: PlaylistType) {
          </div>
           <DialogDescription>
           <Rating
-          style={{ maxWidth: 360 }}
-          value={rating || 0}
+          
+          style={{ maxWidth: 360, outline:"none" }}
+          value={rating || playlist.playlistRating!}
           items={10}
         
           onChange={onChange}
@@ -79,7 +88,10 @@ export default function Rate(playlist: PlaylistType) {
         </DialogHeader>
        
         <DialogFooter>
-          <Button onClick={ onSubmit} className="self-center text-md md:text-lg w-full mt-2 bg-[#313131] hover:bg-[#3e3a3a]" type="submit">Rate This</Button>
+          <DialogClose className="self-center text-md md:text-lg w-full">
+          <Button  onClick={ onSubmit} className="self-center text-md md:text-lg w-full mt-2 bg-[#313131] hover:bg-[#3e3a3a]" type="submit">Rate This</Button>
+
+          </DialogClose>
         </DialogFooter>
       </DialogContent>
     </Dialog>

@@ -9,6 +9,7 @@ import PlaylistCard from '@/components/PlaylistCard';
 import addPlaylistData from '@/app/actions/addPlaylistData';
 import getPlaylistData from '@/app/actions/getPlaylistData';
 import PlaylistCards from '@/components/PlaylistCards';
+import getRatings from '../actions/getRatings';
 
 type Props = {}
 

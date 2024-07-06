@@ -7,6 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import Link from 'next/link'
 import getPlaylistData from '@/app/actions/getPlaylistData'
 import Rate from '@/components/Rate'
+import getRatings from '@/app/actions/getRatings'
 
 type Props = {}
 
@@ -14,6 +15,12 @@ const PlaylistDetail = async ({params}: {
     params: {playlistId: string}
 }) => {
   const dataPlaylist = await getPlaylistData();
+
+  const res = await getRatings();
+    if(!res) return null;
+
+      // Find the rating for the current playlist
+      const playlistRating = res.find((r) => r.playlist_id === params.playlistId)?.rating || null;
 
   
 
@@ -35,7 +42,7 @@ const PlaylistDetail = async ({params}: {
              <span className='text-md md:text-xl self-start text-[#D9D9D9]'>{playlist.playlist_title} Full Course Playlist</span>
             
              <span className='flex text-[#D9D9D9] justify-center items-center text-md md:text-lg gap-2'><Star fill='#FAC815' className='text-yellow-300' width={25} height={25} />8.2</span>
-             <Rate {...playlist}/>
+             <Rate {...playlist} playlistRating={playlistRating!} />
           <div className='flex flex-row justify-center items-center gap-2'>
           <span className="text-md md:text-lg text-gray-400 ">2.1k</span>
           <Eye className='text-gray-400' width={25} height={25}/>

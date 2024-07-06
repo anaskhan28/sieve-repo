@@ -13,7 +13,6 @@ const PlaylistCards = async () => {
         if(!data) return null
 
 
-   console.log(data, 'data of cards')
 
     return (
         <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
@@ -23,7 +22,7 @@ const PlaylistCards = async () => {
                    id={playlist.id}
                    playlist_title={playlist.playlist_title}
                    playlist_image={playlist.playlist_image}
-
+                   playlist_category={playlist.playlist_category}
                     
                 />
             ))}

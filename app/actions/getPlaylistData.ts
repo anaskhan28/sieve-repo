@@ -13,12 +13,12 @@ if(!user){
     return null;
 }
 const {data, error} = await supabase.from('playlistsInfo').select();
-console.log(data, 'data')
+
 if(error){
     console.log(error, 'error');
     return null
 }
-console.log(data, 'Playlistdata')
+
 return data ?? [];
 }
 
