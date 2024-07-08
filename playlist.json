@@ -5,7 +5,7 @@
     "playlist_link": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ",
     "summary": "In-depth project tutorial on Frontend Development.",
     "title": "Frontend Development",
-     "category": "Development",
+    "category": "Frontend Development",
     "user_profile_link": "https://github.com/anaskhan28",
     "user_Image": "/user.png"
   },
@@ -15,7 +15,7 @@
     "playlist_link": "https://www.youtube.com/playlist?list=PLinedj3B30sDby4Al-i13hQJGQoRQDfPo",
     "summary": "Comprehensive guide to Web Development.",
     "title": "Web Development",
-     "category": "Development",
+    "category": "Frontend Development",
     "user_profile_link": "https://github.com/anaskhan28",
     "user_Image": "/jane.png"
   },
@@ -25,7 +25,7 @@
     "playlist_link": "https://www.youtube.com/playlist?list=PLu71SKxNbfoBGh_8p_NS-ZAh6v7HhYqHW",
     "summary": "Learn advanced JavaScript concepts.",
     "title": "Advanced JavaScript",
-    "category": "Programming",
+    "category": "Frontend Development",
     "user_profile_link": "https://github.com/anaskhan28",
     "user_Image": "/alice.png"
   },
@@ -35,7 +35,7 @@
     "playlist_link": "https://youtu.be/fx6KMItwJAw?si=D-wueoxGFwBliEHr",
     "summary": "Understanding Data Structures and Algorithms.",
     "title": "Data Structures & Algorithms",
-    "category": "Computer Science",
+    "category": "Data Structures",
     "user_profile_link": "https://github.com/anaskhan28",
     "user_Image": "/bob.png"
   },
@@ -45,7 +45,7 @@
     "playlist_link": "https://www.youtube.com/playlist?list=PLC3y8-rFHvwhBRAgFinJR8KHIrCdTkZcZ",
     "summary": "Exploring Machine Learning with Python.",
     "title": "Machine Learning",
-    "category": "Artificial Intelligence",
+    "category": "Machine Learning",
     "user_profile_link": "https://github.com/anaskhan28",
     "user_Image": "/charlie.png"
   },
@@ -55,7 +55,7 @@
     "playlist_link": "https://www.youtube.com/playlist?list=PLQit65uXNfmuv0WfhgpYcyOfUX1FAawxD",
     "summary": "Introduction to Cloud Computing.",
     "title": "Cloud Computing",
-    "category": "Technology",
+    "category": "Backend Development",
     "user_profile_link": "https://github.com/anaskhan28",
     "user_Image": "/david.png"
   },
@@ -65,7 +65,7 @@
     "playlist_link": "https://www.youtube.com/playlist?list=PLu71SKxNbfoBGh_8p_NS-ZAh6v7HhYqHW",
     "summary": "Learn how to design stunning websites.",
     "title": "Web Design",
-    "category": "Design",
+    "category": "UI UX Design",
     "user_profile_link": "https://github.com/anaskhan28",
     "user_Image": "/eva.png"
   },
@@ -75,17 +75,17 @@
     "playlist_link": "https://www.youtube.com/playlist?list=PLinedj3B30sDby4Al-i13hQJGQoRQDfPo",
     "summary": "Master the basics of Python programming.",
     "title": "Python for Beginners",
-    "category": "Programming",
+    "category": "Frontend Development",
     "user_profile_link": "https://github.com/anaskhan28",
     "user_Image": "/frank.png"
   },
   {
     "id": 9,
     "name": "Grace King",
-    "playlist_link": "hhttps://www.youtube.com/playlist?list=PLinedj3B30sDby4Al-i13hQJGQoRQDfPo",
+    "playlist_link": "https://www.youtube.com/playlist?list=PLinedj3B30sDby4Al-i13hQJGQoRQDfPo",
     "summary": "Understanding the fundamentals of Cyber Security.",
     "title": "Cyber Security Basics",
-    "category": "Security",
+    "category": "Backend Development",
     "user_profile_link": "https://github.com/anaskhan28",
     "user_Image": "/grace.png"
   },
@@ -95,7 +95,7 @@
     "playlist_link": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ",
     "summary": "Step by step guide to learn Docker.",
     "title": "Anas Essentials",
-    "category": "DevOps",
+    "category": "Backend Development",
     "user_profile_link": "https://github.com/anaskhan28",
     "user_Image": "/henry.png"
   },
@@ -105,7 +105,7 @@
     "playlist_link": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ",
     "summary": "Introduction to Database Management Systems.",
     "title": "Database Management",
-    "category": "Database",
+    "category": "Backend Development",
     "user_profile_link": "https://github.com/anaskhan28",
     "user_Image": "/isla.png"
   },
@@ -115,17 +115,37 @@
     "playlist_link": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ",
     "summary": "Get started with Game Development.",
     "title": "Game Development",
-     "category": "Development",
+    "category": "Frontend Development",
     "user_profile_link": "https://github.com/anaskhan28",
     "user_Image": "/jack.png"
   },
   {
     "id": 13,
-    "name": "Jack Wilson",
+    "name": "Anas Wilson",
     "playlist_link": "https://www.youtube.com/watch?v=fx6KMItwJAw",
     "summary": "Get started with Game Development.",
     "title": "Design Development",
-     "category": "Development",
+    "category": "Frontend Development",
+    "user_profile_link": "https://github.com/jackwilson",
+    "user_Image": "/jack.png"
+  },
+  {
+    "id": 13,
+    "name": "Anas Wilson",
+    "playlist_link": "https://www.youtube.com/watch?v=fx6KMItwJAw",
+    "summary": "Get started with Game Development.",
+    "title": "Design Development",
+    "category": "Frontend Development",
+    "user_profile_link": "https://github.com/jackwilson",
+    "user_Image": "/jack.png"
+  },
+  {
+    "id": 14,
+    "name": "Anas Wilson",
+    "playlist_link": "https://www.youtube.com/watch?v=fx6KMItwJAw",
+    "summary": "Get started with Game Development.",
+    "title": "Design Development",
+    "category": "Frontend Development",
     "user_profile_link": "https://github.com/jackwilson",
     "user_Image": "/jack.png"
   }

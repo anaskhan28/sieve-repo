@@ -2,6 +2,7 @@
 import React,{useState, useRef} from 'react'
 import { ChevronRight } from 'lucide-react';
 import { ChevronLeft } from 'lucide-react';
+import { updateFilters } from '@/app/actions/updatedFilter';
 
 type Props = {}
 
@@ -60,20 +61,31 @@ const Filter = (props: Props) => {
 
 return (
     <div className='container hidden md:flex max-w-7xl p-8 overflow-hidden flex-row justify-center items-center gap-5'>
-        <ChevronLeft onClick={() => handleScroll("left")}                 
-        className={`absolute left-12 ml-5 cursor-pointer p-2 rounded-sm text-center text-white ${activeArrow === 'left' ? 'bg-[#766FFA]' : 'bg-[#878787]'}`}
- width={50} height={50}/>
+        <ChevronLeft
+            onClick={() => handleScroll("left")}
+            className={`absolute left-12 ml-5 cursor-pointer p-2 rounded-sm text-center text-white ${activeArrow === 'left' ? 'bg-[#766FFA]' : 'bg-[#878787]'}`}
+            width={50}
+            height={50}
+        />
+        <form action={updateFilters} className='flex gap-5 cursor-pointer w-full justify-center items-center overflow-hidden'>
+
         <div ref={containerRef} className='flex gap-5 cursor-pointer w-full justify-center items-center overflow-hidden'>
             {filterByCategory.map((filter) => (
-                <div  className='text-white  bg-[#17191A] border border-[#555454] rounded-lg p-4  text-center w-60 whitespace-nowrap' key={filter}>
-                    {filter}
-                </div>
+                <button type='submit' className='text-white cursor-pointer bg-[#17191A] border border-[#555454] rounded-lg p-4 text-center w-60 whitespace-nowrap' key={filter}>
+                    <input type="radio" id={filter} name="query" value={filter} style={{ display: 'none' }} />
+                    <label htmlFor={filter}>{filter}</label>
+                </button>
             ))}
+            
         </div>
+        </form>
         <ChevronRight
-        onClick={() => handleScroll("right")}
-        className={`absolute right-12 mr-5  p-2 cursor-pointer rounded-sm text-center ${activeArrow === 'right' ? 'bg-[#766FFA]' : 'bg-[#878787]'} text-white`} width={50} height={50}
+            onClick={() => handleScroll("right")}
+            className={`absolute right-12 mr-5 p-2 cursor-pointer rounded-sm text-center ${activeArrow === 'right' ? 'bg-[#766FFA]' : 'bg-[#878787]'} text-white`}
+            width={50}
+            height={50}
         />
+       
     </div>
 )
 }

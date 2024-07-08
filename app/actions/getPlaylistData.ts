@@ -1,25 +1,49 @@
+"use server"
 import { PlaylistType } from "@/types/Types";
 import SupabaseServerClient from "@/utils/supabase/server";
+import { PostgrestError } from "@supabase/supabase-js";
+import { redirect } from "next/navigation";
 
+const getPlaylistData = async (query?: any): Promise<PlaylistType[] | null> => {
+    const supabase = await SupabaseServerClient();
+   
+    const { data: { user } } = await supabase.auth.getUser();
 
-const getPlaylistData = async(): Promise<PlaylistType[] | null> => {
-const supabase = await SupabaseServerClient();
+    if (!user) {
+        console.log('NO USER', user);
+        return null;
+    }
 
+    const { data, error } = await supabase.from('playlistsInfo').select();
+  
+    if (query) {
+        
+       
+        const { data, error } = await supabase.from('playlistsInfo').select().ilike('playlist_title', `%${query}%`).limit(10);
+        console.log(data, 'query data');
+      
+        if (!data) {
+            console.log("No Data", data);
+            return null;
+        }
+        if (error) {
+            console.log(error, 'error');
+            return null;
+        }
+        return data
+     
+    }
 
-const{ data: {user}} = await supabase.auth.getUser();
-
-if(!user){
-    console.log('NO USER', user);
-    return null;
-}
-const {data, error} = await supabase.from('playlistsInfo').select();
-
-if(error){
-    console.log(error, 'error');
-    return null
-}
-
-return data ?? [];
+    if (!data) {
+        console.log("No Data", data);
+        return null;
+    }
+    if (error) {
+        console.log(error, 'error');
+        return null ;
+    }
+    return data ?? [];
+    
 }
 
 export default getPlaylistData;

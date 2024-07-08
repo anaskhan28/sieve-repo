@@ -19,10 +19,10 @@ import getUserData from "@/app/actions/getUserData"
 import getRatings from "@/app/actions/getRatings"
 import { revalidatePath } from "next/cache"
 import { DialogClose } from "@radix-ui/react-dialog"
+import getPlaylistData from "@/app/actions/getPlaylistData"
 
 export default function Rate(playlist: PlaylistType) {
     const [rating, setRating] = useState<number>();
-
     function onChange(newValue: number) {
       console.log(newValue);
       setRating(newValue);
@@ -31,16 +31,16 @@ export default function Rate(playlist: PlaylistType) {
     const onSubmit = useCallback(async () => {
       const userData:any = await getUserData();
      
-  
+
       if(!userData) return null
 
       await addRatings({
-        user_id: userData.id,
-        playlist_id: playlist.id || "",
-        rating: rating || 0
+      user_id: userData.id,
+      playlist_id: playlist.id || "",
+      rating: rating || 0
       })
      
-
+      // window.location.reload(); // Refresh the page
 
     }, [rating, playlist.id])
 

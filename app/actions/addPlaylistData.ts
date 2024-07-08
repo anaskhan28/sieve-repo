@@ -1,3 +1,4 @@
+"use server"
 import { PlaylistType } from "@/types/Types";
 import SupabaseServerClient from "@/utils/supabase/server";
 import playlists from "@/playlist.json";

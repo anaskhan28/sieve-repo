@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { Star, Eye } from 'lucide-react'
 import Link from 'next/link'
@@ -8,23 +8,23 @@ import addRatings from '@/app/actions/addRatings'
 import getUserData from '@/app/actions/getUserData'
 import { PlaylistType } from '@/types/Types'
 import getRatings from '@/app/actions/getRatings'
+import { revalidatePath } from 'next/cache'
 
 
-const PlaylistCard =  async (props: PlaylistType) => {
-
+const PlaylistCard =   async(props: PlaylistType) => {
 
     const res = await getRatings();
     if(!res) return null;
-
+  
       // Find the rating for the current playlist
       const playlistRating = res.find((r) => r.playlist_id === props.id)?.rating || null;
-     
-    
-      
-      
-      
-    
   
+   
+  
+
+  
+
+ 
   
   return (
     
