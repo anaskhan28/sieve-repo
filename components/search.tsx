@@ -5,7 +5,7 @@ import { ReactNode, useState } from "react"
 import { updateFilters } from "@/app/actions/updatedFilter";
 
 
-export function Search({onSearch}:any) {
+export function Search() {
 
   
   return (

@@ -4,14 +4,10 @@ import { redirect } from 'next/navigation';
 import  {Search}  from '@/components/Search';
 import Image from 'next/image';
 import Filter from '@/components/Filter'
-import Link from 'next/link';
-import PlaylistCard from '@/components/PlaylistCard';
-import addPlaylistData from '@/app/actions/addPlaylistData';
 import getPlaylistData from '@/app/actions/getPlaylistData';
 import PlaylistCards from '@/components/PlaylistCards';
-import getRatings from '../actions/getRatings';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
+
+
 
 type Props = {
   [key:string]: string
