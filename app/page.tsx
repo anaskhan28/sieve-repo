@@ -7,7 +7,6 @@ import { Cards } from '@/components/Card';
 import {Contrbute} from '@/components/Contribute'
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
-import { NavbarSlide } from '@/components/component/componenets';
 
 const Home = () => {
   return (
