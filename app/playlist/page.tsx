@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Filter from '@/components/Filter'
 import getPlaylistData from '@/app/actions/getPlaylistData';
 import PlaylistCards from '@/components/PlaylistCards';
-import { Search } from '@/components/Search';
+import Search  from '@/components/Search';
 
 
 
