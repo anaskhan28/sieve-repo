@@ -3,7 +3,6 @@ import React,{useState, useRef} from 'react'
 import { ChevronRight } from 'lucide-react';
 import { ChevronLeft } from 'lucide-react';
 import { updateFilters } from '@/app/actions/updatedFilter';
-
 type Props = {}
 
 const filterByCategory = [
@@ -27,8 +26,9 @@ const filterByCategory = [
 
 const Filter = (props: Props) => {
     const [activeArrow, setActiveArrow] = useState<'left' | 'right' | null>(null);
+    const [activeButton, setActiveButton] = useState<string | null | Boolean>()
     const containerRef = useRef<HTMLDivElement>(null);
-    
+   
     const handleScroll = (direction: 'left' | 'right') => {
         setActiveArrow(direction);
         setTimeout(() => setActiveArrow(null), 300); // Reset active arrow after 300ms
@@ -71,9 +71,14 @@ return (
 
         <div ref={containerRef} className='flex gap-5 cursor-pointer w-full justify-center items-center overflow-hidden'>
             {filterByCategory.map((filter) => (
-                <button type='submit' className='text-white cursor-pointer bg-[#17191A] border border-[#555454] rounded-lg p-4 text-center w-60 whitespace-nowrap' key={filter}>
-                    <input type="radio" id={filter} name="query" value={filter} style={{ display: 'none' }} />
-                    <label htmlFor={filter}>{filter}</label>
+                <button 
+                    type='submit' 
+                    className={`text-white cursor-pointer bg-[#17191A] border border-[#555454] rounded-lg p-4 text-center w-60 whitespace-nowrap ${activeButton === filter ? 'bg-[#766FFA]' : ''}`} 
+                    key={filter}
+                    onClick={() => setActiveButton(filter)}
+                >
+                    <input type="radio" id={filter} className='cursor-pointer' name="filter" value={filter} style={{ display: 'none' }} />
+                    <label className='cursor-pointer' htmlFor={filter}>{filter}</label>
                 </button>
             ))}
             

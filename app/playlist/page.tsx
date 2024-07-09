@@ -22,17 +22,15 @@ const playlist = async ({searchParams}: {searchParams: Props }) => {
 
 
   const userData = await getUserData();
-  const data = await addPlaylistData();
   
-   const playlistDatas = await getPlaylistData(searchParams.query);
+   const playlistDatas =  await getPlaylistData(searchParams.query, searchParams.filter) || await getPlaylistData(searchParams.query, searchParams.filter);
 
-   
 
   if (!userData) {
     return redirect('/signup');
   }
 
-  if (!data) return null;
+  
   if (!playlistDatas) return null;
 
   return (
@@ -48,7 +46,7 @@ const playlist = async ({searchParams}: {searchParams: Props }) => {
      <Filter/>
       </div>
      <div className='container mx-auto px-4 '>
-      <PlaylistCards playlistData={playlistDatas}  />
+      <PlaylistCards className='grid grid-cols-1 md:grid-cols-3 gap-8' playlistData={playlistDatas}  />
      </div>
       
     </div>

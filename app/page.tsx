@@ -7,6 +7,7 @@ import { Cards } from '@/components/Card';
 import {Contrbute} from '@/components/Contribute'
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
+import { NavbarSlide } from '@/components/component/componenets';
 
 const Home = () => {
   return (
@@ -19,7 +20,7 @@ const Home = () => {
       
       <main>
         <Navbar/>
-
+     
         <Hero />
       </main>
       <section className=' max-h-[100%] flex  flex-col justify-center items-center'>

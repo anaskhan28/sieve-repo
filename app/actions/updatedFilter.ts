@@ -4,15 +4,25 @@ import { redirect } from "next/navigation"
 
 
 export const updateFilters = async (formData: FormData) =>{
-const textInputFilter = formData.get('query')
+const queryTextInputFilter = formData.get('query')
+const queryTextFilter = formData.get('filter')
 
-console.log(textInputFilter, 'textInput')
-if(textInputFilter){
+
+if(queryTextInputFilter){
     const params = new URLSearchParams([
-        ['query', textInputFilter.toString()]
+        ['query', queryTextInputFilter.toString()]
+        
+    ])
+    return redirect(`/playlist?${params}`)
+
+}
+if(queryTextFilter){
+
+    const params = new URLSearchParams([
+        ['filter', queryTextFilter.toString()]
     ])
 
-    redirect(`/playlist?${params}`)
+    return redirect(`/playlist?${params}`)
 
 }
 

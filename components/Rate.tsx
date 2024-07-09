@@ -31,15 +31,16 @@ export default function Rate(playlist: PlaylistType) {
     const onSubmit = useCallback(async () => {
       const userData:any = await getUserData();
      
-
+    console.log(userData,'userData')
       if(!userData) return null
 
-      await addRatings({
+      const ratingData = await addRatings({
       user_id: userData.id,
       playlist_id: playlist.id || "",
       rating: rating || 0
       })
      
+      console.log(ratingData, 'ratingData')
       // window.location.reload(); // Refresh the page
 
     }, [rating, playlist.id])

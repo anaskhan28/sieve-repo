@@ -1,5 +1,6 @@
 
 
+import { NavbarSlide } from '@/components/component/componenets';
 import Navbar from '@/components/Navbar'
 import '@smastrom/react-rating/style.css';
 
@@ -11,7 +12,7 @@ export default function RootLayout({
     return (
       <html lang="en">
         <body >
-        <Navbar/>
+        <NavbarSlide/>
           {children}
           </body>
       </html>

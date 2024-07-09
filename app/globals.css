@@ -20,3 +20,13 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-tenor_sans), sans-serif;
   }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}

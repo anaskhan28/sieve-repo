@@ -9,16 +9,22 @@ import getUserData from '@/app/actions/getUserData'
 import { PlaylistType } from '@/types/Types'
 import getRatings from '@/app/actions/getRatings'
 import { revalidatePath } from 'next/cache'
+import getPlaylistData from '@/app/actions/getPlaylistData'
 
 
 const PlaylistCard =   async(props: PlaylistType) => {
 
     const res = await getRatings();
+
     if(!res) return null;
   
       // Find the rating for the current playlist
       const playlistRating = res.find((r) => r.playlist_id === props.id)?.rating || null;
-  
+      const data = await getPlaylistData();
+      if(!data) return null
+      const avgPlaylistRate = data?.find((p) => p.id === props.id )?.playlist_rates?.toFixed(1)  || null
+
+    
    
   
 
@@ -37,7 +43,7 @@ const PlaylistCard =   async(props: PlaylistType) => {
              <div className='flex flex-rows justify-evenly items-center'>
              <span className='text-lg self-start text-[#D9D9D9]'>{props.playlist_title}</span>
             
-             <span className='flex text-[#D9D9D9] justify-center items-center gap-2'><Star fill='#FAC815' className='text-yellow-300' width={20} height={20} />8.2</span>
+             <span className='flex text-[#D9D9D9] justify-center items-center gap-2'><Star fill='#FAC815' className='text-yellow-300' width={20} height={20} />{avgPlaylistRate}</span>
             <Rate {...props} playlistRating={playlistRating!} />
           <div className='flex flex-row justify-center items-center gap-1'>
           <span className="text-xs text-gray-400 ">2.1k </span>

@@ -16,7 +16,7 @@ export function Search({onSearch}:any) {
       name="query"
        type="text"
        placeholder="search any topic..." />
-      <Button  className="bg-[#756EF4] " type="submit">Search</Button>
+      <Button  className="bg-[#756EF4] hover:bg-[#847fe1]" type="submit">Search</Button>
     </form>
   )
 }

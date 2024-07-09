@@ -45,12 +45,15 @@ const {data, error} = await supabase.from('ratings').insert({
     rating: ratingType.rating,
     playlist_id: ratingType.playlist_id,
     user_id: ratingType.user_id
-}).select();
+})
+
+
 
 if (error) {
-    console.log(error, 'updateError');
-    return null;
-  }
+  console.error('Error inserting rating:', error);
+} else {
+  console.log('Rating inserted successfully:', data);
+}
 
 revalidatePath('/playlist')
   
