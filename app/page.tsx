@@ -31,14 +31,14 @@ const Home = () => {
         <BentoGrids/>
       </section>
 
-      <section className=' mt-[11rem] sm:mt-[-12rem] min-h-fit flex justify-center items-center'>
+      <section className=' mt-[42rem] md:mt-[-12rem] min-h-fit flex justify-center items-center'>
         <Categories/>
       </section>
     
    <section className='min-h-fit '>
     <Cards/>
    </section>
-   <section className='sm:mt-12'>
+   <section className='mt-12'>
     <Contrbute/>
    </section>
    <section className=''>

@@ -32,7 +32,7 @@ const Login = (props: Props) => {
             </div>
         </div>
 
-        <div className='flex flex-col gap-8 md:gap-16 p-12 mt-[7rem] justify-center md:justify-between items-center w-1/2'>
+        <div className='flex flex-col gap-8 md:gap-16 md:p-12 mt-[12rem] md:mt-[7rem] justify-center md:justify-between items-center md:w-1/2'>
             <div className='flex flex-col gap-1 px-8 md:px-24  md:mt-[-12rem]'>
                 <span className='md:text-lg text-md font-light space-x-2'>Welcome back to Sieve</span>
                 <h1 className='text-lg md:text-2xl font-bold '>Continue a journey with us</h1>

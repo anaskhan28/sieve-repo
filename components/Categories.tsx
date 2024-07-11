@@ -85,7 +85,7 @@ const CategoryCard = ({
 
 const Categories = () => {
   return (
-    <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden  pb-12 ">
+    <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden md:mt-0  pb-12 ">
       <Marquee pauseOnHover className="[--duration:20s]">
       {
         firstRow.map((category, i) =>(

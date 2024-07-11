@@ -23,7 +23,7 @@ export function Contrbute() {
         <div className="text-2xl md:text-4xl font-bold dark:text-white text-center">
         Join the community and contribute your own learning
         </div>
-        <div className="font-extralight text-base md:text-2xl text-wrap w-1/2 dark:text-neutral-200 py-4">
+        <div className="font-extralight text-base md:text-2xl text-wrap  w-full md:w-1/2 dark:text-neutral-200 py-4">
           Click here to follow the steps to share your playlists with fellow 
           students to help them find the best resources
         </div>
