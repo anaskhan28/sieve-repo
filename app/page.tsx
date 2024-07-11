@@ -10,18 +10,22 @@ import Navbar from '@/components/Navbar';
 
 const Home = () => {
   return (
-    <div>
+    <main className=' overflow-hidden'>
       <Head>
         <title>Sieve</title>
         <meta name="description" content="Curate, Rate, and Master Your Tech Playlist" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       
-      <main>
+      <nav className=''>
         <Navbar/>
      
-        <Hero />
-      </main>
+        
+      </nav>
+
+      <section className='-mt-20 md:-mt-0'>
+      <Hero />
+      </section>
       <section className=' max-h-[100%] flex  flex-col justify-center items-center'>
       
         <BentoGrids/>
@@ -42,7 +46,7 @@ const Home = () => {
    </section>
    
 
-    </div>
+    </main>
   );
 };
 
