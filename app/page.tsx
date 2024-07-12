@@ -10,7 +10,7 @@ import Navbar from '@/components/Navbar';
 
 const Home = () => {
   return (
-    <main className=' overflow-hidden'>
+    <main className=' overflow-hidden min-h-scre'>
       <Head>
         <title>Sieve</title>
         <meta name="description" content="Curate, Rate, and Master Your Tech Playlist" />
@@ -38,7 +38,7 @@ const Home = () => {
    <section className='min-h-fit '>
     <Cards/>
    </section>
-   <section className='mt-12'>
+   <section className='mt-12 '>
     <Contrbute/>
    </section>
    <section className=''>

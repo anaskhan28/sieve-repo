@@ -96,20 +96,22 @@ console.log(userProfile, 'userProfile')
     </nav>
       
       <div className="fixed bottom-0 left-0 z-10 flex w-full items-center justify-around bg-[#12121b] py-3 shadow-t dark:bg-gray-950 lg:hidden">
-        <Link
+        {/* <Link
           href="/"
           className="flex flex-col items-center gap-1 text-xs font-medium text-gray-500 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-50"
           prefetch={false}
         >
           <Home className="h-6 w-6" />
           Home
-        </Link>
+        </Link> */}
         <Link
           href="/playlist"
           className="flex flex-col items-center gap-1 text-xs font-medium text-gray-500 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-50"
           prefetch={false}
         >
-          <Youtube className="h-6 w-6" />
+          
+          <Home className="h-6 w-6" />
+
           Playlists
         </Link>
         
@@ -137,6 +139,25 @@ console.log(userProfile, 'userProfile')
           )}
           {user && (
             <>
+
+<Link
+          href="/myrates"
+          className="flex flex-col items-center gap-1 text-xs font-medium text-gray-500 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-50"
+          prefetch={false}
+        >
+<Youtube className="h-6 w-6" />
+          Rated Playlists
+        
+        </Link>
+<Link
+          href="https://github.com/anaskhan28" target='_blank'
+          className="flex flex-col items-center gap-1 text-xs font-medium text-gray-500 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-50"
+          prefetch={false}
+        >
+<CircleUserRound className="h-6 w-6" />
+          Contribute
+        
+        </Link>
             <button
             onClick={handleSignout}
           

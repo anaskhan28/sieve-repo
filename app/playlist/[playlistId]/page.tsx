@@ -53,8 +53,8 @@ const PlaylistDetail = async ({
   }
   return (
     <div className="bg-[#0E0E0E] w-full min-h-screen">
-      <div className="container mx-auto px-8 py-8 flex flex-col gap-14 md:gap-0 md:flex-row justify-between">
-        <div className="w-full max-w-3xl felx flex-col">
+      <div className="md:container mx-auto md:px-8 md:py-8 flex flex-col gap-14 md:gap-0 md:flex-row justify-between">
+        <div className="w-full max-w-3xl px-3 felx flex-col">
           <div className="relative">
             <Image
               src={selectedPlaylist.playlist_image}
@@ -69,15 +69,15 @@ const PlaylistDetail = async ({
               </Link>
             </div>
           </div>
-          <div className="flex flex-row gap-8 items-center justify-self-auto pl-6 -mt-2 max-w-2xl">
-            <span className="text-md md:text-xl self-start text-[#D9D9D9]">
+          <div className="flex flex-row justify-around md:justify-normal md:gap-8 items-center justify-self-auto md:pl-6 -mt-2 max-w-2xl">
+            <span className="text-sm md:text-xl self-start text-[#D9D9D9]">
               {selectedPlaylist.playlist_title}
             </span>
 
-            <span className="flex text-[#D9D9D9] justify-center items-center text-md md:text-lg gap-2">
+            <span className="flex text-[#D9D9D9] justify-center items-center text-sm md:text-xl gap-2">
               <Star
                 fill="#FAC815"
-                className="text-yellow-300"
+                className="text-yellow-300 h-5 w-5 md:h-6 md:w-6"
                 width={25}
                 height={25}
               />
@@ -85,11 +85,11 @@ const PlaylistDetail = async ({
             </span>
             <Rate {...selectedPlaylist} playlistRating={playlistRating!} />
             <div className="flex flex-row justify-center items-center gap-2">
-              <span className="text-md md:text-lg text-gray-400 ">2.1k</span>
-              <Eye className="text-gray-400" width={25} height={25} />
+              <span className="text-sm md:text-lg text-gray-400 ">2.1k</span>
+              <Eye className="text-gray-400 h-5 w-5 md:h-6 md:w-6 " width={25} height={25} />
             </div>
           </div>
-          <div className="userInfo flex flex-row gap-4 justify-start mt-8 pl-6">
+          <div className="userInfo flex flex-row gap-4 justify-start mt-8 pl-4 md:pl-6">
             <Avatar>
               <AvatarImage
                 src={selectedPlaylist.user_profile_Image_link}
@@ -105,7 +105,7 @@ const PlaylistDetail = async ({
               </AvatarFallback>
             </Avatar>
 
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col  gap-4 w-full ">
               <div>
                 <h1 className="text-xs md:text-sm font-medium text-gray-400">
                   Created by
@@ -114,13 +114,14 @@ const PlaylistDetail = async ({
                   {selectedPlaylist.user_name}
                 </h1>
               </div>
-              <p className="text-white text-sm bg-[#3F3F3F] p-4 w-full h-full ml-0 md:-ml-12 rounded-lg ">
+              <p className="text-white text-sm bg-[#3F3F3F] md:p-4 w-42 p-2 text-start -ml-16 md:w-full h-3/4 max-h-full md:-ml-12 rounded-lg ">
                 {selectedPlaylist.playlist_summary}
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem recusandae impedit vel exercitationem reprehenderit provident tempora accusantium dolore suscipit temporibus animi ut molestias sunt veniam rerum, dicta possimus, consectetur unde?
               </p>
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-4 px-6">
+        <div className="flex flex-col gap-4 px-2 md:px-6">
           <h1 className="text-md md:text-xl w-2/3 self-center text-white text-center p-2 rounded-full border border-purple-400">
             Most Rated Playlists
           </h1>

@@ -55,8 +55,8 @@ export default function Rate(playlist: PlaylistType) {
   return (
     <Dialog >
       <DialogTrigger asChild>
-      <p className="text-white flex gap-1 justify-center items-center">
-      <Star fill={playlist.playlistRating? "#FAC815" : ""}  className='text-yellow-300 cursor-pointer hover:bg-gray-600 hover:' width={20} height={20} />
+      <p className="text-white flex gap-1 justify-center items-center text-sm md:text-lg">
+      <Star fill={playlist.playlistRating? "#FAC815" : ""}  className='text-yellow-300 cursor-pointer hover:bg-gray-600 h-5 w-5 md:h-6 md:w-6' width={20} height={20} />
         {playlist.playlistRating? playlist.playlistRating: " "}</p>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] bg-[#1f1f1f] ">

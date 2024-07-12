@@ -14,7 +14,7 @@ const PlaylistCards =  ({className, playlistData}: PlaylistCardProps) => {
 
     return (
         <>
-            <div className={ className}>
+            <div className={ className }>
                 {playlistData.map((playlist: PlaylistType) => (
                     <PlaylistCard
                         key={playlist.id}
