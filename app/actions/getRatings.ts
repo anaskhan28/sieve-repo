@@ -2,8 +2,6 @@
 import { RatingType } from "@/types/Types";
 import SupabaseServerClient from "@/utils/supabase/server";
 import { revalidatePath } from "next/cache";
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
 
 const getRatings = async(): Promise<RatingType[] | null> => {
 const supabase = await SupabaseServerClient();
