@@ -1,5 +1,5 @@
 'use client'
-import React,{useState, useRef, useEffect} from 'react'
+import React,{useState, useRef, useEffect, useCallback} from 'react'
 import { ChevronRight } from 'lucide-react';
 import { ChevronLeft } from 'lucide-react';
 import { updateFilters } from '@/app/actions/updatedFilter';
@@ -27,60 +27,36 @@ const filterByCategory = [
 
 const Filter = (props: Props) => {
     const [activeArrow, setActiveArrow] = useState<'left' | 'right' | null>(null);
-    const [activeButton, setActiveButton] = useState<string | null | Boolean>()
-    const [isRendered, setIsRendered] = useState(false);
-
+    const [activeButton, setActiveButton] = useState<string | null | boolean>(false);
     const containerRef = useRef<HTMLDivElement>(null);
-  const path = usePathname()
-    const handleScroll = (direction: 'left' | 'right') => {
+    const path = usePathname();
+
+    const handleScroll = useCallback((direction: 'left' | 'right') => {
         setActiveArrow(direction);
-        setTimeout(() => setActiveArrow(null), 300); // Reset active arrow after 300ms
+        setTimeout(() => setActiveArrow(null), 300);
         
         if (containerRef.current) {
             const container = containerRef.current;
             const scrollAmount = container.clientWidth / 2;
 
-            if (direction === 'left') {
-                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            container.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
 
-                // Check if it's at the start, wrap to the end
-                setTimeout(() => {
-                    if (container.scrollLeft === 0) {
-                        container.scrollTo({ left: container.scrollWidth, behavior: 'smooth' });
-                    }
-                }, 300);
-            } else {
-                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-
-                // Check if it's at the end, wrap to the start
-                setTimeout(() => {
-                    if (container.scrollLeft + container.clientWidth >= container.scrollWidth) {
-                        container.scrollTo({ left: 0, behavior: 'smooth' });
-                    }
-                }, 300);
-
-                setTimeout(() => {
-                    setActiveButton(null);
-                }, 300);
-            }
-
-
+            setTimeout(() => {
+                if (direction === 'left' && container.scrollLeft === 0) {
+                    container.scrollTo({ left: container.scrollWidth, behavior: 'smooth' });
+                } else if (direction === 'right' && container.scrollLeft + container.clientWidth >= container.scrollWidth) {
+                    container.scrollTo({ left: 0, behavior: 'smooth' });
+                }
+                setActiveButton(null);
+            }, 300);
         }
-
-
-    };
+    }, []);
 
     useEffect(() => {
-        if (path === "/playlist"  && !isRendered) {
-         setActiveButton(false)
-            setIsRendered(true)
+        if (path === "/playlist") {
+            setActiveButton(false);
         }
-    }, [path, isRendered, activeButton]);
-
-
-
-    console.log(path,'props')
-
+    }, [path]);
 return (
     <div className='container hidden md:flex max-w-7xl p-8 overflow-hidden flex-row justify-center items-center gap-5'>
         <ChevronLeft
