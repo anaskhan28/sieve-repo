@@ -36,9 +36,8 @@ const Playlist = async ({ searchParams }: { searchParams: Props }) => {
         <Filter />
       </div>
       <div className='container mx-auto px-4'>
-        <Suspense fallback={<div>Loading...</div>}>
+       
           <PlaylistCards className='grid grid-cols-1 md:grid-cols-3 gap-8' playlistData={playlistDatas} />
-        </Suspense>
       </div>
     </div>
   )

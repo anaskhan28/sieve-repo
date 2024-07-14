@@ -39,7 +39,7 @@ const getPlaylistData = async (query?: string, filter?: string): Promise<Playlis
         return null;
     }
 
-    if (!data || data.length === 0) {
+    if (!data) {
         console.log("No Data", data);
         return null;
     }
