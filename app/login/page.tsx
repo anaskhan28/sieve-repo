@@ -22,7 +22,7 @@ const Login = (props: Props) => {
    })
   }
   return (
-    <div className=' flex flex-col md:flex-row justify-center md:justify-normal items-center w-full'>
+    <div className='bg-white flex flex-col md:flex-row justify-center md:justify-normal items-center w-full'>
         <div className='hidden md:flex flex-col  w-1/2 bg-[#F7FAFC] h-screen p-6 '>
             <Link href="/"><Image src='/sieve.svg' className='h-12' width={150} height={150} alt='sieve'/>
 </Link>

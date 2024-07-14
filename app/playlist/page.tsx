@@ -6,6 +6,7 @@ import Filter from '@/components/Filter'
 import getPlaylistData from '@/app/actions/getPlaylistData';
 import PlaylistCards from '@/components/PlaylistCards';
 import Search  from '@/components/Search';
+import { Suspense } from 'react'
 
 
 
@@ -42,6 +43,9 @@ const playlist = async ({searchParams}: {searchParams: Props }) => {
      <Filter/>
       </div>
      <div className='container mx-auto px-4 '>
+          
+
+  
       <PlaylistCards className='grid grid-cols-1 md:grid-cols-3 gap-8' playlistData={playlistDatas}  />
      </div>
       

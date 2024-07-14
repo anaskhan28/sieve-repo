@@ -81,6 +81,10 @@ console.log(userProfile, 'userProfile')
         )}
         {user && (
           <>
+           
+            <Link className={`${pathName == "/playlist/rated-playlist"? "text-white": "text-gray-400"} hover:text-white`}  href="/playlist/rated-playlist" >
+              Rated Playlists
+            </Link>
             <button className={"hover:text-white text-gray-400"}  onClick={handleSignout}>
               Logout
             </button>

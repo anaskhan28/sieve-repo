@@ -23,7 +23,7 @@ const Signup = (props: Props) => {
 
 
   return (
-    <div className=' flex flex-col md:flex-row 
+    <div className='bg-white flex flex-col md:flex-row 
     justify-center  md:justify-between
     items-center  w-full'>
         <div className='hidden 

@@ -1,5 +1,6 @@
 import { cn } from "@/utils/cn";
 import Marquee from "./ui/Marquee";
+import { randomUUID } from "crypto";
 const category = [
 {
     name: 'Frontend',
@@ -89,7 +90,7 @@ const Categories = () => {
       <Marquee pauseOnHover className="[--duration:20s]">
       {
         firstRow.map((category, i) =>(
-            <CategoryCard key={category.name} {...category}/>
+            <CategoryCard key={randomUUID()} {...category}/>
         ) )
       }
        
@@ -97,7 +98,7 @@ const Categories = () => {
       <Marquee reverse pauseOnHover className="[--duration:20s]">
       {
         secondRow.map((category, i) =>(
-            <CategoryCard key={category.name} {...category}/>
+            <CategoryCard key={randomUUID()} {...category}/>
         ) )
       }
       </Marquee>

@@ -10,12 +10,8 @@ import Navbar from '@/components/Navbar';
 
 const Home = () => {
   return (
-    <main className=' overflow-hidden min-h-scre'>
-      <Head>
-        <title>Sieve</title>
-        <meta name="description" content="Curate, Rate, and Master Your Tech Playlist" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <main className=' bg-[#12121b] overflow-hidden min-h-scre'>
+ 
       
       <nav className=''>
         <Navbar/>
@@ -26,22 +22,22 @@ const Home = () => {
       <section className='-mt-20 md:-mt-0'>
       <Hero />
       </section>
-      <section className=' max-h-[100%] flex  flex-col justify-center items-center'>
+      <section className='bg-white max-h-[100%] flex  flex-col justify-center items-center'>
       
         <BentoGrids/>
       </section>
 
-      <section className=' mt-[42rem] md:mt-[-12rem] min-h-fit flex justify-center items-center'>
+      <section className='bg-white mt-[42rem] md:mt-[-12rem] min-h-fit flex justify-center items-center'>
         <Categories/>
       </section>
     
-   <section className='min-h-fit '>
+   <section className='bg-white min-h-fit '>
     <Cards/>
    </section>
-   <section className='mt-12 '>
+   <section className='bg-white '>
     <Contrbute/>
    </section>
-   <section className=''>
+   <section className='bg-white'>
     <Footer/>
    </section>
    

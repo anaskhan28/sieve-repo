@@ -1,6 +1,5 @@
 
 import PlaylistCard from '@/components/PlaylistCard';
-import { cn } from '@/lib/utils';
 import { PlaylistType } from '@/types/Types';
 
 interface PlaylistCardProps {
@@ -16,6 +15,7 @@ const PlaylistCards =  ({className, playlistData}: PlaylistCardProps) => {
         <>
             <div className={ className }>
                 {playlistData.map((playlist: PlaylistType) => (
+                   
                     <PlaylistCard
                         key={playlist.id}
                         id={playlist.id}
@@ -23,6 +23,7 @@ const PlaylistCards =  ({className, playlistData}: PlaylistCardProps) => {
                         playlist_image={playlist.playlist_image}
                         playlist_category={playlist.playlist_category}
                     />
+
                 ))}
             </div>
         </>

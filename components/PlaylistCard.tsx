@@ -10,6 +10,7 @@ import { PlaylistType } from '@/types/Types'
 import getRatings from '@/app/actions/getRatings'
 import { revalidatePath } from 'next/cache'
 import getPlaylistData from '@/app/actions/getPlaylistData'
+import Skeleton from 'react-loading-skeleton'
 
 
 const PlaylistCard =   async(props: PlaylistType) => {
@@ -36,12 +37,13 @@ const PlaylistCard =   async(props: PlaylistType) => {
     
      
       <div className='bg-inherit flex flex-col relative'>
+        
          <Link href={`/playlist/${props.id}`}>
          <Image src={props.playlist_image} alt='image' width={500} height={500} className='w-full rounded-3xl object-fit h-full'/>
          <div className='text-sm absolute text-white top-3 bg-[#4C5557] bg-opacity-60 px-2 py-y right-44  rounded-xl'>{props.playlist_category}</div>
          </Link>
          <div className='flex flex-rows justify-evenly items-center'>
-         <span className='text-sm md:text-lg self-start text-[#D9D9D9]'>{props.playlist_title}</span>
+         <span className='text-sm md:text-lg self-start text-[#D9D9D9]'>{props.playlist_title || <Skeleton count={10}/>}</span>
         
          <span className='flex text-[#D9D9D9] justify-center items-center gap-2'><Star fill='#FAC815' className='text-yellow-300' width={20} height={20} />{avgPlaylistRate}</span>
         <Rate {...props} playlistRating={playlistRating!} />

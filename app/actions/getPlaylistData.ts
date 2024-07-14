@@ -1,10 +1,8 @@
 "use server"
 import { PlaylistType } from "@/types/Types";
 import SupabaseServerClient from "@/utils/supabase/server";
-import { PostgrestError } from "@supabase/supabase-js";
-import { redirect } from "next/navigation";
 
-const getPlaylistData = async (query?: any,filter?:any ): Promise<PlaylistType[] | null> => {
+const getPlaylistData = async (query?: string, filter?: string): Promise<PlaylistType[] | null> => {
     const supabase = await SupabaseServerClient();
    
     const { data: { user } } = await supabase.auth.getUser();
@@ -14,51 +12,37 @@ const getPlaylistData = async (query?: any,filter?:any ): Promise<PlaylistType[]
         return null;
     }
 
-    const { data, error } = await supabase.from('playlistsInfo').select();
-  
+    let queryBuilder = supabase
+        .from('playlistsInfo')
+        .select('*');
+
     if (query) {
-        
-        const { data, error } = await supabase.from('playlistsInfo').select().ilike('playlist_title', `%${query}%`).limit(10);
-        console.log(data, 'query data');
-      
-        if (!data) {
-            console.log("No Data", data);
-            return null;
-        }
-        if (error) {
-            console.log(error, 'error');
-            return null;
-        }
-        return data
-     
-    }
-    if (filter) {
-        
-        const { data, error } = await supabase.from('playlistsInfo').select().ilike('playlist_category', `%${filter}%`).limit(10);
-        console.log(data, 'filter data');
-      
-        if (!data) {
-            console.log("No Data", data);
-            return null;
-        }
-        if (error) {
-            console.log(error, 'error');
-            return null;
-        }
-        return data
-     
+        queryBuilder = queryBuilder.ilike('playlist_title', `%${query}%`);
     }
 
-    if (!data) {
+    if (filter) {
+        queryBuilder = queryBuilder.ilike('playlist_category', `%${filter}%`);
+    }
+
+    // Add sorting if needed
+    // queryBuilder = queryBuilder.order('created_at', { ascending: false });
+
+    // Limit the results
+    queryBuilder = queryBuilder.limit(10);
+
+    const { data, error } = await queryBuilder;
+
+    if (error) {
+        console.log(error, 'error');
+        return null;
+    }
+
+    if (!data || data.length === 0) {
         console.log("No Data", data);
         return null;
     }
-    if (error) {
-        console.log(error, 'error');
-        return null ;
-    }
-    return data ?? [];
-    
+
+    return data ;
 }
 
 export default getPlaylistData;

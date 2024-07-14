@@ -81,7 +81,7 @@ const PlaylistDetail = async ({
                 width={25}
                 height={25}
               />
-              {selectedPlaylist.playlist_rates}
+              {selectedPlaylist.playlist_rates?.toFixed(1)}
             </span>
             <Rate {...selectedPlaylist} playlistRating={playlistRating!} />
             <div className="flex flex-row justify-center items-center gap-2">

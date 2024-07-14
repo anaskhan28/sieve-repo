@@ -1,8 +1,9 @@
 'use client'
-import React,{useState, useRef} from 'react'
+import React,{useState, useRef, useEffect} from 'react'
 import { ChevronRight } from 'lucide-react';
 import { ChevronLeft } from 'lucide-react';
 import { updateFilters } from '@/app/actions/updatedFilter';
+import {usePathname } from 'next/navigation';
 type Props = {}
 
 const filterByCategory = [
@@ -27,8 +28,10 @@ const filterByCategory = [
 const Filter = (props: Props) => {
     const [activeArrow, setActiveArrow] = useState<'left' | 'right' | null>(null);
     const [activeButton, setActiveButton] = useState<string | null | Boolean>()
+    const [isRendered, setIsRendered] = useState(false);
+
     const containerRef = useRef<HTMLDivElement>(null);
-   
+  const path = usePathname()
     const handleScroll = (direction: 'left' | 'right') => {
         setActiveArrow(direction);
         setTimeout(() => setActiveArrow(null), 300); // Reset active arrow after 300ms
@@ -55,9 +58,28 @@ const Filter = (props: Props) => {
                         container.scrollTo({ left: 0, behavior: 'smooth' });
                     }
                 }, 300);
+
+                setTimeout(() => {
+                    setActiveButton(null);
+                }, 300);
             }
+
+
         }
+
+
     };
+
+    useEffect(() => {
+        if (path === "/playlist"  && !isRendered) {
+         setActiveButton(false)
+            setIsRendered(true)
+        }
+    }, [path, isRendered, activeButton]);
+
+
+
+    console.log(path,'props')
 
 return (
     <div className='container hidden md:flex max-w-7xl p-8 overflow-hidden flex-row justify-center items-center gap-5'>
