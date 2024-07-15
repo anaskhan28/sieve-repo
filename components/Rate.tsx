@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/dialog"
 import { useState, useCallback, useEffect } from "react"
 import { Star } from 'lucide-react'
-import { Rating } from "@smastrom/react-rating"
 import { PlaylistType, RatingType } from "@/types/Types"
 
 import addRatings from "@/app/actions/addRatings"
@@ -20,6 +19,7 @@ import getRatings from "@/app/actions/getRatings"
 import { revalidatePath } from "next/cache"
 import { DialogClose } from "@radix-ui/react-dialog"
 import getPlaylistData from "@/app/actions/getPlaylistData"
+import Rating from '@/components/Rating';
 
 export default function Rate(playlist: PlaylistType) {
     const [rating, setRating] = useState<number>();
@@ -37,7 +37,7 @@ export default function Rate(playlist: PlaylistType) {
       const ratingData = await addRatings({
       user_id: userData.id,
       playlist_id: playlist.id || "",
-      rating: rating || 0
+      rating: rating || null
       })
      
       console.log(ratingData, 'ratingData')
@@ -76,15 +76,28 @@ export default function Rate(playlist: PlaylistType) {
          <DialogTitle className="text-white text-lg md:text-xl">{playlist.playlist_title}</DialogTitle>
          </div>
           <DialogDescription>
+            {/* (
           <Rating
           
-          style={{ maxWidth: 360, outline:"none" }}
+          style={{ maxWidth: 360, outline:"none", width:20 }}
           value={rating || playlist.playlistRating!}
           items={10}
+          className="flex flex-row"
         
           onChange={onChange}
           transition="zoom"
         />
+            ) */
+            }
+
+<Rating 
+        initialRating={rating || playlist.playlistRating} 
+        onChange={onChange}
+      />
+        
+       
+       
+
           </DialogDescription>
         </DialogHeader>
        

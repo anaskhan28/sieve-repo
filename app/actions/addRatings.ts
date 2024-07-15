@@ -38,27 +38,27 @@ if(existingRatingPlaylist.includes(ratingType.playlist_id)){
     return null
   }
   if(!data) return null
-  return data ? data[0] : null
+  
 }
 
 const {data, error} = await supabase.from('ratings').insert({
     rating: ratingType.rating,
     playlist_id: ratingType.playlist_id,
     user_id: ratingType.user_id
-})
+}).select()
 
 
 
 if (error) {
   console.error('Error inserting rating:', error);
 } else {
-  console.log('Rating inserted successfully:', data);
+  // console.log('Rating inserted successfully:', data);
 }
 
 revalidatePath('/playlist')
   
-  return data ? data[0] : null
 
+return data ? data[0]: null 
 
 
 

@@ -7,6 +7,7 @@ import getPlaylistData from '@/app/actions/getPlaylistData';
 import PlaylistCards from '@/components/PlaylistCards';
 import Search from '@/components/Search';
 import { Suspense } from 'react'
+import addOrUpdatePlaylistData from '../actions/addPlaylistData';
 
 type Props = {
   [key: string]: string
@@ -18,9 +19,10 @@ const Playlist = async ({ searchParams }: { searchParams: Props }) => {
   if (!userData) {
     redirect('/signup');
   }
+  const addplaylistData = await addOrUpdatePlaylistData();
 
   const playlistDatas = await getPlaylistData(searchParams.query, searchParams.filter);
-
+  console.log(playlistDatas, 'playlistData')
   if (!playlistDatas) return null;
 
   return (

@@ -130,16 +130,6 @@
     "user_Image": "/jack.png"
   },
   {
-    "id": 13,
-    "name": "Anas Wilson",
-    "playlist_link": "https://www.youtube.com/watch?v=fx6KMItwJAw",
-    "summary": "Get started with Game Development.",
-    "title": "Design Development",
-    "category": "Frontend Development",
-    "user_profile_link": "https://github.com/jackwilson",
-    "user_Image": "/jack.png"
-  },
-  {
     "id": 14,
     "name": "Anas Wilson",
     "playlist_link": "https://www.youtube.com/watch?v=fx6KMItwJAw",

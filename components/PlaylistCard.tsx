@@ -23,7 +23,6 @@ const PlaylistCard =   async(props: PlaylistType) => {
       const data = await getPlaylistData();
       if(!data) return null
       const avgPlaylistRate = data?.find((p) => p.id === props.id )?.playlist_rates?.toFixed(1)  || null
-
     
    
   
@@ -44,7 +43,7 @@ const PlaylistCard =   async(props: PlaylistType) => {
          <div className='flex flex-rows justify-evenly items-center'>
          <span className='text-sm md:text-lg self-start text-[#D9D9D9]'>{props.playlist_title}</span>
         
-         <span className='flex text-[#D9D9D9] justify-center items-center gap-2'><Star fill='#FAC815' className='text-yellow-300' width={20} height={20} />{avgPlaylistRate}</span>
+         <span className='flex text-[#D9D9D9] justify-center items-center gap-2'><Star fill='#FAC815' className='text-yellow-300' width={20} height={20} />{avgPlaylistRate || 0.0}</span>
         <Rate {...props} playlistRating={playlistRating!} />
         <div className='flex flex-row justify-center items-center gap-1'>
         <span className="text-xs text-gray-400 ">2.1k </span>

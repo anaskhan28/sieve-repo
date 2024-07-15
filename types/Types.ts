@@ -14,7 +14,7 @@ export interface PlaylistType {
     playlist_category?: string;
     playlist_image: string;
     user_profile_link?: string;
-    user_profile_Image_link?: string
+    user_profile_image_link?: string
     playlistRating?: number,
     playlist_rates?: number,
 }
@@ -23,6 +23,6 @@ export interface RatingType {
     id?: string,
     playlist_id: string,
     user_id: string,
-    rating: number
+    rating: any,
 
 }

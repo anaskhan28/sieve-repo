@@ -2,108 +2,64 @@
 import { PlaylistType } from "@/types/Types";
 import SupabaseServerClient from "@/utils/supabase/server";
 import playlists from "@/playlist.json";
-import {getThumbnailUrl} from './fetchThumbnails'
+import { getThumbnailUrl } from './fetchThumbnails';
 
+interface JsonPlaylist {
+  id: number;
+  name: string;
+  playlist_link: string;
+  summary: string;
+  title: string;
+  category: string;
+  user_profile_link: string;
+  user_Image: string;
+}
 
-const addOrUpdatePlaylistData = async (): Promise<PlaylistType[] | null> => {
+const addOrUpdatePlaylistData = async (): Promise<{ upserted: PlaylistType[] } | null> => {
   const supabase = await SupabaseServerClient();
 
   const { data: { user } } = await supabase.auth.getUser();
-
   if (!user) {
-    console.log('NO USER', user);
+    console.error('No user found');
     return null;
   }
 
-  // Fetch existing playlist data
-  const { data: existingPlaylists, error: fetchError } = await supabase.from('playlistsInfo').select("*");
+  const playlistsToUpsert: PlaylistType[] = [];
 
-  if (fetchError) {
-    console.log(fetchError, 'fetchError');
+  for (const playlist of playlists as JsonPlaylist[]) {
+    const thumbnailUrl = await getThumbnailUrl(playlist.playlist_link);
+
+    const playlistData: PlaylistType = {
+      playlist_id: playlist.id,
+      user_name: playlist.name,
+      playlist_url: playlist.playlist_link,
+      playlist_summary: playlist.summary,
+      playlist_title: playlist.title,
+      playlist_category: playlist.category,
+      playlist_image: thumbnailUrl,
+      user_profile_link: playlist.user_profile_link,
+      user_profile_image_link: playlist.user_Image
+    };
+
+    playlistsToUpsert.push(playlistData);
+  }
+
+  if (playlistsToUpsert.length === 0) {
+    console.log("No playlists to upsert");
+    return { upserted: [] };
+  }
+
+  // Upsert all playlists
+  const { error: upsertError } = await supabase
+    .from('playlistsInfo')
+    .upsert(playlistsToUpsert, { onConflict: 'playlist_id' });
+
+  if (upsertError) {
+    console.error('Error upserting playlists:', upsertError);
     return null;
   }
 
-  const existingPlaylistIds = existingPlaylists.map(playlist => playlist.playlist_id);
-
-  const newPlaylists = playlists.filter(playlist => !existingPlaylistIds.includes(playlist.id));
-
-  
-  const updatedPlaylists = playlists.filter(playlist => {
-    const existingPlaylist = existingPlaylists.find(ep => ep.playlist_id === playlist.id);
-    return existingPlaylist && (
-      existingPlaylist.user_name !== playlist.name ||
-      existingPlaylist.playlist_url !== playlist.playlist_link ||
-      existingPlaylist.playlist_summary !== playlist.summary ||
-      existingPlaylist.playlist_title !== playlist.title ||
-      existingPlaylist.playlist_category !== playlist.category ||
-      existingPlaylist.user_profile_link !== playlist.user_profile_link ||
-      existingPlaylist.user_profile_Image_link !== playlist.user_Image
-    );
-  });
-
-  if (newPlaylists.length === 0 && updatedPlaylists.length === 0) {
-    console.log("No new or updated playlists");
-    return [];
-  }
-
-
-  const playlistDataToUpdate =  await Promise.all(updatedPlaylists.map(async({ name, id, user_Image, playlist_link, summary, title, category, user_profile_link }) => {
-    const thumbnailUrl = await getThumbnailUrl(playlist_link);
-return {
-    playlist_id: id,
-    user_name: name,
-    playlist_url: playlist_link,
-    playlist_summary: summary,
-    playlist_title: title,
-    playlist_category: category,
-    playlist_image: thumbnailUrl,
-    user_profile_link,
-    user_profile_Image_link: user_Image
-  }}));
-  const playlistDataToInsert = await Promise.all(newPlaylists.map(async ({ name, id, user_Image, playlist_link, summary, title, category, user_profile_link }) => {
-      const thumbnailUrl = await getThumbnailUrl(playlist_link);
-      return {
-        playlist_id: id,
-        user_name: name,
-        playlist_url: playlist_link,
-        playlist_summary: summary,
-        playlist_title: title,
-        playlist_category: category,
-        playlist_image: thumbnailUrl,
-        user_profile_link,
-        user_profile_Image_link: user_Image
-      };
-    }));
-
-    
-
-
-
-  // Insert new playlists
-  if (playlistDataToInsert.length > 0) {
-    const { data, error } = await supabase.from('playlistsInfo').insert(playlistDataToInsert).select();
- 
-    if (error) {
-      console.log(error, 'insertError');
-      return [];
-    }
-   
-  }
-
-    // Update existing playlists
-    if (playlistDataToUpdate.length > 0) {
-      for (const playlistData of playlistDataToUpdate) {
-        const { data, error } = await supabase.from('playlistsInfo').update(playlistData).eq('playlist_id', playlistData.playlist_id);
-        if (error) {
-          console.log(error, 'updateError');
-          return [];
-        }
-        
-      }
-      
-    }
-
-  return [...playlistDataToInsert, ...playlistDataToUpdate];
+  return { upserted: playlistsToUpsert };
 }
 
 export default addOrUpdatePlaylistData;
