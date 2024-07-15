@@ -92,7 +92,7 @@ const PlaylistDetail = async ({
           <div className="userInfo flex flex-row gap-4 justify-start mt-8 pl-4 md:pl-6">
             <Avatar>
               <AvatarImage
-                src={selectedPlaylist.user_profile_Image_link}
+                src={selectedPlaylist.user_profile_image_link}
                 alt="profile"
               />
               <AvatarFallback className="text-white">
