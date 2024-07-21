@@ -145,7 +145,7 @@ console.log(userProfile, 'userProfile')
             <>
 
 <Link
-          href="/myrates"
+          href="/playlist/rated-playlist"
           className="flex flex-col items-center gap-1 text-xs font-medium text-gray-500 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-50"
           prefetch={false}
         >
