@@ -9,48 +9,47 @@ import getPlaylistData from "@/app/actions/getPlaylistData";
 import Rate from "@/components/Rate";
 import getRatings from "@/app/actions/getRatings";
 import PlaylistCards from "@/components/PlaylistCards";
+import getUserData from "@/app/actions/getUserData";
+import { redirect } from "next/navigation";
+import { PlaylistType } from "@/types/Types";
 
-type Props = {};
+
+type EnrichedPlaylistType = PlaylistType & {
+  playlistRating: number | null;
+  avgPlaylistRate: string | null;
+};
 
 const PlaylistDetail = async ({
   params,
 }: {
   params: { playlistId: string };
 }) => {
+  const userData = await getUserData();
+  
+  if (!userData) {
+    redirect('/signup');
+  }  
+
   const dataPlaylist = await getPlaylistData();
+  const ratings = await getRatings();
 
-  const res = await getRatings();
-  if (!res) return null;
+  if (!dataPlaylist || !ratings) return null;
 
-  // Find the rating for the current playlist
-  const playlistRating =
-    res.find((r) => r.playlist_id === params.playlistId)?.rating || null;
+  const enrichedPlaylists: EnrichedPlaylistType[] = dataPlaylist.map(playlist => ({
+    ...playlist,
+    playlistRating: ratings.find(r => r.playlist_id === playlist.id)?.rating || null,
+    avgPlaylistRate: playlist.playlist_rates?.toFixed(1) || null
+  }));
 
-  console.log(dataPlaylist, "dataplaylist");
-
-  if (!dataPlaylist) return null;
-  const selectedPlaylist = dataPlaylist.find(
-    (pl) => pl.id === params.playlistId
-  );
-
-  const filteredPlaylists = dataPlaylist.filter(
-    (pl) => pl.id !== params.playlistId
-  );
-
-  // Sort the filtered playlists by playlist_rate in descending order
-  const sortedPlaylists = filteredPlaylists.sort(
-    (a, b) => b.playlist_rates! - a.playlist_rates!
-  );
-
-  // Now you can use the sortedPlaylists array to render the playlists in the desired order
+  const selectedPlaylist = enrichedPlaylists.find(pl => pl.id === params.playlistId);
 
   if (!selectedPlaylist) {
-    return (
-      <p className="flex justify-around items-center text-xl">
-        Playlist not found.
-      </p>
-    );
+    return <p className="flex justify-around items-center text-xl">Playlist not found.</p>;
   }
+  const filteredPlaylists = enrichedPlaylists.filter(pl => pl.id !== params.playlistId);
+  const sortedPlaylists = filteredPlaylists.sort((a, b) => Number(b.avgPlaylistRate) - Number(a.avgPlaylistRate));
+
+
   return (
     <div className="bg-[#0E0E0E] w-full min-h-screen">
       <div className="md:container mx-auto md:px-8 md:py-8 flex flex-col gap-14 md:gap-0 md:flex-row justify-between">
@@ -83,7 +82,7 @@ const PlaylistDetail = async ({
               />
               {selectedPlaylist.playlist_rates?.toFixed(1)}
             </span>
-            <Rate {...selectedPlaylist} playlistRating={playlistRating!} />
+            <Rate {...selectedPlaylist} playlistRating={selectedPlaylist.playlistRating!} />
             <div className="flex flex-row justify-center items-center gap-2">
               <span className="text-sm md:text-lg text-gray-400 ">2.1k</span>
               <Eye className="text-gray-400 h-5 w-5 md:h-6 md:w-6 " width={25} height={25} />

@@ -1,5 +1,4 @@
 
-
 "use server"
 import { PlaylistType } from "@/types/Types";
 import SupabaseServerClient from "@/utils/supabase/server";
@@ -27,7 +26,7 @@ const getPlaylistData = async (query?: string, filter?: string): Promise<Playlis
     }
 
     // Add sorting if needed
-    // queryBuilder = queryBuilder.order('created_at', { ascending: false });
+    queryBuilder = queryBuilder.order('inserted_at', { ascending: true });
 
     // Limit the results
     queryBuilder = queryBuilder.limit(20);

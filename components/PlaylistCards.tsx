@@ -1,35 +1,26 @@
+// components/PlaylistCards.tsx
+import React from 'react';
+import PlaylistCard from './PlaylistCard';
+import { PlaylistType } from "@/types/Types";
 
-import Loading from '@/components/loading';
-import PlaylistCard from '@/components/PlaylistCard';
-import { PlaylistType } from '@/types/Types';
-import { Suspense } from 'react';
+type EnrichedPlaylistType = PlaylistType & {
+  playlistRating: number | null;
+  avgPlaylistRate: string | null;
+};
 
-interface PlaylistCardProps {
-    className?: string;
-    playlistData: any
-  }
-const PlaylistCards =  ({className, playlistData}: PlaylistCardProps) => {
+type Props = {
+  className: string;
+  playlistData: EnrichedPlaylistType[];
+};
 
-           
-  
-
-    return (
-        <>
-            <div className={ className }>
-            {playlistData.map((playlist: PlaylistType) => (
-                <Suspense key={playlist.id} fallback={<Loading/>}>
-                <PlaylistCard
-                    key={playlist.id}
-                    id={playlist.id}
-                    playlist_title={playlist.playlist_title}
-                    playlist_image={playlist.playlist_image}
-                    playlist_category={playlist.playlist_category}
-                />
-                </Suspense>
-            ))}
-            </div>
-        </>
-        );
+const PlaylistCards = ({ className, playlistData }: Props) => {
+  return (
+    <div className={className}>
+      {playlistData.map((playlist) => (
+        <PlaylistCard key={playlist.id} {...playlist} />
+      ))}
+    </div>
+  );
 };
 
 export default PlaylistCards;
