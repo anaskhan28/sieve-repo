@@ -10,7 +10,7 @@ import Navbar from '@/components/Navbar';
 
 const Home = () => {
   return (
-    <main className=' bg-[#12121b] overflow-hidden min-h-scre'>
+    <main className=' bg-[#ffffff] overflow-hidden min-h-scre'>
  
       
       <nav className=''>
@@ -22,7 +22,7 @@ const Home = () => {
       <section className='-mt-20 md:-mt-0'>
       <Hero />
       </section>
-      <section className='bg-white max-h-[100%] flex  flex-col justify-center items-center'>
+      <section className='bg-white h-full flex  flex-col justify-center items-center'>
       
         <BentoGrids/>
       </section>

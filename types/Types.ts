@@ -17,6 +17,8 @@ export interface PlaylistType {
     user_profile_image_link?: string
     playlistRating?: number,
     playlist_rates?: number,
+    views?: number,
+
 }
 
 export interface RatingType {

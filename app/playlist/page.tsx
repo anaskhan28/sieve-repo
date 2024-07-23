@@ -3,11 +3,9 @@ import getUserData from '../actions/getUserData'
 import { redirect } from 'next/navigation';
 import Image from 'next/image';
 import Filter from '@/components/Filter'
-import getPlaylistData from '@/app/actions/getPlaylistData';
-import PlaylistCards from '@/components/PlaylistCards';
-import Search from '@/components/Search';
-import { Suspense } from 'react'
 import addOrUpdatePlaylistData from '../actions/addPlaylistData';
+import { getPlaylistCardData } from '@/utils/getPlaylistCardData';
+import ClientSideSearchWrapper from '@/components/clientSearchWrapper';
 
 type Props = {
   [key: string]: string
@@ -19,27 +17,23 @@ const Playlist = async ({ searchParams }: { searchParams: Props }) => {
   if (!userData) {
     redirect('/signup');
   }
-  const addplaylistData = await addOrUpdatePlaylistData();
+  await addOrUpdatePlaylistData();
 
-  const playlistDatas = await getPlaylistData(searchParams.query, searchParams.filter);
-  console.log(playlistDatas, 'playlistData')
-  if (!playlistDatas) return null;
+  const playlistCardData = await getPlaylistCardData();
+  if (!playlistCardData) return null;
+
+  const { ratings, playlistData } = playlistCardData;
+
+  const enrichedPlaylistData = playlistData.map(playlist => ({
+    ...playlist,
+    playlistRating: ratings.find(r => r.playlist_id === playlist.id)?.rating || null,
+    avgPlaylistRate: playlist.playlist_rates?.toFixed(1) || null
+  }));
 
   return (
     <div className='bg-[#0E0E0E] w-full min-h-screen'>
       <div className='container p-4 flex flex-col justify-center items-center py-16'>
-        <Search />
-
-        <div className='hidden md:flex text-white justify-end items-center gap-2 mt-5 self-start'>
-          <Image src="/category.svg" alt='category' width={30} height={30} />
-          <span className='text-lg md:text-xl items-center'>Categories</span>
-        </div>
-
-        <Filter />
-      </div>
-      <div className='container mx-auto px-4'>
-       
-          <PlaylistCards className='grid grid-cols-1 md:grid-cols-3 gap-8' playlistData={playlistDatas} />
+        <ClientSideSearchWrapper initialData={enrichedPlaylistData} />
       </div>
     </div>
   )

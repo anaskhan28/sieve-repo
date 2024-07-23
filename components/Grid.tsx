@@ -10,8 +10,8 @@ import Image from "next/image";
 
 export function BentoGrids() {
   return (
-    <>
-     <div className="text-2xl md:text-4xl sm:max-w-[45rem] mt-10 md:mt-20 md:mb-12 mb-4 text-center font-bold ">
+    <div className="bg-white flex flex-col justify-center items-center max-h-full">
+     <div className="text-2xl md:text-4xl sm:max-w-[45rem]  mt-10 md:mt-20 md:mb-12 mb-4 text-center font-bold ">
      Overwhelmed by the sheer volume of tech content on YouTube?
           </div>
 
@@ -52,49 +52,8 @@ export function BentoGrids() {
 
 
    </div>
-   </>
+   </div>
   );
 }
-const Skeleton = () => (
-  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl   dark:bg-dot-white/[0.2] bg-dot-black/[0.2] [mask-image:radial-gradient(ellipse_at_center,white,transparent)]  border border-transparent dark:border-white/[0.2]"></div>
-);
-const Imageton = () => (
-  <div className="absolute right-12 max-w-fit">
-      <Image src='/rocket.png' width={337} height={337} alt="phone"/>
 
 
-    </div>
-);
-
-
-const items = [
-  {
-    title: "The Dawn of Innovation",
-    description: "Explore the birth of groundbreaking ideas and inventions.",
-    header: <Imageton/>,
-    className: "md:col-span-2 relative",
-    icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
-  },
-  {
-    title: "The Digital Revolution",
-    description: "Dive into the transformative power of technology.",
-    header: <Skeleton />,
-    className: "md:col-span-1",
-    icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
-  },
-  {
-    title: "The Art of Design",
-    description: "Discover the beauty of thoughtful and functional design.",
-    header: <Skeleton />,
-    className: "md:col-span-1",
-    icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
-  },
-  {
-    title: "The Power of Communication",
-    description:
-      "Understand the impact of effective communication in our lives.",
-    header: <Skeleton />,
-    className: "md:col-span-2",
-    icon: <IconTableColumn className="h-4 w-4 text-neutral-500" />,
-  },
-];

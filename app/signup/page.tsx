@@ -1,15 +1,33 @@
 "use client"
 import Image from 'next/image';
-import React from 'react'
+import React, { useEffect } from 'react'
 import Link from 'next/link';
 import useSupabaseClient from '@/utils/supabase/client';
 import { Provider } from '@supabase/supabase-js';
+import getUserData from '../actions/getUserData';
+import { redirect } from 'next/navigation';
 type Props = {}
 
 const Signup = (props: Props) => {
 
- 
-    const supabase = useSupabaseClient();
+  const supabase = useSupabaseClient();
+
+  // useEffect(() =>{
+  //   const getCurrentUser = async() =>{
+  //     const {data: {session}} = await supabase.auth.getSession();
+      
+  //     if(session){
+  //       redirect('/playlist')
+
+  //   }
+  //   };
+  //   getCurrentUser();
+   
+  
+  //   // console.log(user, 'userdata')
+  
+  //  }, []);
+  
 
 
  const socialAuth =  async (provider: Provider) =>{

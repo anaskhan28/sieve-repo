@@ -18,7 +18,6 @@ if(error){
     console.log(error, 'error');
     return null
 }
-console.log(data, 'get rating data')
 revalidatePath('/')
 return data
 }
