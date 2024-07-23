@@ -27,10 +27,10 @@ const PlaylistCard = (props: PlaylistCardProps) => {
           {props.avgPlaylistRate || '0.0'}
         </span>
         <Rate {...props} playlistRating={props.playlistRating} />
-        <div className='flex flex-row justify-center items-center gap-1'>
+        {/* <div className='flex flex-row justify-center items-center gap-1'>
           <span className="text-xs text-gray-400 ">2.1k </span>
           <Eye className='text-gray-400' width={20} height={20}/>
-        </div>
+        </div> */}
       </div>
     </div>
     </Suspense>

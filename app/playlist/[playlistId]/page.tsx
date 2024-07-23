@@ -83,10 +83,10 @@ const PlaylistDetail = async ({
               {selectedPlaylist.playlist_rates?.toFixed(1)}
             </span>
             <Rate {...selectedPlaylist} playlistRating={selectedPlaylist.playlistRating!} />
-            <div className="flex flex-row justify-center items-center gap-2">
+            {/* <div className="flex flex-row justify-center items-center gap-2">
               <span className="text-sm md:text-lg text-gray-400 ">2.1k</span>
               <Eye className="text-gray-400 h-5 w-5 md:h-6 md:w-6 " width={25} height={25} />
-            </div>
+            </div> */}
           </div>
           <div className="userInfo flex flex-row gap-4 justify-start mt-8 pl-4 md:pl-6">
             <Avatar>
