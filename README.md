@@ -2,7 +2,7 @@
 
 Welcome to **Sieve**, an IMDB-like platform for discovering and rating the best YouTube playlists or videos on software development, web development, programming languages, frameworks, design, open source, and more. This platform aims to help newcomers and enthusiasts find high-quality and most-rated tutorials.
 
-![Sieve Banner](/image.png)
+![Sieve Banner](public/image.png)
 
 ## Table of Contents 📑
 
@@ -75,7 +75,7 @@ Once the development server is running, you can:
 - **Rate & Review**: Provide ratings and reviews to share your feedback.
 - **Contribute**: Add new playlists to help the community grow.
 
-![Sieve Screenshot](/sieve-how-it-works.png)
+![Sieve Screenshot](public/sieve-how-it-works.png)
 
 ## Contributing 🤝
 
@@ -129,6 +129,10 @@ To add a new playlist, please follow these steps:
     ```
 
 3. Save the file and commit your changes.
+
+### Contributor Example
+
+![Contributor Example](https://media.giphy.com/media/26xBwdIuRJiAIqHwA/giphy.gif)
 
 ## License 📄
 
