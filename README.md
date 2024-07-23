@@ -34,8 +34,6 @@ Sieve is designed to be a comprehensive and user-friendly platform where users c
 - **Frontend**: Next.js, TypeScript
 - **Backend**: Next.js
 - **Database**: Supabase
-- **Form Handling**: React Hook Form
-- **API Requests**: Axios
 - **Validation**: Zod
 
 ## Installation 📥
