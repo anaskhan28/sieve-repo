@@ -130,10 +130,6 @@ To add a new playlist, please follow these steps:
 
 3. Save the file and commit your changes.
 
-### Contributor Example
-
-![Contributor Example](https://media.giphy.com/media/26xBwdIuRJiAIqHwA/giphy.gif)
-
 ## License 📄
 
 Distributed under the MIT License. See `LICENSE` for more information.
