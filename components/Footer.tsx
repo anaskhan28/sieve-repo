@@ -18,8 +18,8 @@ const navigation = {
     },
   ],
   company: [
-    { name: 'Guidelines', href: '/' },
-    { name: 'GitHub Repo', href: '/' },
+    { name: 'Guidelines', href: 'https://github.com/anaskhan28/sieve-repo' },
+    { name: 'GitHub Repo', href: 'https://github.com/anaskhan28/sieve-repo' },
 
   ],
 }

@@ -109,9 +109,11 @@ const PlaylistDetail = async ({
                 <h1 className="text-xs md:text-sm font-medium text-gray-400">
                   Created by
                 </h1>
+                <Link href={selectedPlaylist.user_profile_link!} target="_blank">
                 <h1 className="text-sm md:text-lg text-white">
                   {selectedPlaylist.user_name}
                 </h1>
+                </Link>
               </div>
               <p className="text-white text-sm bg-[#3F3F3F] md:p-4 w-42 p-2 text-start -ml-16 md:w-full h-3/4 max-h-full md:-ml-12 rounded-lg ">
                 {selectedPlaylist.playlist_summary}

@@ -5,7 +5,7 @@ import getPlaylistData from '@/app/actions/getPlaylistData';
 import PlaylistCards from '@/components/PlaylistCards';
 import getRatings from '../../actions/getRatings';
 import { PlaylistType } from '@/types/Types'; // Make sure to import your PlaylistType
-
+import Image from 'next/image';
 type Props = {
   [key:string]: string
 }
@@ -39,13 +39,22 @@ const RatedPlaylist = async () => {
       };
     });
 
-  console.log(ratedPlaylistDetails, 'rated playlist details');
 
   return (
     <div className='bg-[#0E0E0E] w-full min-h-screen '>
-     <div className='container mx-auto px-4 py-4 '>
-      <PlaylistCards className='grid grid-cols-1 md:grid-cols-3 gap-8' playlistData={ratedPlaylistDetails} />
-     </div>
+      {
+        ratedPlaylistDetails.length>0 ? 
+        <div className='container mx-auto px-4 py-4 '>
+        <PlaylistCards className='grid grid-cols-1 md:grid-cols-3 gap-8' playlistData={ratedPlaylistDetails} />
+       </div>
+       :
+       (
+        <div className='flex justify-center items-center h-screen w-full'>
+          <Image className='' src="/not-found.svg" alt='not-found' width={150} height={150}/>
+        </div>
+      )
+      }
+    
     </div>
   )
 }

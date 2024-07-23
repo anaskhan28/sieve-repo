@@ -10,8 +10,8 @@ import Image from "next/image";
 
 export function BentoGrids() {
   return (
-    <div className="bg-white max-h-full">
-     <div className="text-2xl md:text-4xl sm:max-w-[45rem] mt-10 md:mt-20 md:mb-12 mb-4 text-center font-bold ">
+    <div className="bg-white flex flex-col justify-center items-center max-h-full">
+     <div className="text-2xl md:text-4xl sm:max-w-[45rem]  mt-10 md:mt-20 md:mb-12 mb-4 text-center font-bold ">
      Overwhelmed by the sheer volume of tech content on YouTube?
           </div>
 

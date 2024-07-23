@@ -1,10 +1,11 @@
 // components/PlaylistCard.tsx
-import React from 'react';
+import React, { Suspense } from 'react';
 import Image from 'next/image';
 import { Star, Eye } from 'lucide-react';
 import Link from 'next/link';
 import Rate from './Rate';
 import { PlaylistType } from '@/types/Types';
+import Loading from './loading';
 
 type PlaylistCardProps = PlaylistType & {
   playlistRating: number | null;
@@ -13,6 +14,7 @@ type PlaylistCardProps = PlaylistType & {
 
 const PlaylistCard = (props: PlaylistCardProps) => {
   return (
+    <Suspense key={props.playlist_id} fallback={<Loading/>}>
     <div className='bg-inherit flex flex-col relative'>
       <Link href={`/playlist/${props.id}`}>
         <Image src={props.playlist_image} alt='image' width={500} height={500} className='w-full rounded-3xl object-fit h-full'/>
@@ -31,6 +33,7 @@ const PlaylistCard = (props: PlaylistCardProps) => {
         </div>
       </div>
     </div>
+    </Suspense>
   );
 };
 

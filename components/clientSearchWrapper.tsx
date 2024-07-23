@@ -7,7 +7,7 @@ import Filter from './Filter';
 import PlaylistCard from './PlaylistCard';
 import { PlaylistType } from "@/types/Types";
 import Loading from './loading';
-
+import Image from 'next/image';
 type EnrichedPlaylistType = PlaylistType & {
   playlistRating: number | null;
   avgPlaylistRate: string | null;
@@ -44,16 +44,20 @@ const ClientSideSearchWrapper = ({ initialData }: Props) => {
       <Search onSearch={handleSearch} />
       <Filter onFilter={handleFilter} />
       
-      <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
-
-        {filteredData.map(playlist => (
-                <Suspense key={playlist.id} fallback={<Loading/>}>
-
-          <PlaylistCard key={playlist.id} {...playlist} />
-          </Suspense>
-        ))}
+        
+      {filteredData.length > 0 ? (
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
+          {filteredData.map(playlist => (
+            <PlaylistCard key={playlist.id} {...playlist} />
+          ))}
+        </div>
+      ) : (
+        <div className='flex justify-center items-center h-screen w-full'>
+          <Image className='' src="/not-found.svg" alt='not-found' width={150} height={150}/>
+        </div>
+      )}
     
-      </div>
+    
     </>
   );
 };

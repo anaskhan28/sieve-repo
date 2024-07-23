@@ -138,5 +138,15 @@
     "category": "Frontend Development",
     "user_profile_link": "https://github.com/jackwilson",
     "user_Image": "/jack.png"
+  },
+  {
+    "id": 15,
+    "name": "Anas Tratioon",
+    "playlist_link": "https://www.youtube.com/watch?v=6UU2Ey4KZr8",
+    "summary": "Get started with Game Development.",
+    "title": "Design Development",
+    "category": "Frontend Development",
+    "user_profile_link": "https://github.com/jackwilson",
+    "user_Image": "/jack.png"
   }
 ]

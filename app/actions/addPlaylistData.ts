@@ -15,7 +15,7 @@ interface JsonPlaylist {
   user_Image: string;
 }
 
-const addOrUpdatePlaylistData = async (): Promise<{ upserted: PlaylistType[] } | null> => {
+const addOrUpdatePlaylistData = async (): Promise<{ upserted: PlaylistType[], skipped: number } | null> => {
   const supabase = await SupabaseServerClient();
 
   const { data: { user } } = await supabase.auth.getUser();
@@ -24,9 +24,29 @@ const addOrUpdatePlaylistData = async (): Promise<{ upserted: PlaylistType[] } |
     return null;
   }
 
+  // First, fetch all existing playlist URLs from the database
+  const { data: existingPlaylists, error: fetchError } = await supabase
+    .from('playlistsInfo')
+    .select('playlist_url');
+
+  if (fetchError) {
+    console.error('Error fetching existing playlists:', fetchError);
+    return null;
+  }
+
+  const existingUrls = new Set(existingPlaylists.map(p => p.playlist_url));
+
+  // Check if there are any new playlists in the JSON file
+  const newPlaylists = (playlists as JsonPlaylist[]).filter(p => !existingUrls.has(p.playlist_link));
+
+  if (newPlaylists.length === 0) {
+    console.log("No new playlists to add. Data is up to date.");
+    return { upserted: [], skipped: playlists.length };
+  }
+
   const playlistsToUpsert: PlaylistType[] = [];
 
-  for (const playlist of playlists as JsonPlaylist[]) {
+  for (const playlist of newPlaylists) {
     const thumbnailUrl = await getThumbnailUrl(playlist.playlist_link);
 
     const playlistData: PlaylistType = {
@@ -44,12 +64,7 @@ const addOrUpdatePlaylistData = async (): Promise<{ upserted: PlaylistType[] } |
     playlistsToUpsert.push(playlistData);
   }
 
-  if (playlistsToUpsert.length === 0) {
-    console.log("No playlists to upsert");
-    return { upserted: [] };
-  }
-
-  // Upsert all playlists
+  // Upsert new playlists
   const { error: upsertError } = await supabase
     .from('playlistsInfo')
     .upsert(playlistsToUpsert, { onConflict: 'playlist_id' });
@@ -59,7 +74,7 @@ const addOrUpdatePlaylistData = async (): Promise<{ upserted: PlaylistType[] } |
     return null;
   }
 
-  return { upserted: playlistsToUpsert };
+  return { upserted: playlistsToUpsert, skipped: playlists.length - newPlaylists.length };
 }
 
 export default addOrUpdatePlaylistData;

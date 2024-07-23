@@ -39,7 +39,7 @@ export function Contrbute() {
               className="inline-flex text-center items-center h-12  px-4
               relative z-10 transition-all duration-500 group-hover/button:text-white
                text-[#5C5DC2] text-lg md:text-xl font-medium"
-              href="#"
+              href="https://github.com/anaskhan28/sieve-repo"
             >
               Contribute Now <ArrowUpRight className='ml-1 text-[#5C5DC2] group-hover/button:text-white
           ' width={30} height={30}/>
