@@ -117,7 +117,6 @@ const PlaylistDetail = async ({
               </div>
               <p className="text-white text-sm bg-[#3F3F3F] md:p-4 w-42 p-2 text-start -ml-16 md:w-full h-3/4 max-h-full md:-ml-12 rounded-lg ">
                 {selectedPlaylist.playlist_summary}
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem recusandae impedit vel exercitationem reprehenderit provident tempora accusantium dolore suscipit temporibus animi ut molestias sunt veniam rerum, dicta possimus, consectetur unde?
               </p>
             </div>
           </div>
