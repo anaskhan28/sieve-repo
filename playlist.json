@@ -1,142 +1,102 @@
 [
   {
     "id": 1,
-    "name": "John Doe",
-    "playlist_link": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ",
-    "summary": "In-depth project tutorial on Frontend Development.",
-    "title": "Frontend Development",
-    "category": "Frontend Development",
-    "user_profile_link": "https://github.com/anaskhan28",
-    "user_Image": "/user.png"
+    "name": "Ayaan Shaikh",
+    "playlist_link": "https://www.youtube.com/watch?v=BCQHnlnPusY&list=PLRqwX-V7Uu6ZF9C0YMKuns9sLDzK6zoiV",
+    "summary": "Beginner friendly Git & Github tutorial.",
+    "title": "Git & Github",
+    "category": "Git & Github",
+    "user_profile_link": "https://github.com/Ayaanshaikh90",
+    "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
   },
   {
     "id": 2,
-    "name": "Jane Smith",
-    "playlist_link": "https://www.youtube.com/playlist?list=PLinedj3B30sDby4Al-i13hQJGQoRQDfPo",
-    "summary": "Comprehensive guide to Web Development.",
-    "title": "Web Development",
-    "category": "Frontend Development",
-    "user_profile_link": "https://github.com/anaskhan28",
-    "user_Image": "/jane.png"
+    "name": "Ayaan Shaikh",
+    "playlist_link": "https://www.youtube.com/watch?v=iqYK2UgNv-w&list=PLLdz3KlabJv3U7Hdibr4S8VgM0-NQm-h2",
+    "summary": "Simplified React Course.",
+    "title": "Simplified React Course",
+    "category": "React js",
+    "user_profile_link": "https://github.com/Ayaanshaikh90",
+    "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
   },
   {
     "id": 3,
-    "name": "Alice Johnson",
-    "playlist_link": "https://www.youtube.com/playlist?list=PLu71SKxNbfoBGh_8p_NS-ZAh6v7HhYqHW",
-    "summary": "Learn advanced JavaScript concepts.",
-    "title": "Advanced JavaScript",
-    "category": "Frontend Development",
-    "user_profile_link": "https://github.com/anaskhan28",
-    "user_Image": "/alice.png"
+    "name": "Ayaan Shaikh",
+    "playlist_link": "https://www.youtube.com/playlist?list=PLbtI3_MArDOlJ4036mWiUKaQToUS8MZVu",
+    "summary": "Master Git & Github Series",
+    "title": "Git & Github",
+    "category": "Git & Github",
+    "user_profile_link": "https://github.com/Ayaanshaikh90",
+    "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
   },
   {
     "id": 4,
-    "name": "Bob Brown",
-    "playlist_link": "https://youtu.be/fx6KMItwJAw?si=D-wueoxGFwBliEHr",
-    "summary": "Understanding Data Structures and Algorithms.",
-    "title": "Data Structures & Algorithms",
-    "category": "Data Structures",
-    "user_profile_link": "https://github.com/anaskhan28",
-    "user_Image": "/bob.png"
+    "name": "Ayaan Shaikh",
+    "playlist_link": "https://www.youtube.com/playlist?list=PLbtI3_MArDOnIIJxB6xFtpnhM0wTwz0x6",
+    "summary": "Animate anything with GSAP | Complete GSAP Course.",
+    "title": "GSAP Animation",
+    "category": "Animation",
+    "user_profile_link": "https://github.com/Ayaanshaikh90",
+    "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
   },
   {
     "id": 5,
-    "name": "Charlie Green",
-    "playlist_link": "https://www.youtube.com/playlist?list=PLC3y8-rFHvwhBRAgFinJR8KHIrCdTkZcZ",
-    "summary": "Exploring Machine Learning with Python.",
-    "title": "Machine Learning",
-    "category": "Machine Learning",
-    "user_profile_link": "https://github.com/anaskhan28",
-    "user_Image": "/charlie.png"
+    "name": "Ayaan Shaikh",
+    "playlist_link": "https://www.youtube.com/playlist?list=PL0-xwzAwzllw_dvNfabV28-bpAEoMchd3",
+    "summary": "AWS Security Step by Step guide.",
+    "title": "AWS Security",
+    "category": "AWS Security",
+    "user_profile_link": "https://github.com/Ayaanshaikh90",
+    "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
   },
   {
     "id": 6,
-    "name": "David Lee",
-    "playlist_link": "https://www.youtube.com/playlist?list=PLQit65uXNfmuv0WfhgpYcyOfUX1FAawxD",
-    "summary": "Introduction to Cloud Computing.",
-    "title": "Cloud Computing",
-    "category": "Backend Development",
-    "user_profile_link": "https://github.com/anaskhan28",
-    "user_Image": "/david.png"
+    "name": "Ayaan Shaikh",
+    "playlist_link": "https://www.youtube.com/playlist?list=PLhnVDNT5zYN97qxG4J_V_9Di8xT9_QDvZ",
+    "summary": "Next Authentication everything about NextAuth.",
+    "title": "Next Auth",
+    "category": "Next Auth",
+    "user_profile_link": "https://github.com/Ayaanshaikh90",
+    "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
   },
   {
     "id": 7,
-    "name": "Eva White",
-    "playlist_link": "https://www.youtube.com/playlist?list=PLu71SKxNbfoBGh_8p_NS-ZAh6v7HhYqHW",
-    "summary": "Learn how to design stunning websites.",
-    "title": "Web Design",
-    "category": "UI UX Design",
-    "user_profile_link": "https://github.com/anaskhan28",
-    "user_Image": "/eva.png"
+    "name": "Ayaan Shaikh",
+    "playlist_link": "https://www.youtube.com/playlist?list=PLC3y8-rFHvwjOKd6gdf4QtV1uYNiQnruI",
+    "summary": "Next.js 14 Tutorial, detailed explanation of all the next.js updates and features.",
+    "title": "Next.js 14 Tutorial",
+    "category": "Next js",
+    "user_profile_link": "https://github.com/Ayaanshaikh90",
+    "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
   },
   {
     "id": 8,
-    "name": "Frank Black",
-    "playlist_link": "https://www.youtube.com/playlist?list=PLinedj3B30sDby4Al-i13hQJGQoRQDfPo",
-    "summary": "Master the basics of Python programming.",
-    "title": "Python for Beginners",
-    "category": "Frontend Development",
-    "user_profile_link": "https://github.com/anaskhan28",
-    "user_Image": "/frank.png"
+    "name": "Ayaan Shaikh",
+    "playlist_link": "https://www.youtube.com/playlist?list=PLpPqplz6dKxW5ZfERUPoYTtNUNvrEebAR",
+    "summary": "ReactJS Course For Beginners, all the basic concepts are cleared in this tutorial",
+    "title": "ReactJS Course For Beginners",
+    "category": "React js",
+    "user_profile_link": "https://github.com/Ayaanshaikh90",
+    "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
   },
   {
     "id": 9,
-    "name": "Grace King",
-    "playlist_link": "https://www.youtube.com/playlist?list=PLinedj3B30sDby4Al-i13hQJGQoRQDfPo",
-    "summary": "Understanding the fundamentals of Cyber Security.",
-    "title": "Cyber Security Basics",
-    "category": "Backend Development",
-    "user_profile_link": "https://github.com/anaskhan28",
-    "user_Image": "/grace.png"
+    "name": "Ayaan Shaikh",
+    "playlist_link": "https://www.youtube.com/playlist?list=PL4-IK0AVhVjOSNeNSB0hAVMmRB102o47u",
+    "summary": "It provides best explanation about css grid and flex porperty in simplified way.",
+    "title": "Grid tips and tricks",
+    "category": "CSS",
+    "user_profile_link": "https://github.com/Ayaanshaikh90",
+    "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
   },
   {
     "id": 10,
-    "name": "Henry Davis",
-    "playlist_link": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ",
-    "summary": "Step by step guide to learn Docker.",
-    "title": "Anas Essentials",
-    "category": "Backend Development",
-    "user_profile_link": "https://github.com/anaskhan28",
-    "user_Image": "/henry.png"
-  },
-  {
-    "id": 11,
-    "name": "Isla Walker",
-    "playlist_link": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ",
-    "summary": "Introduction to Database Management Systems.",
-    "title": "Database Management",
-    "category": "Backend Development",
-    "user_profile_link": "https://github.com/anaskhan28",
-    "user_Image": "/isla.png"
-  },
-  {
-    "id": 12,
-    "name": "Jack Wilson",
-    "playlist_link": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ",
-    "summary": "Get started with Game Development.",
-    "title": "Game Development",
-    "category": "Frontend Development",
-    "user_profile_link": "https://github.com/anaskhan28",
-    "user_Image": "/jack.png"
-  },
-  {
-    "id": 13,
-    "name": "Anas Wilson",
-    "playlist_link": "https://www.youtube.com/watch?v=fx6KMItwJAw",
-    "summary": "Get started with Game Development.",
-    "title": "Design Development",
-    "category": "Frontend Development",
-    "user_profile_link": "https://github.com/jackwilson",
-    "user_Image": "/jack.png"
-  },
-  {
-    "id": 14,
-    "name": "Anas Wilson",
-    "playlist_link": "https://www.youtube.com/watch?v=fx6KMItwJAw",
-    "summary": "Get started with Game Development.",
-    "title": "Design Development",
-    "category": "Frontend Development",
-    "user_profile_link": "https://github.com/jackwilson",
-    "user_Image": "/jack.png"
+    "name": "Ayaan Shaikh",
+    "playlist_link": "https://www.youtube.com/playlist?list=PLZPZq0r_RZOMRMjHB_IEBjOW_ufr00yG1",
+    "summary": "JavaScript tutorial for beginners, all the concepts are explained with great knowledge.",
+    "title": "JavaScript tutorial for beginners 🌐",
+    "category": "Javascript",
+    "user_profile_link": "https://github.com/Ayaanshaikh90",
+    "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
   }
 ]
