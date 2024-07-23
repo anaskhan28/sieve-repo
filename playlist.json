@@ -1,152 +1,62 @@
 [
   {
     "id": 1,
-    "name": "John Doe",
-    "playlist_link": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ",
-    "summary": "In-depth project tutorial on Frontend Development.",
-    "title": "Frontend Development",
-    "category": "Frontend Development",
-    "user_profile_link": "https://github.com/anaskhan28",
-    "user_Image": "/user.png"
+    "name": "Faraz",
+    "playlist_link": "https://www.youtube.com/watch?v=T6atrhxLRkI&list=PLlHtucAD9KT33e6ScNCtgVPS5kXlLOu0O&pp=iAQB",
+    "summary": "Basics to Design a Tech App",
+    "title": "Basics of UX, UI Design",
+    "category": "UI UX Design",
+    "user_profile_link": "https://github.com/ahmedfarazzz",
+    "user_Image": "/contributors/Faraz.jpg"
   },
   {
     "id": 2,
-    "name": "Jane Smith",
-    "playlist_link": "https://www.youtube.com/playlist?list=PLinedj3B30sDby4Al-i13hQJGQoRQDfPo",
-    "summary": "Comprehensive guide to Web Development.",
-    "title": "Web Development",
+    "name": "Faraz",
+    "playlist_link": "https://www.youtube.com/watch?v=ajdRvxDWH4w&list=PLGjplNEQ1it_oTvuLRNqXfz_v_0pq6unW",
+    "summary": "Learn basics of Javascript",
+    "title": "Basics to Adcance Javascript - Beginner's Guide",
     "category": "Frontend Development",
-    "user_profile_link": "https://github.com/anaskhan28",
-    "user_Image": "/jane.png"
+    "user_profile_link": "https://github.com/ahmedfarazzz",
+    "user_Image": "/contributors/Faraz.jpg"
   },
   {
     "id": 3,
-    "name": "Alice Johnson",
-    "playlist_link": "https://www.youtube.com/playlist?list=PLu71SKxNbfoBGh_8p_NS-ZAh6v7HhYqHW",
-    "summary": "Learn advanced JavaScript concepts.",
-    "title": "Advanced JavaScript",
-    "category": "Frontend Development",
-    "user_profile_link": "https://github.com/anaskhan28",
-    "user_Image": "/alice.png"
+    "name": "Faraz",
+    "playlist_link": "https://www.youtube.com/watch?v=WZQYt5HZ0-E&list=PLDtHAiqIa4wa5MBbE_XDoqY51sAkQnkjt&pp=iAQB",
+    "summary": "Design Crash Course for for Designers looking for career in Design",
+    "title": "Design Crash Course - ABNUX",
+    "category": "UI UX Design",
+    "user_profile_link": "https://github.com/ahmedfarazzz",
+    "user_Image": "/contributors/Faraz.jpg"
   },
   {
     "id": 4,
-    "name": "Bob Brown",
-    "playlist_link": "https://youtu.be/fx6KMItwJAw?si=D-wueoxGFwBliEHr",
-    "summary": "Understanding Data Structures and Algorithms.",
-    "title": "Data Structures & Algorithms",
-    "category": "Data Structures",
-    "user_profile_link": "https://github.com/anaskhan28",
-    "user_Image": "/bob.png"
+    "name": "Faraz",
+    "playlist_link": "https://www.youtube.com/watch?v=vd1vRpoWC3M&list=PLW-zSkCnZ-gCq0DjkzY-YapCBEk0lA6lR",
+    "summary": "Adobe Illustrator Beginners to advance",
+    "title": "Adobe Illustrator - GFX Mentor ",
+    "category": "UI UX Design",
+    "user_profile_link": "https://github.com/ahmedfarazzz",
+    "user_Image": "/contributors/Faraz.jpg"
   },
   {
     "id": 5,
-    "name": "Charlie Green",
-    "playlist_link": "https://www.youtube.com/playlist?list=PLC3y8-rFHvwhBRAgFinJR8KHIrCdTkZcZ",
-    "summary": "Exploring Machine Learning with Python.",
-    "title": "Machine Learning",
-    "category": "Machine Learning",
-    "user_profile_link": "https://github.com/anaskhan28",
-    "user_Image": "/charlie.png"
+    "name": "Faraz",
+    "playlist_link": "https://www.youtube.com/watch?v=Xv8JBXPgeI8&list=PLW-zSkCnZ-gD8OcjTPu-u_Rxl9-kI9Xqr",
+    "summary": "Adobe After Effects Beginners to advance",
+    "title": "Adobe After Effects - GFX Mentor",
+    "category": "UI UX Design",
+    "user_profile_link": "https://github.com/ahmedfarazzz",
+    "user_Image": "/contributors/Faraz.jpg"
   },
   {
     "id": 6,
-    "name": "David Lee",
-    "playlist_link": "https://www.youtube.com/playlist?list=PLQit65uXNfmuv0WfhgpYcyOfUX1FAawxD",
-    "summary": "Introduction to Cloud Computing.",
-    "title": "Cloud Computing",
-    "category": "Backend Development",
-    "user_profile_link": "https://github.com/anaskhan28",
-    "user_Image": "/david.png"
-  },
-  {
-    "id": 7,
-    "name": "Eva White",
-    "playlist_link": "https://www.youtube.com/playlist?list=PLu71SKxNbfoBGh_8p_NS-ZAh6v7HhYqHW",
-    "summary": "Learn how to design stunning websites.",
-    "title": "Web Design",
+    "name": "Faraz",
+    "playlist_link": "https://www.youtube.com/watch?v=aVCz8pEJwTk&list=PLW-zSkCnZ-gDRQxW05I3nhwE6F25Lr98Q&pp=iAQB",
+    "summary": "Adobe Premiere Pro - Advance",
+    "title": "Adobe Premiere Pro - GFX Mentor",
     "category": "UI UX Design",
-    "user_profile_link": "https://github.com/anaskhan28",
-    "user_Image": "/eva.png"
-  },
-  {
-    "id": 8,
-    "name": "Frank Black",
-    "playlist_link": "https://www.youtube.com/playlist?list=PLinedj3B30sDby4Al-i13hQJGQoRQDfPo",
-    "summary": "Master the basics of Python programming.",
-    "title": "Python for Beginners",
-    "category": "Frontend Development",
-    "user_profile_link": "https://github.com/anaskhan28",
-    "user_Image": "/frank.png"
-  },
-  {
-    "id": 9,
-    "name": "Grace King",
-    "playlist_link": "https://www.youtube.com/playlist?list=PLinedj3B30sDby4Al-i13hQJGQoRQDfPo",
-    "summary": "Understanding the fundamentals of Cyber Security.",
-    "title": "Cyber Security Basics",
-    "category": "Backend Development",
-    "user_profile_link": "https://github.com/anaskhan28",
-    "user_Image": "/grace.png"
-  },
-  {
-    "id": 10,
-    "name": "Henry Davis",
-    "playlist_link": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ",
-    "summary": "Step by step guide to learn Docker.",
-    "title": "Anas Essentials",
-    "category": "Backend Development",
-    "user_profile_link": "https://github.com/anaskhan28",
-    "user_Image": "/henry.png"
-  },
-  {
-    "id": 11,
-    "name": "Isla Walker",
-    "playlist_link": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ",
-    "summary": "Introduction to Database Management Systems.",
-    "title": "Database Management",
-    "category": "Backend Development",
-    "user_profile_link": "https://github.com/anaskhan28",
-    "user_Image": "/isla.png"
-  },
-  {
-    "id": 12,
-    "name": "Jack Wilson",
-    "playlist_link": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ",
-    "summary": "Get started with Game Development.",
-    "title": "Game Development",
-    "category": "Frontend Development",
-    "user_profile_link": "https://github.com/anaskhan28",
-    "user_Image": "/jack.png"
-  },
-  {
-    "id": 13,
-    "name": "Anas Wilson",
-    "playlist_link": "https://www.youtube.com/watch?v=fx6KMItwJAw",
-    "summary": "Get started with Game Development.",
-    "title": "Design Development",
-    "category": "Frontend Development",
-    "user_profile_link": "https://github.com/jackwilson",
-    "user_Image": "/jack.png"
-  },
-  {
-    "id": 14,
-    "name": "Anas Wilson",
-    "playlist_link": "https://www.youtube.com/watch?v=fx6KMItwJAw",
-    "summary": "Get started with Game Development.",
-    "title": "Design Development",
-    "category": "Frontend Development",
-    "user_profile_link": "https://github.com/jackwilson",
-    "user_Image": "/jack.png"
-  },
-  {
-    "id": 15,
-    "name": "Anas Tratioon",
-    "playlist_link": "https://www.youtube.com/watch?v=6UU2Ey4KZr8",
-    "summary": "Get started with Game Development.",
-    "title": "Design Development",
-    "category": "Frontend Development",
-    "user_profile_link": "https://github.com/jackwilson",
-    "user_Image": "/jack.png"
+    "user_profile_link": "https://github.com/ahmedfarazzz",
+    "user_Image": "/contributors/Faraz.jpg"
   }
 ]

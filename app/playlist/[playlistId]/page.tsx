@@ -76,11 +76,11 @@ const PlaylistDetail = async ({
             <span className="flex text-[#D9D9D9] justify-center items-center text-sm md:text-xl gap-2">
               <Star
                 fill="#FAC815"
-                className="text-yellow-300 h-5 w-5 md:h-6 md:w-6"
+                className="text-yellow-300 h-5 w-5 md:h-6s md:w-6"
                 width={25}
                 height={25}
               />
-              {selectedPlaylist.playlist_rates?.toFixed(1)}
+              {selectedPlaylist.playlist_rates?.toFixed(1) || 0.0}
             </span>
             <Rate {...selectedPlaylist} playlistRating={selectedPlaylist.playlistRating!} />
             {/* <div className="flex flex-row justify-center items-center gap-2">
