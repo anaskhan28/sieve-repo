@@ -200,7 +200,33 @@
       "category": "Cyber Security",
       "user_profile_link": "https://github.com/anaskhan28",
       "user_Image": "https://avatars.githubusercontent.com/u/87796038?s=96&v=4"
+    },
+    
+    {
+      "id": 21,
+      "name": "Swati Tiwari",
+      "playlist_link": "https://www.youtube.com/watch?v=4s1Tcvm00pA&list=PL9gnSGHSqcnqfctdbCQKaw5oZ9Up2cmsq",
+      "summary": "This playlist is a complete knowledge of tree data structure and its implementation",
+      "title": "Data Structures and Algorithms using Python",
+      "category": "Data Structures",
+      "user_profile_link": "https://github.com/SwatiSTiwari",
+      "user_Image": "https://avatars.githubusercontent.com/u/108111880?s=400&u=bb2cce61eba8c90b5722ac4a1b6cfe92f9ddd120&v=4"
+
+
+    },
+    {
+      "id": 22,
+      "name": "Swati Tiwari",
+      "playlist_link": "https://www.youtube.com/watch?v=wm5gMKuwSYk&t=85s",
+      "summary": "It is one of the best video if you want to start with Next.js  ",
+      "title": "Nextjs course for beginners",
+      "category": "Frontend Developmen",
+      "user_profile_link": "https://github.com/SwatiSTiwari",
+      "user_Image": "https://avatars.githubusercontent.com/u/108111880?s=400&u=bb2cce61eba8c90b5722ac4a1b6cfe92f9ddd120&v=4"
+
+
     }
+
   
   
   
