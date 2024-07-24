@@ -73,7 +73,7 @@ Once the development server is running, you can:
 - **Rate & Review**: Provide ratings and reviews to share your feedback.
 - **Contribute**: Add new playlists to help the community grow.
 
-![Sieve Screenshot](public/sieve-how-it-works.png)
+![Sieve Screenshot](public/playlist.png)
 
 ## Contributing 🤝
 
