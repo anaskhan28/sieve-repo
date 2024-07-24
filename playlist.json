@@ -58,5 +58,107 @@
     "category": "UI UX Design",
     "user_profile_link": "https://github.com/ahmedfarazzz",
     "user_Image": "/contributors/Faraz.jpg"
-  }
+  },
+    {
+      "id": 7,
+      "name": "Ayaan Shaikh",
+      "playlist_link": "https://www.youtube.com/playlist?list=PLC3y8-rFHvwjOKd6gdf4QtV1uYNiQnruI",
+      "summary": "Next.js 14 Tutorial, detailed explanation of all the next.js updates and features.",
+      "title": "Next.js 14 Tutorial",
+      "category": "Frontend Development",
+      "user_profile_link": "https://github.com/Ayaanshaikh90",
+      "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
+    },
+    {
+      "id": 8,
+      "name": "Ayaan Shaikh",
+      "playlist_link": "https://www.youtube.com/playlist?list=PLpPqplz6dKxW5ZfERUPoYTtNUNvrEebAR",
+      "summary": "ReactJS Course For Beginners, all the basic concepts are cleared in this tutorial",
+      "title": "ReactJS Course For Beginners",
+      "category": "Frontend Development",
+      "user_profile_link": "https://github.com/Ayaanshaikh90",
+      "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
+    },
+    {
+      "id": 9,
+      "name": "Ayaan Shaikh",
+      "playlist_link": "https://www.youtube.com/playlist?list=PL4-IK0AVhVjOSNeNSB0hAVMmRB102o47u",
+      "summary": "It provides best explanation about css grid and flex porperty in simplified way.",
+      "title": "Grid tips and tricks",
+      "category": "CSS",
+      "user_profile_link": "https://github.com/Ayaanshaikh90",
+      "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
+    },
+    {
+      "id": 10,
+      "name": "Ayaan Shaikh",
+      "playlist_link": "https://www.youtube.com/playlist?list=PLZPZq0r_RZOMRMjHB_IEBjOW_ufr00yG1",
+      "summary": "JavaScript tutorial for beginners, all the concepts are explained with great knowledge.",
+      "title": "JavaScript tutorial for beginners 🌐",
+      "category": "Frontend Development",
+      "user_profile_link": "https://github.com/Ayaanshaikh90",
+      "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
+    },
+    {
+      "id": 11,
+      "name": "Ayaan Shaikh",
+      "playlist_link": "https://www.youtube.com/watch?v=BCQHnlnPusY&list=PLRqwX-V7Uu6ZF9C0YMKuns9sLDzK6zoiV",
+      "summary": "Beginner friendly Git & Github tutorial.",
+      "title": "Git & Github",
+      "category": "Backend Development",
+      "user_profile_link": "https://github.com/Ayaanshaikh90",
+      "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
+    },
+    {
+      "id": 12,
+      "name": "Ayaan Shaikh",
+      "playlist_link": "https://www.youtube.com/watch?v=iqYK2UgNv-w&list=PLLdz3KlabJv3U7Hdibr4S8VgM0-NQm-h2",
+      "summary": "Simplified React Course.",
+      "title": "Simplified React Course",
+      "category": "Frontend Development",
+      "user_profile_link": "https://github.com/Ayaanshaikh90",
+      "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
+    },
+    {
+      "id": 13,
+      "name": "Ayaan Shaikh",
+      "playlist_link": "https://www.youtube.com/playlist?list=PLbtI3_MArDOlJ4036mWiUKaQToUS8MZVu",
+      "summary": "Master Git & Github Series",
+      "title": "Git & Github",
+      "category": "Backend Development",
+      "user_profile_link": "https://github.com/Ayaanshaikh90",
+      "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
+    },
+    {
+      "id": 14,
+      "name": "Ayaan Shaikh",
+      "playlist_link": "https://www.youtube.com/playlist?list=PLbtI3_MArDOnIIJxB6xFtpnhM0wTwz0x6",
+      "summary": "Animate anything with GSAP | Complete GSAP Course.",
+      "title": "GSAP Animation",
+      "category": "Animation",
+      "user_profile_link": "https://github.com/Ayaanshaikh90",
+      "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
+    },
+    {
+      "id": 15,
+      "name": "Ayaan Shaikh",
+      "playlist_link": "https://www.youtube.com/playlist?list=PL0-xwzAwzllw_dvNfabV28-bpAEoMchd3",
+      "summary": "AWS Security Step by Step guide.",
+      "title": "AWS Security",
+      "category": "AWS Security",
+      "user_profile_link": "https://github.com/Ayaanshaikh90",
+      "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
+    },
+    {
+      "id": 16,
+      "name": "Ayaan Shaikh",
+      "playlist_link": "https://www.youtube.com/playlist?list=PLhnVDNT5zYN97qxG4J_V_9Di8xT9_QDvZ",
+      "summary": "Next Authentication everything about NextAuth.",
+      "title": "Next Auth",
+      "category": "Frontend Development",
+      "user_profile_link": "https://github.com/Ayaanshaikh90",
+      "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
+    }
+  
+  
 ]
