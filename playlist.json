@@ -1,64 +1,66 @@
 [
-  {
-    "id": 1,
-    "name": "Faraz",
-    "playlist_link": "https://www.youtube.com/watch?v=T6atrhxLRkI&list=PLlHtucAD9KT33e6ScNCtgVPS5kXlLOu0O&pp=iAQB",
-    "summary": "Basics to Design a Tech App",
-    "title": "Basics of UX, UI Design",
-    "category": "UI UX Design",
-    "user_profile_link": "https://github.com/ahmedfarazzz",
-    "user_Image": "/contributors/Faraz.jpg"
-  },
-  {
-    "id": 2,
-    "name": "Faraz",
-    "playlist_link": "https://www.youtube.com/watch?v=ajdRvxDWH4w&list=PLGjplNEQ1it_oTvuLRNqXfz_v_0pq6unW",
-    "summary": "Learn basics of Javascript",
-    "title": "Basics to Adcance Javascript - Beginner's Guide",
-    "category": "Frontend Development",
-    "user_profile_link": "https://github.com/ahmedfarazzz",
-    "user_Image": "/contributors/Faraz.jpg"
-  },
-  {
-    "id": 3,
-    "name": "Faraz",
-    "playlist_link": "https://www.youtube.com/watch?v=WZQYt5HZ0-E&list=PLDtHAiqIa4wa5MBbE_XDoqY51sAkQnkjt&pp=iAQB",
-    "summary": "Design Crash Course for for Designers looking for career in Design",
-    "title": "Design Crash Course - ABNUX",
-    "category": "UI UX Design",
-    "user_profile_link": "https://github.com/ahmedfarazzz",
-    "user_Image": "/contributors/Faraz.jpg"
-  },
-  {
-    "id": 4,
-    "name": "Faraz",
-    "playlist_link": "https://www.youtube.com/watch?v=vd1vRpoWC3M&list=PLW-zSkCnZ-gCq0DjkzY-YapCBEk0lA6lR",
-    "summary": "Adobe Illustrator Beginners to advance",
-    "title": "Adobe Illustrator - GFX Mentor ",
-    "category": "UI UX Design",
-    "user_profile_link": "https://github.com/ahmedfarazzz",
-    "user_Image": "/contributors/Faraz.jpg"
-  },
-  {
-    "id": 5,
-    "name": "Faraz",
-    "playlist_link": "https://www.youtube.com/watch?v=Xv8JBXPgeI8&list=PLW-zSkCnZ-gD8OcjTPu-u_Rxl9-kI9Xqr",
-    "summary": "Adobe After Effects Beginners to advance",
-    "title": "Adobe After Effects - GFX Mentor",
-    "category": "UI UX Design",
-    "user_profile_link": "https://github.com/ahmedfarazzz",
-    "user_Image": "/contributors/Faraz.jpg"
-  },
-  {
-    "id": 6,
-    "name": "Faraz",
-    "playlist_link": "https://www.youtube.com/watch?v=aVCz8pEJwTk&list=PLW-zSkCnZ-gDRQxW05I3nhwE6F25Lr98Q&pp=iAQB",
-    "summary": "Adobe Premiere Pro - Advance",
-    "title": "Adobe Premiere Pro - GFX Mentor",
-    "category": "UI UX Design",
-    "user_profile_link": "https://github.com/ahmedfarazzz",
-    "user_Image": "/contributors/Faraz.jpg"
-  },
+  
+    {
+      "id": 1,
+      "name": "Faraz",
+      "playlist_link": "https://www.youtube.com/watch?v=T6atrhxLRkI&list=PLlHtucAD9KT33e6ScNCtgVPS5kXlLOu0O&pp=iAQB",
+      "summary": "Basics to Design a Tech App",
+      "title": "Basics of UX, UI Design",
+      "category": "UI UX Design",
+      "user_profile_link": "https://github.com/ahmedfarazzz",
+      "user_Image": "https://avatars.githubusercontent.com/u/109382577?v=4"
+    },
+    {
+      "id": 2,
+      "name": "Faraz",
+      "playlist_link": "https://www.youtube.com/watch?v=ajdRvxDWH4w&list=PLGjplNEQ1it_oTvuLRNqXfz_v_0pq6unW",
+      "summary": "Learn basics of Javascript",
+      "title": "Basics to Adcance Javascript - Beginner's Guide",
+      "category": "Frontend Development",
+      "user_profile_link": "https://github.com/ahmedfarazzz",
+      "user_Image": "https://avatars.githubusercontent.com/u/109382577?v=4"
+    },
+    {
+      "id": 3,
+      "name": "Faraz",
+      "playlist_link": "https://www.youtube.com/watch?v=WZQYt5HZ0-E&list=PLDtHAiqIa4wa5MBbE_XDoqY51sAkQnkjt&pp=iAQB",
+      "summary": "Design Crash Course for for Designers looking for career in Design",
+      "title": "Design Crash Course - ABNUX",
+      "category": "UI UX Design",
+      "user_profile_link": "https://github.com/ahmedfarazzz",
+      "user_Image": "https://avatars.githubusercontent.com/u/109382577?v=4"
+    },
+    {
+      "id": 4,
+      "name": "Faraz",
+      "playlist_link": "https://www.youtube.com/watch?v=vd1vRpoWC3M&list=PLW-zSkCnZ-gCq0DjkzY-YapCBEk0lA6lR",
+      "summary": "Adobe Illustrator Beginners to advance",
+      "title": "Adobe Illustrator - GFX Mentor ",
+      "category": "UI UX Design",
+      "user_profile_link": "https://github.com/ahmedfarazzz",
+      "user_Image": "https://avatars.githubusercontent.com/u/109382577?v=4"
+    },
+    {
+      "id": 5,
+      "name": "Faraz",
+      "playlist_link": "https://www.youtube.com/watch?v=Xv8JBXPgeI8&list=PLW-zSkCnZ-gD8OcjTPu-u_Rxl9-kI9Xqr",
+      "summary": "Adobe After Effects Beginners to advance",
+      "title": "Adobe After Effects - GFX Mentor",
+      "category": "UI UX Design",
+      "user_profile_link": "https://github.com/ahmedfarazzz",
+      "user_Image": "https://avatars.githubusercontent.com/u/109382577?v=4"
+    },
+    {
+      "id": 6,
+      "name": "Faraz",
+      "playlist_link": "https://www.youtube.com/watch?v=aVCz8pEJwTk&list=PLW-zSkCnZ-gDRQxW05I3nhwE6F25Lr98Q&pp=iAQB",
+      "summary": "Adobe Premiere Pro - Advance",
+      "title": "Adobe Premiere Pro - GFX Mentor",
+      "category": "UI UX Design",
+      "user_profile_link": "https://github.com/ahmedfarazzz",
+      "user_Image": "https://avatars.githubusercontent.com/u/109382577?v=4"
+    },
+    
     {
       "id": 7,
       "name": "Ayaan Shaikh",
@@ -94,7 +96,7 @@
       "name": "Ayaan Shaikh",
       "playlist_link": "https://www.youtube.com/playlist?list=PLZPZq0r_RZOMRMjHB_IEBjOW_ufr00yG1",
       "summary": "JavaScript tutorial for beginners, all the concepts are explained with great knowledge.",
-      "title": "JavaScript tutorial for beginners 🌐",
+      "title": "JavaScript tutorial for beginners",
       "category": "Frontend Development",
       "user_profile_link": "https://github.com/Ayaanshaikh90",
       "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
@@ -145,7 +147,7 @@
       "playlist_link": "https://www.youtube.com/playlist?list=PL0-xwzAwzllw_dvNfabV28-bpAEoMchd3",
       "summary": "AWS Security Step by Step guide.",
       "title": "AWS Security",
-      "category": "AWS Security",
+      "category": "Devops",
       "user_profile_link": "https://github.com/Ayaanshaikh90",
       "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
     },
@@ -158,7 +160,48 @@
       "category": "Frontend Development",
       "user_profile_link": "https://github.com/Ayaanshaikh90",
       "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
+    },
+    {
+      "id": 17,
+      "name": "Anas Khan",
+      "playlist_link": "https://youtu.be/f9Aje_cN_CY?si=XUUXhEABPmCTfAl-",
+      "summary": "One of the best video if you want to DSA with Python. It covers basics Data Structures like LinkedList, Arrays, Queue, Stack etc.",
+      "title": "Data Structures and Algorithms using Python",
+      "category": "Data Structures",
+      "user_profile_link": "https://github.com/anaskhan28",
+      "user_Image": "https://avatars.githubusercontent.com/u/87796038?s=96&v=4"
+    },
+    {
+      "id": 18,
+      "name": "Anas Khan",
+      "playlist_link": "https://www.youtube.com/playlist?list=PLB0Tybl0UNfaT1uq9anIjt_Ggo7mT6mMb",
+      "summary": "One of the best playlist for core javascript projects ideas. Must watch!",
+      "title": "JavaScript Project Tutorials",
+      "category": "Projects",
+      "user_profile_link": "https://github.com/anaskhan28",
+      "user_Image": "https://avatars.githubusercontent.com/u/87796038?s=96&v=4"
+    },
+    {
+      "id": 19,
+      "name": "Anas Khan",
+      "playlist_link": "https://www.youtube.com/playlist?list=PLxVihxZC42nF_MCN9PTvZMIifRjx9cZ2J",
+      "summary": "The Web3 Foundation “Blockchain for Beginners” MOOC teaches blockchain from the very basics all the way up to building your own blockchain.",
+      "title": "Blockchain Fundamentals",
+      "category": "Blockchain",
+      "user_profile_link": "https://github.com/anaskhan28",
+      "user_Image": "https://avatars.githubusercontent.com/u/87796038?s=96&v=4"
+    },
+    {
+      "id": 20,
+      "name": "Anas Khan",
+      "playlist_link": "https://www.youtube.com/playlist?list=PLIY8eNdw5tW_7-QrsY_n9nC0Xfhs1tLEK",
+      "summary": "All the concepts, algorithms and protocols related to Network Security which you as an IT student will need the most.",
+      "title": "Network Security",
+      "category": "Cyber Security",
+      "user_profile_link": "https://github.com/anaskhan28",
+      "user_Image": "https://avatars.githubusercontent.com/u/87796038?s=96&v=4"
     }
+  
   
   
 ]
