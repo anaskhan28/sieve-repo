@@ -29,7 +29,7 @@ const getPlaylistData = async (query?: string, filter?: string): Promise<Playlis
     queryBuilder = queryBuilder.order('inserted_at', { ascending: true });
 
     // Limit the results
-    queryBuilder = queryBuilder.limit(20);
+    // queryBuilder = queryBuilder.limit(20);
 
     const { data, error } = await queryBuilder;
 
