@@ -1,11 +1,11 @@
+// app/playlist/page.tsx
 import React from 'react'
 import getUserData from '../actions/getUserData'
 import { redirect } from 'next/navigation';
-import Image from 'next/image';
 import Filter from '@/components/Filter'
 import addOrUpdatePlaylistData from '../actions/addPlaylistData';
 import { getPlaylistCardData } from '@/utils/getPlaylistCardData';
-import ClientSideSearchWrapper from '@/components/clientSearchWrapper';
+import ClientSideSearchWrapper from '@/components/Wrapper';
 
 type Props = {
   [key: string]: string

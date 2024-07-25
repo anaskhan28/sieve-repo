@@ -34,7 +34,10 @@ const Filter = ({ onFilter }: Props) => {
                 }
             }, 300);
         }
-    }, []);
+        setActiveButton("All")
+        onFilter("All")
+        
+    }, [onFilter]);
 
     
 
