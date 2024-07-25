@@ -3,28 +3,12 @@ import React, { useState, useRef, useEffect, useCallback } from 'react'
 import { ChevronRight } from 'lucide-react';
 import { ChevronLeft } from 'lucide-react';
 import { usePathname } from 'next/navigation';
-
+import playlists from '@/playlist.json'
 type Props = {
   onFilter: (filter: string) => void;
 }
+const filterByCategory = Array.from(new Set(playlists.map((playlist) => playlist.category)));
 
-const filterByCategory = [
-    "All",  // Add an "All" option
-    "Frontend Development",
-    "Backend Development",
-    "Android Development",
-    "Data Structures",
-    "Machine Learning",
-    "Open Source",
-    "UI UX Design",
-    "Frontend Development",
-    "Backend Development",
-    "Android Development",
-    "Data Structures",
-    "Machine Learning",
-    "Open Source",
-    "UI UX Design",
-]
 
 const Filter = ({ onFilter }: Props) => {
     const [activeArrow, setActiveArrow] = useState<'left' | 'right' | null>(null);
@@ -50,7 +34,10 @@ const Filter = ({ onFilter }: Props) => {
                 }
             }, 300);
         }
-    }, []);
+        setActiveButton("All")
+        onFilter("All")
+        
+    }, [onFilter]);
 
     
 

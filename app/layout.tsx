@@ -2,6 +2,7 @@ import { Tenor_Sans } from 'next/font/google'
 import { Libre_Franklin } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
+import { Analytics } from "@vercel/analytics/react"
 
 const tenor_sans = Tenor_Sans({
   subsets: ['latin'],
@@ -27,6 +28,7 @@ export default function RootLayout({
       <body className={tenor_sans.variable + ' ' + libre_franklin.variable}>
       
         {children}
+        <Analytics/>
         </body>
     </html>
   );

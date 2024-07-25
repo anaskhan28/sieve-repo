@@ -2,7 +2,7 @@
 
 Welcome to **Sieve**, an IMDB-like platform for discovering and rating the best YouTube playlists or videos on software development, web development, programming languages, frameworks, design, open source, and more. This platform aims to help newcomers and enthusiasts find high-quality and most-rated tutorials.
 
-![Sieve Banner](public/image.png)
+![Sieve Banner](public/banner.png)
 
 ## Table of Contents 📑
 
@@ -32,8 +32,8 @@ Sieve is designed to be a comprehensive and user-friendly platform where users c
 ## Tech Stack 🛠️
 
 - **Frontend**: Next.js, TypeScript
-- **Backend**: Next.js
-- **Database**: Supabase
+- **Backend**: Supabase, Next.js Server Actions
+- **Database**: Postgres
 - **Validation**: Zod
 
 ## Installation 📥
@@ -73,7 +73,7 @@ Once the development server is running, you can:
 - **Rate & Review**: Provide ratings and reviews to share your feedback.
 - **Contribute**: Add new playlists to help the community grow.
 
-![Sieve Screenshot](public/sieve-how-it-works.png)
+![Sieve Screenshot](public/playlist.png)
 
 ## Contributing 🤝
 
@@ -114,16 +114,17 @@ To add a new playlist, please follow these steps:
 2. Add your playlist details in the following format:
 
     ```json
-    {
+      {
       "id": 1,
-      "name": "Ayaan Shaikh",
-      "playlist_link": "https://www.youtube.com/watch?v=BCQHnlnPusY&list=PLRqwX-V7Uu6ZF9C0YMKuns9sLDzK6zoiV",
-      "summary": "Beginner friendly Git & Github tutorial.",
-      "title": "Git & Github",
-      "category": "Git & Github",
-      "user_profile_link": "https://github.com/Ayaanshaikh90",
-      "user_image": "https://avatars.githubusercontent.com/u/91403599?v=4"
+      "name": "Anas Khan",
+      "playlist_link": "https://www.youtube.com/playlist?list=PLIY8eNdw5tW_7-QrsY_n9nC0Xfhs1tLEK",
+      "summary": "All the concepts, algorithms and protocols related to Network Security which you as an IT student will need the most.",
+      "title": "Network Security",
+      "category": "Cyber Security",
+      "user_profile_link": "https://github.com/anaskhan28",
+      "user_Image": "https://avatars.githubusercontent.com/u/87796038?s=96&v=4"
     }
+  
     ```
 
 3. Save the file and commit your changes.
