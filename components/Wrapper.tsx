@@ -29,10 +29,12 @@ const ClientSideSearchWrapper = ({ initialData }: Props) => {
       (filterTerm === 'All' || item.playlist_category === filterTerm)
     );
     setFilteredData(filtered);
+    
   }, [debouncedSearchTerm, filterTerm, initialData]);
 
   const handleSearch = (term: string) => {
     setSearchTerm(term);
+  
   };
 
   const handleFilter = (term: string) => {
@@ -52,7 +54,8 @@ const ClientSideSearchWrapper = ({ initialData }: Props) => {
           ))}
         </div>
       ) : (
-        <div className='flex justify-center items-center h-screen w-full'>
+        <div className='flex flex-col gap-7 justify-center items-center p-8'>
+          <p className='w-full text-center text-md md:text-xl text-gray-100'>No Playlist Found </p>
           <Image className='' src="/not-found.svg" alt='not-found' width={150} height={150}/>
         </div>
       )}

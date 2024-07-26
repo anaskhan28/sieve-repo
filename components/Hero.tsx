@@ -3,7 +3,6 @@ import React from 'react';
 import Image from 'next/image';
 import Background from '@/public/logos.svg'
 import Link from 'next/link';
-import { BackgroundBeams } from "./ui/background-beams";
 import {ArrowUpRight} from 'lucide-react'
 import getUserData from '@/app/actions/getUserData';
 import TypingAnimation from './typing-animation';
@@ -15,7 +14,6 @@ const userData = await getUserData();
 
   return (
     <section className="bg-[#12121b] relative  min-h-screen flex flex-col items-center justify-center">
-    {/* <BackgroundBeams className='overflow-hidden'/> */}
 <main className="w-full relative z-10 py-12 md:py-16 lg:py-20">
         <div className="container gap-4 flex flex-col items-center mx-auto px-4 md:px-6 text-center">
           <span className='text-[#A799FF] font-bold text-xl mb-6 text-center'>Welcome to the Sieve</span>

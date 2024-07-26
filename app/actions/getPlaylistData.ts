@@ -17,19 +17,11 @@ const getPlaylistData = async (query?: string, filter?: string): Promise<Playlis
         .from('playlistsInfo')
         .select('*');
 
-    if (query) {
-        queryBuilder = queryBuilder.ilike('playlist_title', `%${query}%`);
-    }
-
-    if (filter) {
-        queryBuilder = queryBuilder.ilike('playlist_category', `%${filter}%`);
-    }
-
     // Add sorting if needed
     queryBuilder = queryBuilder.order('inserted_at', { ascending: true });
 
     // Limit the results
-    queryBuilder = queryBuilder.limit(20);
+    // queryBuilder = queryBuilder.limit(20);
 
     const { data, error } = await queryBuilder;
 
