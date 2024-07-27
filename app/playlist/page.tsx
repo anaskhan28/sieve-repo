@@ -13,7 +13,7 @@ type Props = {
 
 const Playlist = async ({ searchParams }: { searchParams: Props }) => {
   const userData = await getUserData();
-  
+
   if (!userData) {
     redirect('/signup');
   }
@@ -32,7 +32,7 @@ const Playlist = async ({ searchParams }: { searchParams: Props }) => {
 
   return (
     <div className='bg-[#0E0E0E] w-full min-h-screen'>
-      <div className='container p-4 flex flex-col justify-center items-center py-16'>
+      <div className='container px-4 flex flex-col justify-center items-center pb-16'>
         <ClientSideSearchWrapper initialData={enrichedPlaylistData} />
       </div>
     </div>

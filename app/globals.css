@@ -1,35 +1,49 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-  :root {
-    --foreground-rgb: 0, 0, 0;
-    --background-start-rgb: 214, 219, 220;
-    --background-end-rgb: 255, 255, 255;
-  }
-  body{
-    background:#12121b;
 
-  }
-  .hero-background {
-    background: radial-gradient(circle, rgba(62,24,119,1) 0%, rgba(34,0,102,1) 100%);
-  }
-  
-  .tagline{
-   
-      font-family: var(--font-tenor_sans), sans-serif;
-  
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-tenor_sans), sans-serif;
-  }
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
 
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
+body {
+  background: #12121b;
+
+}
+
+.hero-background {
+  background: radial-gradient(circle, rgba(62, 24, 119, 1) 0%, rgba(34, 0, 102, 1) 100%);
+}
+
+.tagline {
+
+  font-family: var(--font-tenor_sans), sans-serif;
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-tenor_sans), sans-serif;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .no-scrollbar {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.cropedImage {
+  clip-path: polygon(0 13%, 100% 13%, 100% 86%, 0 87%);
 }

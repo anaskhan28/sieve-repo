@@ -43,13 +43,13 @@ const ClientSideSearchWrapper = ({ initialData }: Props) => {
 
   return (
     <>
-      <div className=' sticky top-0 z-10 py-5 bg-[#0e0e0e] w-full  grid justify-items-center'>
+      <div className=' sticky top-0 z-10 py-5 bg-[#0e0e0e] gap-4 w-full grid justify-items-center'>
         <Search onSearch={handleSearch} />
         <Filter onFilter={handleFilter} />
       </div>
 
       {filteredData.length > 0 ? (
-        <div className='container px-1 sm:px-auto grid gap-10 sm:gap-y-20 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10'>
+        <div className='container px-1 sm:px-auto grid gap-x-7 gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-5 sm:px-5'>
           {filteredData.map(playlist => (
             <PlaylistCard key={playlist.id} {...playlist} />
           ))}
@@ -60,8 +60,6 @@ const ClientSideSearchWrapper = ({ initialData }: Props) => {
           <Image className='' src="/not-found.svg" alt='not-found' width={150} height={150} />
         </div>
       )}
-
-
     </>
   );
 };
