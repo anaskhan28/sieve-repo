@@ -4,11 +4,12 @@ import { ChevronRight } from 'lucide-react';
 import { ChevronLeft } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import playlists from '@/playlist.json'
-type Props = {
-  onFilter: (filter: string) => void;
-}
-const filterByCategory = Array.from(new Set(playlists.map((playlist) => playlist.category)));
 
+type Props = {
+    onFilter: (filter: string) => void;
+}
+
+const filterByCategory = ["All", ...Array.from(new Set(playlists.map((playlist) => playlist.category)))];
 
 const Filter = ({ onFilter }: Props) => {
     const [activeArrow, setActiveArrow] = useState<'left' | 'right' | null>(null);
@@ -19,7 +20,7 @@ const Filter = ({ onFilter }: Props) => {
     const handleScroll = useCallback((direction: 'left' | 'right') => {
         setActiveArrow(direction);
         setTimeout(() => setActiveArrow(null), 300);
-        
+
         if (containerRef.current) {
             const container = containerRef.current;
             const scrollAmount = container.clientWidth / 2;
@@ -36,10 +37,8 @@ const Filter = ({ onFilter }: Props) => {
         }
         setActiveButton("All")
         onFilter("All")
-        
-    }, [onFilter]);
 
-    
+    }, [onFilter]);
 
     const handleFilterClick = (filter: string) => {
         setActiveButton(filter);
@@ -47,31 +46,19 @@ const Filter = ({ onFilter }: Props) => {
     }
 
     return (
-        <div className='container hidden md:flex max-w-7xl p-8 overflow-hidden flex-row justify-center items-center gap-5'>
-            <ChevronLeft
-                onClick={() => handleScroll("left")}
-                className={`absolute left-12 ml-5 cursor-pointer p-2 rounded-sm text-center text-white ${activeArrow === 'left' ? 'bg-[#766FFA]' : 'bg-[#878787]'}`}
-                width={50}
-                height={50}
-            />
-            <div ref={containerRef} className='flex gap-5 cursor-pointer w-full justify-center items-center overflow-hidden'>
-                {filterByCategory.map((filter) => (
-                    <button 
-                        type='button' 
-                        className={`text-white cursor-pointer bg-[#17191A] border border-[#555454] rounded-lg p-4 text-center w-60 whitespace-nowrap ${activeButton === filter ? 'bg-[#766FFA]' : ''}`} 
+        <div ref={containerRef} className='hidden md:flex flex-wrap gap-3 pt-5 cursor-pointer w-full justify-center items-center'>
+            {filterByCategory.map((filter) => (
+                <>
+                    <button
+                        type='button'
+                        className={`text-white cursor-pointer rounded-md font-bold bg-[#3f3f3f]  p-1 px-3 text-center text-nowrap ${activeButton === filter ? 'bg-[#766FFA]' : ''}`}
                         key={filter}
                         onClick={() => handleFilterClick(filter)}
                     >
                         {filter}
                     </button>
-                ))}
-            </div>
-            <ChevronRight
-                onClick={() => handleScroll("right")}
-                className={`absolute right-12 mr-5 p-2 cursor-pointer rounded-sm text-center ${activeArrow === 'right' ? 'bg-[#766FFA]' : 'bg-[#878787]'} text-white`}
-                width={50}
-                height={50}
-            />
+                </>
+            ))}
         </div>
     )
 }

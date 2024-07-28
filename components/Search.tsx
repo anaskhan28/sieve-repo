@@ -21,15 +21,15 @@ export default function Search({ onSearch }: SearchProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex w-full max-w-xl items-center space-x-2">
-      <Input 
-        className="bg-transparent text-white"
+    <form onSubmit={handleSubmit} className="flex w-full sm:w-[600px] items-center relative">
+      <Input
+        className="bg-transparent text-white border border-gray-500 rounded-full placeholder:text-gray-500 focus:outline-none focus-visible:outline-none focus-visible:ring placeholder:text-base p-5 "
         name="query"
         type="text"
         placeholder="search any topic..."
         onChange={handleInputChange}
       />
-      <Button className="bg-[#756EF4] hover:bg-[#847fe1]" type="submit">Search</Button>
+      <Button className="bg-gray-500 h-full absolute right-0 rounded-full w-[100px] rounded-l-none hover:bg-[#847fe1]" type="submit">Search</Button>
     </form>
   )
 }
