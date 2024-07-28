@@ -18,7 +18,6 @@ Welcome to **Sieve**, an IMDB-like platform for discovering and rating the best 
 ## Project Overview 📝
 
 Sieve is designed to be a comprehensive and user-friendly platform where users can:
-
 - Discover curated YouTube playlists on various technical topics.
 - Rate and review playlists to provide feedback and help others find valuable content.
 - Contribute by adding new playlists and enhancing the platform’s content library.
@@ -42,30 +41,27 @@ Sieve is designed to be a comprehensive and user-friendly platform where users c
 To get a local copy up and running, follow these simple steps:
 
 1. **Clone the repository**:
-
-   ```bash
-   git clone https://github.com/anaskhan28/sieve-repo.git
-   cd sieve
-   ```
+    ```bash
+    git clone https://github.com/anaskhan28/sieve-repo.git
+    cd sieve
+    ```
 
 2. **Install dependencies**:
-
-   ```bash
-   npm install
-   ```
+    ```bash
+    npm install
+    ```
 
 3. **Set up environment variables**: Create a `.env` file in the root directory and add the necessary environment variables.
-
-   ```
-   NEXT_PUBLIC_SUPABASE_URL=your_supabase_uri
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-   YOUTUBE_API_KEY=your_youtube_api_key
-   ```
+    ```
+    NEXT_PUBLIC_SUPABASE_URL=your_supabase_uri
+    NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+    YOUTUBE_API_KEY=your_youtube_api_key
+    ```
 
 4. **Run the development server**:
-   ```bash
-   npm run dev
-   ```
+    ```bash
+    npm run dev
+    ```
 
 ## Usage 🚀
 
@@ -84,36 +80,31 @@ Once the development server is running, you can:
 We welcome contributions from the community! To contribute:
 
 1. **Fork the repository**:
-
-   - Click the "Fork" button on the top right corner of this repository.
+    - Click the "Fork" button on the top right corner of this repository.
 
 2. **Clone your fork**:
-
-   ```bash
-   git clone https://github.com/anaskhan28/sieve-repo.git
-   cd sieve
-   ```
+    ```bash
+    git clone https://github.com/anaskhan28/sieve-repo.git
+    cd sieve
+    ```
 
 3. **Create a new branch**:
-
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
+    ```bash
+    git checkout -b feature/your-feature-name
+    ```
 
 4. **Make your changes** and **commit**:
-
-   ```bash
-   git commit -m "Add your commit message"
-   ```
+    ```bash
+    git commit -m "Add your commit message"
+    ```
 
 5. **Push to the branch**:
-
-   ```bash
-   git push origin feature/your-feature-name
-   ```
+    ```bash
+    git push origin feature/your-feature-name
+    ```
 
 6. **Open a Pull Request**:
-   - Navigate to the original repository and click the "New Pull Request" button.
+    - Navigate to the original repository and click the "New Pull Request" button.
 
 ### Adding Playlists
 

@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import {ArrowUpRight} from 'lucide-react'
-import Link from 'next/link'
 
 const navigation = {
   connect: [
@@ -19,7 +18,7 @@ const navigation = {
     },
   ],
   company: [
-    { name: 'Guidelines', href: '/' },
+    { name: 'Guidelines', href: 'https://github.com/anaskhan28/sieve-repo' },
     { name: 'GitHub Repo', href: 'https://github.com/anaskhan28/sieve-repo' },
 
   ],
@@ -49,7 +48,7 @@ const Footer = () => {
             At Sieve, we believe in the collective wisdom of the tech community.
             </p>
             <div className="flex space-x-6 text-sm text-white dark:text-gray-300">
-              <div>Made with ❤️ by Abdus Salam.</div>
+              <div>Made with ❤️ by Anas Khan.</div>
             </div>
           </div>
           {/* Navigations */}
@@ -61,13 +60,14 @@ const Footer = () => {
               <div className="mt-6 space-y-4">
                 {navigation.connect.map((item) => (
                   <div key={item.name}>
-                    <Link
+                    <a
                       href={item.href}
+                      target="_blank"
                       rel="noreferrer"
                       className="text-sm leading-6 text-gray-500 hover:text-gray-200 dark:text-gray-600 hover:dark:text-gray-200"
                     >
                       {item.name}
-                    </Link>
+                    </a>
                   </div>
                 ))}
               </div>
@@ -80,13 +80,12 @@ const Footer = () => {
                 <div className="mt-6 space-y-4">
                   {navigation.company.map((item) => (
                     <div key={item.name}>
-                      <Link
-                      target='_blank'
+                      <a
                         href={item.href}
                         className="text-sm leading-6 flex gap-1 justify-center text-gray-500 hover:text-gray-200 dark:text-gray-600 hover:dark:text-gray-200"
                       >
                         {item.name} <ArrowUpRight/>
-                      </Link>
+                      </a>
                     </div>
                   ))}
                 </div>

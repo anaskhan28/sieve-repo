@@ -25,10 +25,10 @@ const PlaylistDetail = async ({
   params: { playlistId: string };
 }) => {
   const userData = await getUserData();
-
+  
   if (!userData) {
     redirect('/signup');
-  }
+  }  
 
   const dataPlaylist = await getPlaylistData();
   const ratings = await getRatings();
@@ -51,9 +51,9 @@ const PlaylistDetail = async ({
 
 
   return (
-    <div className="bg-[#0E0E0E] w-full py-5 md:pt-20 ">
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_.5fr]  px-3 sm:px-auto container gap-5">
-        <div className="w-full sm:px-3 flex flex-col">
+    <div className="bg-[#0E0E0E] w-full min-h-screen">
+      <div className="md:container mx-auto md:px-8 md:py-8 flex flex-col gap-14 md:gap-0 md:flex-row justify-between">
+        <div className="w-full max-w-3xl px-3 felx flex-col">
           <div className="relative">
             <Image
               src={selectedPlaylist.playlist_image}
@@ -62,10 +62,9 @@ const PlaylistDetail = async ({
               height={300}
               className="w-full object-fit mb-4 rounded-xl"
             />
-
             <div className="absolute inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center">
               <Link href={selectedPlaylist.playlist_url!} target="_blank">
-                <Image src="/play.svg" className="active:w-[50px] hover:w-[110px] transition-all ease-linear" alt="play" width={100} height={100} />
+                <Image src="/play.svg" alt="play" width={100} height={100} />
               </Link>
             </div>
           </div>
@@ -111,9 +110,9 @@ const PlaylistDetail = async ({
                   Created by
                 </h1>
                 <Link href={selectedPlaylist.user_profile_link!} target="_blank">
-                  <h1 className="text-sm md:text-lg text-white">
-                    {selectedPlaylist.user_name}
-                  </h1>
+                <h1 className="text-sm md:text-lg text-white">
+                  {selectedPlaylist.user_name}
+                </h1>
                 </Link>
               </div>
               <p className="text-white text-sm bg-[#3F3F3F] md:p-4 w-42 p-2 text-start -ml-16 md:w-full h-3/4 max-h-full md:-ml-12 rounded-lg ">
@@ -122,20 +121,18 @@ const PlaylistDetail = async ({
             </div>
           </div>
         </div>
-
-        <div className="grid gap-10 border-gray-100 border p-3 rounded-xl">
-          <h2 className="text-xl md:text-3xl pt-5 w-full text-white text-center ">
+        <div className="flex flex-col gap-4 px-2 md:px-6">
+          <h1 className="text-md md:text-xl w-2/3 self-center text-white text-center p-2 rounded-full border border-purple-400">
             Most Rated Playlists
-          </h2>
+          </h1>
 
           <div className="h-screen no-scrollbar overflow-y-scroll">
             <PlaylistCards
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-10"
+              className="grid grid-cols-1 gap-8"
               playlistData={sortedPlaylists}
             />
           </div>
         </div>
-
       </div>
     </div>
   );
