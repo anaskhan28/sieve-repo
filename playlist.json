@@ -238,5 +238,15 @@
     "category": "Data Structures",
     "user_profile_link": "https://github.com/Aaditya8C",
     "user_Image": "https://avatars.githubusercontent.com/Aaditya8C"
+  },
+  {
+    "id": 25,
+    "name": "Muiz Zatam",
+    "playlist_link": "https://youtube.com/playlist?list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU&si=0shh4wNGI8tkrLnG",
+    "summary": "Stanford's CS-229 expects more than just learning from you! Taught by few of the best professors in the field such as Andrew Ng, this playlist will take the gaps in your ML Theory and will set you apart from the mainstream. With that being said, ML is a vast subject and demands a great deal of focus. You can't learn anything without a motive. This course is a theoretical way of understanding ML which is a skill that most beginners lack. So, with little to no implementation - the aim of the course is essentially to guide you concisely upon the things that happen under the hood. A personal suggestion would be to follow along with the course along with an implementational guide.",
+    "title": "Stanford CS229: Machine Learning by Andrew Ng!",
+    "category": "Machine Learning",
+    "user_profile_link": "https://github.com/MuizZatam",
+    "user_Image": "https://avatars.githubusercontent.com/MuizZatam"
   }
 ]
