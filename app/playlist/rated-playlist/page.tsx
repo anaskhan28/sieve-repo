@@ -44,8 +44,8 @@ const RatedPlaylist = async () => {
     <div className='bg-[#0E0E0E] w-full min-h-screen '>
       {
         ratedPlaylistDetails.length>0 ? 
-        <div className='container mx-auto px-4 py-4 '>
-        <PlaylistCards className='grid grid-cols-1 md:grid-cols-3 gap-8' playlistData={ratedPlaylistDetails} />
+        <div className='container mx-auto px-4 py-4 mb-10 md:mb-0'>
+        <PlaylistCards className='grid grid-cols-1 md:grid-cols-3 gap-8 ' playlistData={ratedPlaylistDetails} />
        </div>
        :
        (

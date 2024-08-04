@@ -12,6 +12,7 @@ import PlaylistCards from "@/components/PlaylistCards";
 import getUserData from "@/app/actions/getUserData";
 import { redirect } from "next/navigation";
 import { PlaylistType } from "@/types/Types";
+import Filter from "@/components/Filter";
 
 
 type EnrichedPlaylistType = PlaylistType & {
@@ -52,17 +53,16 @@ const PlaylistDetail = async ({
 
   return (
     <div className="bg-[#0E0E0E] w-full min-h-screen">
-      <div className="md:container mx-auto md:px-8 md:py-8 flex flex-col gap-14 md:gap-0 md:flex-row justify-between">
+      <div className="md:container mx-auto md:px-8 md:py-8  flex flex-col gap-14 md:gap-0 md:flex-row justify-between">
         <div className="w-full max-w-3xl px-3 felx flex-col">
-          <div className="relative">
+          <div className="block relative aspect-video mb-8">
             <Image
               src={selectedPlaylist.playlist_image}
               alt={selectedPlaylist.playlist_title}
-              width={300}
-              height={300}
-              className="w-full object-fit mb-4 rounded-xl"
+              fill
+              className="w-full object-cover mb-4 rounded-xl"
             />
-            <div className="absolute inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center">
+            <div className="absolute inset-0 bg-[#3a3a3a] bg-opacity-50 rounded-xl flex items-center justify-center">
               <Link href={selectedPlaylist.playlist_url!} target="_blank">
                 <Image src="/play.svg" alt="play" width={100} height={100} />
               </Link>
@@ -73,10 +73,10 @@ const PlaylistDetail = async ({
               {selectedPlaylist.playlist_title}
             </span>
 
-            <span className="flex text-[#D9D9D9] justify-center items-center text-sm md:text-xl gap-2">
+            <span className="flex text-[#D9D9D9] justify-center items-center text-sm md:text-base gap-2">
               <Star
                 fill="#FAC815"
-                className="text-yellow-300 h-5 w-5 md:h-6s md:w-6"
+                className="text-yellow-300 h-5 w-5"
                 width={25}
                 height={25}
               />
@@ -122,11 +122,11 @@ const PlaylistDetail = async ({
           </div>
         </div>
         <div className="flex flex-col gap-4 px-2 md:px-6">
-          <h1 className="text-md md:text-xl w-2/3 self-center text-white text-center p-2 rounded-full border border-purple-400">
+          {/* <h1 className="text-md md:text-xl w-2/3 self-center text-white text-center p-2 rounded-full border border-purple-400">
             Most Rated Playlists
-          </h1>
+          </h1> */}
 
-          <div className="h-screen no-scrollbar overflow-y-scroll">
+          <div className="h-screen no-scrollbar overflow-y-scroll mb-16">
             <PlaylistCards
               className="grid grid-cols-1 gap-8"
               playlistData={sortedPlaylists}
