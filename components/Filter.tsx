@@ -1,76 +1,78 @@
 'use client'
-import React, { useState, useRef, useEffect, useCallback } from 'react'
-import { ChevronRight } from 'lucide-react';
-import { ChevronLeft } from 'lucide-react';
+import React, { useState, useCallback } from 'react'
+import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import playlists from '@/playlist.json'
+import { motion } from 'framer-motion';
+
 type Props = {
   onFilter: (filter: string) => void;
 }
-const filterByCategory = Array.from(new Set(playlists.map((playlist) => playlist.category)));
 
+const filterByCategory = Array.from(new Set(playlists.map((playlist) => playlist.category)));
 
 const Filter = ({ onFilter }: Props) => {
     const [activeArrow, setActiveArrow] = useState<'left' | 'right' | null>(null);
-    const [activeButton, setActiveButton] = useState<string>("All");  // Set initial state to "All"
-    const containerRef = useRef<HTMLDivElement>(null);
+    const [activeButton, setActiveButton] = useState<string>("All");
+    const [currentIndex, setCurrentIndex] = useState(0);
+
     const path = usePathname();
 
-    const handleScroll = useCallback((direction: 'left' | 'right') => {
-        setActiveArrow(direction);
+    const nextSlide = useCallback(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % filterByCategory.length);
+        setActiveArrow('right');
         setTimeout(() => setActiveArrow(null), 300);
-        
-        if (containerRef.current) {
-            const container = containerRef.current;
-            const scrollAmount = container.clientWidth / 2;
-
-            container.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
-
-            setTimeout(() => {
-                if (direction === 'left' && container.scrollLeft === 0) {
-                    container.scrollTo({ left: container.scrollWidth, behavior: 'smooth' });
-                } else if (direction === 'right' && container.scrollLeft + container.clientWidth >= container.scrollWidth) {
-                    container.scrollTo({ left: 0, behavior: 'smooth' });
-                }
-            }, 300);
-        }
         setActiveButton("All")
         onFilter("All")
-        
     }, [onFilter]);
-
     
-
+    const prevSlide = useCallback(() => {
+        setCurrentIndex((prevIndex) => 
+            prevIndex === 0 ? filterByCategory.length - 1 : prevIndex - 1
+        );
+        setActiveArrow('left');
+        setTimeout(() => setActiveArrow(null), 300);
+        setActiveButton("All")
+        onFilter("All")
+    }, [onFilter]);
+    
     const handleFilterClick = (filter: string) => {
         setActiveButton(filter);
         onFilter(filter);
     }
 
     return (
-        <div className='container hidden md:flex max-w-7xl p-8 overflow-hidden flex-row justify-center items-center gap-5'>
+        <div className='container flex flex-row mt-2 mb-6 md:mb-0 md:mt-0 max-w-full md:max-w-7xl lg:max-w-8xl p-2 md:p-8 overflow-hidden items-center justify-between'>
             <ChevronLeft
-                onClick={() => handleScroll("left")}
-                className={`absolute left-12 ml-5 cursor-pointer p-2 rounded-sm text-center text-white ${activeArrow === 'left' ? 'bg-[#766FFA]' : 'bg-[#878787]'}`}
-                width={50}
-                height={50}
+                onClick={prevSlide}
+                className={`cursor-pointer  w-9 h-9  p-2 rounded-md text-center text-white ${activeArrow === 'left' ? 'bg-[#766FFA]' : 'bg-[#878787]'}`}
+                width={40}
+                height={40}
             />
-            <div ref={containerRef} className='flex gap-5 cursor-pointer w-full justify-center items-center overflow-hidden'>
-                {filterByCategory.map((filter) => (
-                    <button 
-                        type='button' 
-                        className={`text-white cursor-pointer bg-[#17191A] border border-[#555454] rounded-lg p-4 text-center w-60 whitespace-nowrap ${activeButton === filter ? 'bg-[#766FFA]' : ''}`} 
-                        key={filter}
+            <motion.div
+              style={{
+                maskImage:
+                  'linear-gradient(to left, transparent 0%, black 20%, black 80%, transparent 95%)',
+              }}
+                className='flex gap-3 md:gap-5 justify-center items-center overflow-hidden w-[calc(100%-80px)]'
+            >
+                {[...filterByCategory, ...filterByCategory, ...filterByCategory].map((filter, index) => (
+                    <motion.div
+                        key={`${filter}-${index}`}
+                        animate={{ x: -currentIndex * 120 }} // Adjust this value based on your button width
+                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                        className={`text-white cursor-pointer bg-[#17191A] border border-[#555454] rounded-lg p-2 md:p-3 text-center whitespace-nowrap text-sm md:text-base ${activeButton === filter ? 'bg-[#766FFA]' : ''}`} 
                         onClick={() => handleFilterClick(filter)}
                     >
                         {filter}
-                    </button>
+                    </motion.div>
                 ))}
-            </div>
+            </motion.div>
             <ChevronRight
-                onClick={() => handleScroll("right")}
-                className={`absolute right-12 mr-5 p-2 cursor-pointer rounded-sm text-center ${activeArrow === 'right' ? 'bg-[#766FFA]' : 'bg-[#878787]'} text-white`}
-                width={50}
-                height={50}
+                onClick={nextSlide}
+                className={`cursor-pointer w-9 h-9 p-2 rounded-md text-center ${activeArrow === 'right' ? 'bg-[#766FFA]' : 'bg-[#878787]'} text-white`}
+                width={40}
+                height={40}
             />
         </div>
     )

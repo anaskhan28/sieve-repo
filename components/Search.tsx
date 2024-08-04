@@ -21,9 +21,10 @@ export default function Search({ onSearch }: SearchProps) {
   }
 
   return (
+    <div className="flex w-full max-w-xl -mt-10 mb-2 md:mb-0 md:mt-0 items-center space-x-2">
     <form onSubmit={handleSubmit} className="flex w-full max-w-xl items-center space-x-2">
       <Input 
-        className="bg-transparent text-white"
+        className="bg-transparent text-white text-sm md:text-base"
         name="query"
         type="text"
         placeholder="search any topic..."
@@ -31,5 +32,6 @@ export default function Search({ onSearch }: SearchProps) {
       />
       <Button className="bg-[#756EF4] hover:bg-[#847fe1]" type="submit">Search</Button>
     </form>
+    </div>
   )
 }
