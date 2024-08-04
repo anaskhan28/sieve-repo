@@ -117,11 +117,11 @@ console.log(userProfile, 'userProfile')
       </nav>
     </nav>
       
-      <div className="fixed bottom-0 left-0 z-10 flex w-full items-center justify-around bg-[#12121b] py-3 shadow-t dark:bg-gray-950 lg:hidden">
+      <div className="fixed bottom-0 left-0 z-10 flex w-full items-center justify-around bg-[#12121b] bg-opacity-80 backdrop-filter backdrop-blur-lg py-3 dark:bg-gray-950 lg:hidden">
       
         <Link
           href="/playlist"
-          className="flex flex-col items-center gap-1 text-xs font-medium text-gray-500 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-50"
+         className={`${pathName == "/playlist"? "text-white": "text-gray-400"} flex flex-col items-center gap-1 text-xs font-medium text-gray-500 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-50`}
           prefetch={false}
         >
           
@@ -134,7 +134,7 @@ console.log(userProfile, 'userProfile')
             <>
             <Link
           href="/signup"
-          className="flex flex-col items-center gap-1 text-xs font-medium text-gray-500 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-50"
+         className={`${pathName == "/signup"? "text-white": "text-gray-400"} flex flex-col items-center gap-1 text-xs font-medium text-gray-500 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-50`}
           prefetch={false}
         >
 <CircleUserRound className="h-6 w-6" />
@@ -144,7 +144,7 @@ console.log(userProfile, 'userProfile')
 
         <Link
           href="/login"
-          className="flex flex-col items-center gap-1 text-xs font-medium text-gray-500 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-50"
+        className={`${pathName == "/login"? "text-white": "text-gray-400"} flex flex-col items-center gap-1 text-xs font-medium text-gray-500 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-50`}
           prefetch={false}
         >
           <LogIn className="h-6 w-6" />
@@ -157,7 +157,7 @@ console.log(userProfile, 'userProfile')
 
 <Link
           href="/playlist/rated-playlist"
-          className="flex flex-col items-center gap-1 text-xs font-medium text-gray-500 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-50"
+          className={`${pathName == "/playlist/rated-playlist"? "text-white": "text-gray-400"} flex flex-col items-center gap-1 text-xs font-medium text-gray-500 hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-50`}
           prefetch={false}
         >
 <Youtube className="h-6 w-6" />
