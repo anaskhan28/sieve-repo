@@ -26,24 +26,32 @@ const ClientSideSearchWrapper = ({ initialData }: Props) => {
   const [filteredData, setFilteredData] = useState(initialData);
   const [isLoading, setIsLoading] = useState(true);
 
+  
   useEffect(() => {
     setIsLoading(true);
-    const filtered = initialData.filter(item => 
-      item.playlist_title.toLowerCase().includes(debouncedSearchTerm.toLowerCase()) &&
-      (filterTerm === 'All' || item.playlist_category === filterTerm)
-    );
+    const filtered = initialData.filter(item => {
+      const searchTerms = debouncedSearchTerm.toLowerCase().split(' ');
+      const titleMatches = searchTerms.every(term => 
+        item.playlist_title.toLowerCase().includes(term)
+      );
+      const categoryMatches = searchTerms.every(term => 
+        item.playlist_category!.toLowerCase().includes(term)
+      );
+      const matchesSearch = titleMatches || categoryMatches;
+      const matchesFilter = filterTerm === 'All' || item.playlist_category === filterTerm;
+      return matchesSearch && matchesFilter;
+    });
     setFilteredData(filtered);
     setIsLoading(false);
-  }, [debouncedSearchTerm, filterTerm, initialData]);
-
-  const handleSearch = (term: string) => {
+   }, [debouncedSearchTerm, filterTerm, initialData]);
+   
+   const handleSearch = (term: string) => {
     setSearchTerm(term);
-  };
-
-  const handleFilter = (term: string) => {
+   };
+   
+   const handleFilter = (term: string) => {
     setFilterTerm(term);
-  };
-
+   };
   return (
     <>
       <Search onSearch={handleSearch} />
@@ -53,7 +61,7 @@ const ClientSideSearchWrapper = ({ initialData }: Props) => {
         <div className="flex justify-center items-center">
     <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-purple-500"></div>
   </div>      ) : filteredData.length > 0 ? (
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-8 mb-2 w-full max-w-7xl'>
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-8 mb-2 w-full max-w-7xl'>
           {filteredData.map(playlist => (
             <Suspense key={playlist.id} fallback={<Loading />}>
               <PlaylistCard {...playlist} />
