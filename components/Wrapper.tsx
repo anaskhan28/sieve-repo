@@ -53,7 +53,7 @@ const ClientSideSearchWrapper = ({ initialData }: Props) => {
         <div className="flex justify-center items-center">
     <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-purple-500"></div>
   </div>      ) : filteredData.length > 0 ? (
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-8 mb-2'>
           {filteredData.map(playlist => (
             <Suspense key={playlist.id} fallback={<Loading />}>
               <PlaylistCard {...playlist} />
