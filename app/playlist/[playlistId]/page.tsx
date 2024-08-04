@@ -54,8 +54,8 @@ const PlaylistDetail = async ({
   return (
     <div className="bg-[#0E0E0E] w-full min-h-screen">
       <div className="md:container mx-auto md:px-8 md:py-8  flex flex-col gap-14 md:gap-0 md:flex-row justify-between">
-        <div className="w-full max-w-3xl px-3 felx flex-col">
-          <div className="block relative aspect-video mb-8">
+        <div className="w-full max-w-3xl px-2 felx flex-col">
+          <div className="block relative aspect-video mb-8 mt-2 md:mt-0">
             <Image
               src={selectedPlaylist.playlist_image}
               alt={selectedPlaylist.playlist_title}
@@ -69,7 +69,7 @@ const PlaylistDetail = async ({
             </div>
           </div>
           <div className="flex flex-row justify-around md:justify-normal md:gap-8 items-center justify-self-auto md:pl-6 -mt-2 max-w-2xl">
-            <span className="text-sm md:text-xl self-start text-[#D9D9D9]">
+            <span className="text-sm md:text-lg w-1/2 md:w-2/3 max-w-sm text-pretty text-start text-[#D9D9D9]">
               {selectedPlaylist.playlist_title}
             </span>
 
@@ -115,7 +115,7 @@ const PlaylistDetail = async ({
                 </h1>
                 </Link>
               </div>
-              <p className="text-white text-sm bg-[#3F3F3F] md:p-4 w-42 p-2 text-start -ml-16 md:w-full h-3/4 max-h-full md:-ml-12 rounded-lg ">
+              <p className="text-white text-sm bg-[#3F3F3F] md:p-4 w-42 p-2 text-start -ml-16 md:w-full max-h-full md:-ml-12 rounded-lg ">
                 {selectedPlaylist.playlist_summary}
               </p>
             </div>

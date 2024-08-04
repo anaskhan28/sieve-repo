@@ -1,13 +1,13 @@
 // utils/getPlaylistCardData.ts
 import getRatings from '@/app/actions/getRatings';
 import getPlaylistData from '@/app/actions/getPlaylistData';
-
+import playlist from '@/playlist.json'
 export async function getPlaylistCardData() {
   const ratings = await getRatings();
-  const playlistData = await getPlaylistData();
+  const playlist = await getPlaylistData();
   
 
-  if (!ratings || !playlistData) return null;
+  if (!ratings || !playlist) return null;
 
-  return { ratings, playlistData };
+  return { ratings, playlist };
 }

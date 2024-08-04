@@ -22,9 +22,9 @@ const Playlist = async ({ searchParams }: { searchParams: Props }) => {
   const playlistCardData = await getPlaylistCardData();
   if (!playlistCardData) return null;
 
-  const { ratings, playlistData } = playlistCardData;
+  const { ratings, playlist } = playlistCardData;
 
-  const enrichedPlaylistData = playlistData.map(playlist => ({
+  const enrichedPlaylistData = playlist.map(playlist => ({
     ...playlist,
     playlistRating: ratings.find(r => r.playlist_id === playlist.id)?.rating || null,
     avgPlaylistRate: playlist.playlist_rates?.toFixed(1) || null
@@ -32,7 +32,7 @@ const Playlist = async ({ searchParams }: { searchParams: Props }) => {
 
   return (
     <div className='bg-[#0E0E0E] w-full min-h-screen'>
-      <div className='container p-4 flex flex-col justify-center items-center py-16'>
+      <div className='container p-2 md:p-4 flex flex-col justify-center items-center py-16'>
         <ClientSideSearchWrapper initialData={enrichedPlaylistData} />
       </div>
     </div>
