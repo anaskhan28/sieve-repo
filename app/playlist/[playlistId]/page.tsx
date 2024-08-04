@@ -126,7 +126,7 @@ const PlaylistDetail = async ({
             Most Rated Playlists
           </h1> */}
 
-          <div className="h-screen no-scrollbar overflow-y-scroll mb-16">
+          <div className="h-screen no-scrollbar overflow-y-scroll mb-16 md:mb-0">
             <PlaylistCards
               className="grid grid-cols-1 gap-8"
               playlistData={sortedPlaylists}
