@@ -30,8 +30,8 @@ const Rating: React.FC<RatingProps> = ({ initialRating = 0, onChange, readOnly =
           key={star}
           className={`w-7 h-7 cursor-pointer ease-linear  ${
             (hover || rating) >= star 
-              ? 'text-yellow-400 fill-yellow-400' 
-              : 'text-gray-300'
+              ? 'text-[#5899ed] fill-[#5899ed]' 
+              : 'text-gray-400'
           } ${readOnly ? 'cursor-default' : ''}`}
           onClick={() => handleRatingChange(star)}
           onMouseEnter={() => !readOnly && setHover(star)}

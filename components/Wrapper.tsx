@@ -53,7 +53,7 @@ const ClientSideSearchWrapper = ({ initialData }: Props) => {
         <div className="flex justify-center items-center">
     <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-purple-500"></div>
   </div>      ) : filteredData.length > 0 ? (
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-8 mb-2'>
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-8 mb-2 w-full max-w-7xl'>
           {filteredData.map(playlist => (
             <Suspense key={playlist.id} fallback={<Loading />}>
               <PlaylistCard {...playlist} />
@@ -62,7 +62,7 @@ const ClientSideSearchWrapper = ({ initialData }: Props) => {
         </div>
       ) : (
         <div className='flex flex-col gap-7 justify-center items-center p-8'>
-          <p className='w-full text-center text-md md:text-xl text-gray-100'>No Playlist Found </p>
+          <p className='w-full text-center text-md  text-gray-100'>No Playlist Found </p>
           <Image className='' src="/not-found.svg" alt='not-found' width={150} height={150}/>
         </div>
       )}
