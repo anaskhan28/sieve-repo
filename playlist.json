@@ -253,7 +253,7 @@
     "id": 26,
     "name": "Anas Khan",
     "playlist_link": "https://youtu.be/wSHwm29QJzI?si=cXqf7yj0Kn-UBSMk",
-    "summary": "This tutorial guides you through building a full-stack SaaS app for collecting website feedback, featuring an embeddable widget and admin dashboard. It covers essential concepts like web components, authentication, database operations, TypeScript, and NextJS, ensuring a comprehensive learning experience.",
+    "summary": "This tutorial guides you through building a full-stack SaaS app for collecting website",
     "title": "Build a SaaS Application with NextJs",
     "category": "Projects",
     "user_profile_link": "https://github.com/MuizZatam",
