@@ -260,7 +260,7 @@
     "user_Image": "https://avatars.githubusercontent.com/anaskhan28"
   },
      {
-    "id": 26,
+    "id": 27,
     "name": "Anas Khan",
     "playlist_link": "https://youtube.com/playlist?list=PLinedj3B30sDby4Al-i13hQJGQoRQDfPo&si=JJhgG2qb94feCXNn",
     "summary": "It includes working with Node.js modules, creating web servers and APIs using the Express framework, and using MongoDB for data storage. The course also covers server-side rendering with EJS, authentication and authorization with JWT tokens, advanced patterns like MVC, and building servers with Express and TypeScript, among other topics.",
