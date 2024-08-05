@@ -49,7 +49,7 @@ def check_youtube_links(playlists):
 def main():
     errors = []
     try:
-        playlists = load_playlists('../../playlist.json')
+        playlists = load_playlists('/playlist.json')
         validate_schema(playlists)
     except json.JSONDecodeError as e:
         errors.append(f"Invalid JSON format: {str(e)}")
