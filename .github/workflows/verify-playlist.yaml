@@ -3,7 +3,7 @@ name: Verify Playlist Submission
 on:
   pull_request:
     paths:
-      - 'playlist.json'  # Adjust this path if your file is named differently
+      - 'playlists.json'
 
 jobs:
   verify:
@@ -22,4 +22,23 @@ jobs:
           pip install jsonschema requests
       
       - name: Run verification script
+        id: verify
         run: python .github/scripts/verify_playlist.py
+        continue-on-error: true
+
+      - name: Sieve Manager
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const output = `${{ steps.verify.outputs.result }}`;
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.name,
+              body: output
+            })
+
+      - name: Check verification result
+        if: steps.verify.outcome != 'success'
+        run: exit 1

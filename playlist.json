@@ -182,10 +182,10 @@
   {
     "id": 19,
     "name": "Anas Khan",
-    "playlist_link": "https://www.youtube.com/playlist?list=PL4-IK0AVhVjOSNeNSB0hAVMmRB102o47u",
-    "summary": "Comprehensive blockchain course for beginners by the Web3 Foundation. Covers fundamental concepts, cryptography, and blockchain architecture. Guides learners through the process of building their own blockchain from scratch.",
-    "title": "Blockchain Fundamentals",
-    "category": "Blockchain",
+    "playlist_link": "https://youtu.be/5r25Y9Vg2P4?si=TndKCWnyHzYM6bmM",
+    "summary": "It follows the react best practices for React development, emphasizing the importance of avoiding magic values, maintaining a clear folder structure, creating components thoughtfully, and minimizing unnecessary markup.",
+    "title": "React Best Practices",
+    "category": "Frontend Development",
     "user_profile_link": "https://github.com/anaskhan28",
     "user_Image": "https://avatars.githubusercontent.com/anaskhan28"
   },
