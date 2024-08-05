@@ -5,6 +5,7 @@ import Image from 'next/image'
 import NameLogo from '@/public/name.png'
 import useSupabaseClient from '@/utils/supabase/client';
 import {User} from '@supabase/supabase-js'
+
 import {
   Avatar,
   AvatarFallback,

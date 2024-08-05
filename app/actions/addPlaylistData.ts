@@ -24,29 +24,23 @@ const addOrUpdatePlaylistData = async (): Promise<{ upserted: PlaylistType[], sk
     return null;
   }
 
-  // First, fetch all existing playlist URLs from the database
+  // Fetch all existing playlists from the database
   const { data: existingPlaylists, error: fetchError } = await supabase
     .from('playlistsInfo')
-    .select('playlist_url');
+    .select('*');
 
   if (fetchError) {
     console.error('Error fetching existing playlists:', fetchError);
     return null;
   }
 
-  const existingUrls = new Set(existingPlaylists.map(p => p.playlist_url));
-
-  // Check if there are any new playlists in the JSON file
-  const newPlaylists = (playlists as JsonPlaylist[]).filter(p => !existingUrls.has(p.playlist_link));
-
-  if (newPlaylists.length === 0) {
-    console.log("No new playlists to add. Data is up to date.");
-    return { upserted: [], skipped: playlists.length };
-  }
+  const existingPlaylistMap = new Map(existingPlaylists.map(p => [p.playlist_id, p]));
 
   const playlistsToUpsert: PlaylistType[] = [];
+  let skippedCount = 0;
 
-  for (const playlist of newPlaylists) {
+  for (const playlist of playlists as JsonPlaylist[]) {
+    const existingPlaylist = existingPlaylistMap.get(playlist.id);
     const thumbnailUrl = await getThumbnailUrl(playlist.playlist_link);
 
     const playlistData: PlaylistType = {
@@ -61,10 +55,19 @@ const addOrUpdatePlaylistData = async (): Promise<{ upserted: PlaylistType[], sk
       user_profile_image_link: playlist.user_Image
     };
 
-    playlistsToUpsert.push(playlistData);
+    if (!existingPlaylist || hasChanges(existingPlaylist, playlistData)) {
+      playlistsToUpsert.push(playlistData);
+    } else {
+      skippedCount++;
+    }
   }
 
-  // Upsert new playlists
+  if (playlistsToUpsert.length === 0) {
+    console.log("No playlists to add or update. Data is up to date.");
+    return { upserted: [], skipped: skippedCount };
+  }
+
+  // Upsert playlists
   const { error: upsertError } = await supabase
     .from('playlistsInfo')
     .upsert(playlistsToUpsert, { onConflict: 'playlist_id' });
@@ -74,7 +77,17 @@ const addOrUpdatePlaylistData = async (): Promise<{ upserted: PlaylistType[], sk
     return null;
   }
 
-  return { upserted: playlistsToUpsert, skipped: playlists.length - newPlaylists.length };
+  return { upserted: playlistsToUpsert, skipped: skippedCount };
+}
+
+function hasChanges(existing: PlaylistType, updated: PlaylistType): boolean {
+  return Object.keys(updated).some(key => {
+    if (key === 'playlist_image') {
+      // Skip comparison for playlist_image as it's dynamically fetched
+      return false;
+    }
+    return existing[key as keyof PlaylistType] !== updated[key as keyof PlaylistType];
+  });
 }
 
 export default addOrUpdatePlaylistData;

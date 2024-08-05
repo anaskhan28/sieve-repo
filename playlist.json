@@ -3,227 +3,227 @@
     "id": 1,
     "name": "Faraz",
     "playlist_link": "https://www.youtube.com/watch?v=T6atrhxLRkI&list=PLlHtucAD9KT33e6ScNCtgVPS5kXlLOu0O&pp=iAQB",
-    "summary": "Basics to Design a Tech App",
+    "summary": "This playlist covers the fundamentals of UX and UI design for tech apps. It provides essential knowledge for beginners in the field of design. The content focuses on practical skills needed to design user-friendly applications.",
     "title": "Basics of UX, UI Design",
     "category": "UI UX Design",
     "user_profile_link": "https://github.com/ahmedfarazzz",
-    "user_Image": "https://avatars.githubusercontent.com/u/109382577?v=4"
+    "user_Image": "https://avatars.githubusercontent.com/ahmedfarazzz"
   },
   {
     "id": 2,
     "name": "Faraz",
     "playlist_link": "https://www.youtube.com/watch?v=ajdRvxDWH4w&list=PLGjplNEQ1it_oTvuLRNqXfz_v_0pq6unW",
-    "summary": "Learn basics of Javascript",
+    "summary": "A comprehensive JavaScript tutorial suitable for beginners. Covers fundamental concepts and progresses to advanced topics. Ideal for those looking to build a strong foundation in JavaScript programming.",
     "title": "Basics to Adcance Javascript - Beginner's Guide",
     "category": "Frontend Development",
     "user_profile_link": "https://github.com/ahmedfarazzz",
-    "user_Image": "https://avatars.githubusercontent.com/u/109382577?v=4"
+    "user_Image": "https://avatars.githubusercontent.com/ahmedfarazzz"
   },
   {
     "id": 3,
     "name": "Faraz",
     "playlist_link": "https://www.youtube.com/watch?v=WZQYt5HZ0-E&list=PLDtHAiqIa4wa5MBbE_XDoqY51sAkQnkjt&pp=iAQB",
-    "summary": "Design Crash Course for for Designers looking for career in Design",
+    "summary": "An intensive course for aspiring designers seeking a career in design. Covers essential design principles, tools, and techniques. Provides practical insights and industry-relevant skills for design professionals.",
     "title": "Design Crash Course - ABNUX",
     "category": "UI UX Design",
     "user_profile_link": "https://github.com/ahmedfarazzz",
-    "user_Image": "https://avatars.githubusercontent.com/u/109382577?v=4"
+    "user_Image": "https://avatars.githubusercontent.com/ahmedfarazzz"
   },
   {
     "id": 4,
     "name": "Faraz",
     "playlist_link": "https://www.youtube.com/watch?v=vd1vRpoWC3M&list=PLW-zSkCnZ-gCq0DjkzY-YapCBEk0lA6lR",
-    "summary": "Adobe Illustrator Beginners to advance",
+    "summary": "A thorough tutorial on Adobe Illustrator, covering beginner to advanced levels. Teaches vector graphics creation and manipulation techniques. Offers practical projects and exercises to enhance illustration skills.",
     "title": "Adobe Illustrator - GFX Mentor ",
     "category": "UI UX Design",
     "user_profile_link": "https://github.com/ahmedfarazzz",
-    "user_Image": "https://avatars.githubusercontent.com/u/109382577?v=4"
+    "user_Image": "https://avatars.githubusercontent.com/ahmedfarazzz"
   },
   {
     "id": 5,
     "name": "Faraz",
     "playlist_link": "https://www.youtube.com/watch?v=Xv8JBXPgeI8&list=PLW-zSkCnZ-gD8OcjTPu-u_Rxl9-kI9Xqr",
-    "summary": "Adobe After Effects Beginners to advance",
+    "summary": "Comprehensive guide to Adobe After Effects from beginner to advanced levels. Covers motion graphics, visual effects, and animation techniques. Includes practical projects to build a strong portfolio in video post-production.",
     "title": "Adobe After Effects - GFX Mentor",
     "category": "UI UX Design",
     "user_profile_link": "https://github.com/ahmedfarazzz",
-    "user_Image": "https://avatars.githubusercontent.com/u/109382577?v=4"
+    "user_Image": "https://avatars.githubusercontent.com/ahmedfarazzz"
   },
   {
     "id": 6,
     "name": "Faraz",
     "playlist_link": "https://www.youtube.com/watch?v=aVCz8pEJwTk&list=PLW-zSkCnZ-gDRQxW05I3nhwE6F25Lr98Q&pp=iAQB",
-    "summary": "Adobe Premiere Pro - Advance",
+    "summary": "Advanced-level course on Adobe Premiere Pro for video editing. Focuses on professional-grade techniques and workflows. Covers color grading, audio editing, and advanced effects for high-quality video production.",
     "title": "Adobe Premiere Pro - GFX Mentor",
     "category": "UI UX Design",
     "user_profile_link": "https://github.com/ahmedfarazzz",
-    "user_Image": "https://avatars.githubusercontent.com/u/109382577?v=4"
+    "user_Image": "https://avatars.githubusercontent.com/ahmedfarazzz"
   },
   {
     "id": 7,
     "name": "Ayaan Shaikh",
     "playlist_link": "https://www.youtube.com/playlist?list=PLC3y8-rFHvwjOKd6gdf4QtV1uYNiQnruI",
-    "summary": "Next.js 14 Tutorial, detailed explanation of all the next.js updates and features.",
+    "summary": "Comprehensive tutorial covering Next.js 14 features and updates. Provides in-depth explanations of new functionalities and best practices. Ideal for developers looking to master the latest version of Next.js framework.",
     "title": "Next.js 14 Tutorial",
     "category": "Frontend Development",
     "user_profile_link": "https://github.com/Ayaanshaikh90",
-    "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
+    "user_Image": "https://avatars.githubusercontent.com/Ayaanshaikh90"
   },
   {
     "id": 8,
     "name": "Ayaan Shaikh",
     "playlist_link": "https://www.youtube.com/playlist?list=PLpPqplz6dKxW5ZfERUPoYTtNUNvrEebAR",
-    "summary": "ReactJS Course For Beginners, all the basic concepts are cleared in this tutorial",
+    "summary": "Beginner-friendly ReactJS course covering fundamental concepts. Includes hands-on examples and projects to reinforce learning. Builds a strong foundation for developing modern web applications with React.",
     "title": "ReactJS Course For Beginners",
     "category": "Frontend Development",
     "user_profile_link": "https://github.com/Ayaanshaikh90",
-    "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
+    "user_Image": "https://avatars.githubusercontent.com/Ayaanshaikh90"
   },
   {
     "id": 9,
     "name": "Ayaan Shaikh",
     "playlist_link": "https://www.youtube.com/playlist?list=PL4-IK0AVhVjOSNeNSB0hAVMmRB102o47u",
-    "summary": "It provides best explanation about css grid and flex porperty in simplified way.",
+    "summary": "Simplified explanations of CSS Grid and Flexbox properties. Offers practical tips and tricks for effective layout design. Helps developers master modern CSS layout techniques for responsive web design.",
     "title": "Grid tips and tricks",
     "category": "Frontend Development",
     "user_profile_link": "https://github.com/Ayaanshaikh90",
-    "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
+    "user_Image": "https://avatars.githubusercontent.com/Ayaanshaikh90"
   },
   {
     "id": 10,
     "name": "Ayaan Shaikh",
     "playlist_link": "https://www.youtube.com/playlist?list=PLZPZq0r_RZOMRMjHB_IEBjOW_ufr00yG1",
-    "summary": "JavaScript tutorial for beginners, all the concepts are explained with great knowledge.",
+    "summary": "Comprehensive JavaScript tutorial for beginners with in-depth concept explanations. Covers core language features, DOM manipulation, and basic algorithms. Includes practical exercises to reinforce learning and build coding skills.",
     "title": "JavaScript tutorial for beginners",
     "category": "Frontend Development",
     "user_profile_link": "https://github.com/Ayaanshaikh90",
-    "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
+    "user_Image": "https://avatars.githubusercontent.com/Ayaanshaikh90"
   },
   {
     "id": 11,
     "name": "Ayaan Shaikh",
     "playlist_link": "https://www.youtube.com/watch?v=BCQHnlnPusY&list=PLRqwX-V7Uu6ZF9C0YMKuns9sLDzK6zoiV",
-    "summary": "Beginner friendly Git & Github tutorial.",
+    "summary": "Beginner-friendly tutorial on Git and GitHub version control systems. Covers essential commands, workflows, and collaboration techniques. Provides practical examples for effective project management and team collaboration.",
     "title": "Git & Github",
     "category": "Backend Development",
     "user_profile_link": "https://github.com/Ayaanshaikh90",
-    "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
+    "user_Image": "https://avatars.githubusercontent.com/Ayaanshaikh90"
   },
   {
     "id": 12,
     "name": "Ayaan Shaikh",
     "playlist_link": "https://www.youtube.com/watch?v=iqYK2UgNv-w&list=PLLdz3KlabJv3U7Hdibr4S8VgM0-NQm-h2",
-    "summary": "Simplified React Course.",
+    "summary": "Simplified React course designed for easy understanding of core concepts. Covers components, state management, and hooks in a straightforward manner. Includes practical projects to apply learned concepts in real-world scenarios.",
     "title": "Simplified React Course",
     "category": "Frontend Development",
     "user_profile_link": "https://github.com/Ayaanshaikh90",
-    "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
+    "user_Image": "https://avatars.githubusercontent.com/Ayaanshaikh90"
   },
   {
     "id": 13,
     "name": "Ayaan Shaikh",
     "playlist_link": "https://www.youtube.com/playlist?list=PLbtI3_MArDOlJ4036mWiUKaQToUS8MZVu",
-    "summary": "Master Git & Github Series",
+    "summary": "Comprehensive series to master Git and GitHub version control. Covers advanced topics like branching strategies, merge conflict resolution, and CI/CD integration. Provides in-depth knowledge for efficient team collaboration and project management.",
     "title": "Git & Github",
     "category": "Backend Development",
     "user_profile_link": "https://github.com/Ayaanshaikh90",
-    "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
+    "user_Image": "https://avatars.githubusercontent.com/Ayaanshaikh90"
   },
   {
     "id": 14,
     "name": "Ayaan Shaikh",
     "playlist_link": "https://www.youtube.com/playlist?list=PLbtI3_MArDOnIIJxB6xFtpnhM0wTwz0x6",
-    "summary": "Animate anything with GSAP | Complete GSAP Course.",
+    "summary": "Comprehensive course on GSAP (GreenSock Animation Platform) for web animations. Covers basic to advanced animation techniques for creating engaging web experiences. Includes practical projects to master timeline animations, easing, and plugin usage.",
     "title": "GSAP Animation",
     "category": "Animation",
     "user_profile_link": "https://github.com/Ayaanshaikh90",
-    "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
+    "user_Image": "https://avatars.githubusercontent.com/Ayaanshaikh90"
   },
   {
     "id": 15,
     "name": "Ayaan Shaikh",
     "playlist_link": "https://www.youtube.com/playlist?list=PL0-xwzAwzllw_dvNfabV28-bpAEoMchd3",
-    "summary": "AWS Security Step by Step guide.",
+    "summary": "Step-by-step guide to AWS security best practices and implementations. Covers IAM, VPC security, encryption, and compliance in the AWS ecosystem. Provides hands-on examples for securing cloud infrastructure and applications.",
     "title": "AWS Security",
     "category": "Devops",
     "user_profile_link": "https://github.com/Ayaanshaikh90",
-    "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
+    "user_Image": "https://avatars.githubusercontent.com/Ayaanshaikh90"
   },
   {
     "id": 16,
     "name": "Ayaan Shaikh",
     "playlist_link": "https://www.youtube.com/playlist?list=PLhnVDNT5zYN97qxG4J_V_9Di8xT9_QDvZ",
-    "summary": "Next Authentication everything about NextAuth.",
+    "summary": "Comprehensive guide to NextAuth for authentication in Next.js applications. Covers setup, configuration, and implementation of various authentication providers. Includes advanced topics like custom callbacks, JWT handling, and database integration.",
     "title": "Next Auth",
     "category": "Frontend Development",
     "user_profile_link": "https://github.com/Ayaanshaikh90",
-    "user_Image": "https://avatars.githubusercontent.com/u/91403599?v=4"
+    "user_Image": "https://avatars.githubusercontent.com/Ayaanshaikh90"
   },
   {
     "id": 17,
     "name": "Anas Khan",
     "playlist_link": "https://youtu.be/f9Aje_cN_CY?si=XUUXhEABPmCTfAl-",
-    "summary": "One of the best video if you want to DSA with Python. It covers basics Data Structures like LinkedList, Arrays, Queue, Stack etc.",
+    "summary": "Comprehensive tutorial on Data Structures and Algorithms using Python. Covers fundamental data structures like LinkedList, Arrays, Queue, and Stack. Includes implementation details and practical examples for each data structure.",
     "title": "Data Structures and Algorithms using Python",
     "category": "Data Structures",
     "user_profile_link": "https://github.com/anaskhan28",
-    "user_Image": "https://avatars.githubusercontent.com/u/87796038?s=96&v=4"
+    "user_Image": "https://avatars.githubusercontent.com/anaskhan28"
   },
   {
     "id": 18,
     "name": "Anas Khan",
     "playlist_link": "https://www.youtube.com/playlist?list=PLB0Tybl0UNfaT1uq9anIjt_Ggo7mT6mMb",
-    "summary": "One of the best playlist for core javascript projects ideas. Must watch!",
+    "summary": "Curated playlist of core JavaScript project tutorials for hands-on learning. Covers a variety of practical projects to reinforce JavaScript concepts. Provides real-world application of JavaScript skills for portfolio building.",
     "title": "JavaScript Project Tutorials",
     "category": "Projects",
     "user_profile_link": "https://github.com/anaskhan28",
-    "user_Image": "https://avatars.githubusercontent.com/u/87796038?s=96&v=4"
+    "user_Image": "https://avatars.githubusercontent.com/anaskhan28"
   },
   {
     "id": 19,
     "name": "Anas Khan",
-    "playlist_link": "https://www.youtube.com/playlist?list=PLxVihxZC42nF_MCN9PTvZMIifRjx9cZ2J",
-    "summary": "The Web3 Foundation “Blockchain for Beginners” MOOC teaches blockchain from the very basics all the way up to building your own blockchain.",
+    "playlist_link": "https://www.youtube.com/playlist?list=PL4-IK0AVhVjOSNeNSB0hAVMmRB102o47u",
+    "summary": "Comprehensive blockchain course for beginners by the Web3 Foundation. Covers fundamental concepts, cryptography, and blockchain architecture. Guides learners through the process of building their own blockchain from scratch.",
     "title": "Blockchain Fundamentals",
     "category": "Blockchain",
     "user_profile_link": "https://github.com/anaskhan28",
-    "user_Image": "https://avatars.githubusercontent.com/u/87796038?s=96&v=4"
+    "user_Image": "https://avatars.githubusercontent.com/anaskhan28"
   },
   {
     "id": 20,
     "name": "Anas Khan",
     "playlist_link": "https://www.youtube.com/playlist?list=PLIY8eNdw5tW_7-QrsY_n9nC0Xfhs1tLEK",
-    "summary": "All the concepts, algorithms and protocols related to Network Security which you as an IT student will need the most.",
+    "summary": "Comprehensive course on Network Security for IT students. Covers essential concepts, algorithms, and protocols in cybersecurity. Provides practical knowledge for implementing secure network architectures.",
     "title": "Network Security",
     "category": "Cyber Security",
     "user_profile_link": "https://github.com/anaskhan28",
-    "user_Image": "https://avatars.githubusercontent.com/u/87796038?s=96&v=4"
+    "user_Image": "https://avatars.githubusercontent.com/anaskhan28"
   },
   {
     "id": 21,
     "name": "Swati Tiwari",
     "playlist_link": "https://www.youtube.com/watch?v=4s1Tcvm00pA&list=PL9gnSGHSqcnqfctdbCQKaw5oZ9Up2cmsq",
-    "summary": "This playlist is a complete knowledge of tree data structure and its implementation",
+    "summary": "In-depth tutorial on tree data structures and their implementations. Covers various types of trees, traversal algorithms, and advanced operations. Includes practical coding examples and problem-solving techniques using trees.",
     "title": "Data Structures and Algorithms using Python",
     "category": "Data Structures",
     "user_profile_link": "https://github.com/SwatiSTiwari",
-    "user_Image": "https://avatars.githubusercontent.com/u/108111880?s=400&u=bb2cce61eba8c90b5722ac4a1b6cfe92f9ddd120&v=4"
+    "user_Image": "https://avatars.githubusercontent.com/SwatiSTiwari"
   },
   {
     "id": 22,
     "name": "Swati Tiwari",
     "playlist_link": "https://www.youtube.com/watch?v=wm5gMKuwSYk&t=85s",
-    "summary": "It is one of the best video if you want to start with Next.js  ",
+    "summary": "Comprehensive beginner's guide to Next.js framework. Covers core concepts, routing, server-side rendering, and API routes. Includes practical examples for building modern web applications with Next.js.",
     "title": "Nextjs course for beginners",
     "category": "Frontend Development",
     "user_profile_link": "https://github.com/SwatiSTiwari",
-    "user_Image": "https://avatars.githubusercontent.com/u/108111880?s=400&u=bb2cce61eba8c90b5722ac4a1b6cfe92f9ddd120&v=4"
+    "user_Image": "https://avatars.githubusercontent.com/SwatiSTiwari"
   },
   {
     "id": 23,
     "name": "Aaditya Padte",
     "playlist_link": "https://www.youtube.com/playlist?list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn",
-    "summary": "Undoubtedly the best playlist for graphs and its all patterns. ",
+    "summary": "Comprehensive playlist covering graph algorithms and their patterns. Includes in-depth explanations of various graph traversal and problem-solving techniques. Provides implementation examples in both C++ and Java for better understanding.",
     "title": "Graphs (Cpp & Java)",
     "category": "Data Structures",
     "user_profile_link": "https://github.com/Aaditya8C",
@@ -233,7 +233,7 @@
     "id": 24,
     "name": "Aaditya Padte",
     "playlist_link": "https://www.youtube.com/playlist?list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY",
-    "summary": "Undoubtedly the best playlist for dynamic programming and its all patterns. ",
+    "summary": "Extensive playlist on dynamic programming and its various patterns. Covers fundamental to advanced DP concepts with detailed problem-solving approaches. Provides implementation examples in both C++ and Java for comprehensive learning.",
     "title": "DP Series (Cpp & Java)",
     "category": "Data Structures",
     "user_profile_link": "https://github.com/Aaditya8C",
@@ -244,7 +244,7 @@
     "name": "Muiz Zatam",
     "playlist_link": "https://youtube.com/playlist?list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU&si=0shh4wNGI8tkrLnG",
     "summary": "Stanford's CS-229 expects more than just learning from you! Taught by few of the best professors in the field such as Andrew Ng, this playlist will take the gaps in your ML Theory and will set you apart from the mainstream. With that being said, ML is a vast subject and demands a great deal of focus. You can't learn anything without a motive. This course is a theoretical way of understanding ML which is a skill that most beginners lack. So, with little to no implementation - the aim of the course is essentially to guide you concisely upon the things that happen under the hood. A personal suggestion would be to follow along with the course along with an implementational guide.",
-    "title": "Stanford CS229: Machine Learning by Andrew Ng!",
+    "title": "Machine Learning by Andrew Ng!",
     "category": "Machine Learning",
     "user_profile_link": "https://github.com/MuizZatam",
     "user_Image": "https://avatars.githubusercontent.com/MuizZatam"
