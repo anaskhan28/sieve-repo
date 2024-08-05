@@ -44,7 +44,7 @@ def check_youtube_links(playlists):
 
 def main():
     try:
-        playlists = load_playlists('../../playlist.json')
+        playlists = load_playlists('playlist.json')
         validate_schema(playlists)
         check_unique_links(playlists)
         check_summary_length(playlists)
