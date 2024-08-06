@@ -5,6 +5,7 @@ on:
     paths:
       - 'playlist.json'  # Make sure this matches your actual file name
 
+# Add this permissions block
 permissions:
   contents: read
   pull-requests: write
@@ -36,10 +37,10 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            console.log(context);
             const output = "${{ steps.verify.outputs.result }}";
             await github.rest.issues.createComment({
-              ...context.repo,
+              owner: context.repo.owner,
+              repo: context.repo.name,
               issue_number: context.issue.number,
               body: output
             });
