@@ -79,8 +79,8 @@ def main():
     else:
         message = "✅ Playlist verification passed! Your submission looks good."
     
-    # GitHub Actions output command
-    print(f"::set-output name=result::{message}")
+    with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
+        print(f'result={message}', file=fh)
 
 if __name__ == "__main__":
     main()
