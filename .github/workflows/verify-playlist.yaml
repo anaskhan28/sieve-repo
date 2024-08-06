@@ -32,7 +32,7 @@ jobs:
         run: python .github/scripts/verify_playlist.py
         continue-on-error: true
 
-      - name: Comment PR
+      - name: Sieve Manager
         uses: actions/github-script@v6
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
