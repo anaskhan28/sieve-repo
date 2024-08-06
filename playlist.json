@@ -268,5 +268,15 @@
     "category": "Backend Development",
     "user_profile_link": "https://github.com/anaskhan28",
     "user_Image": "https://avatars.githubusercontent.com/anaskhan28"
+  },
+    {
+    "id": 28,
+    "name": "Anas Khan",
+    "playlist_link": "https://www.youtube.com/playlist?list=PLyzOVJj3bHQuloKGG59rS43e29ro7I57J",
+    "summary": "This series covers crucial, often overlooked computing and software skills essential for computer science students and professionals. Topics include fundamental and advanced shell usage, data wrangling, version control with Git, text editing with vim, debugging and profiling, metaprogramming, and basics of security and cryptography.",
+    "title": "Advanced Shell Scripting and Computing Techniques",
+    "category": "Backend Development",
+    "user_profile_link": "https://github.com/anaskhan28",
+    "user_Image": "https://avatars.githubusercontent.com/anaskhan28"
   }
 ]
