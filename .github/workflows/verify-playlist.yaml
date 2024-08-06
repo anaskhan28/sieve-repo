@@ -3,7 +3,7 @@ name: Verify Playlist Submission
 on:
   pull_request:
     paths:
-      - 'playlists.json'
+      - 'playlist.json'
 
 jobs:
   verify:
