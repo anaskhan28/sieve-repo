@@ -3,11 +3,11 @@ name: Verify Playlist Submission
 on:
   pull_request:
     paths:
-      - 'playlist.json'  # Make sure this matches your actual file name
+      - 'playlist.json'
 
-# Add this permissions block
 permissions:
   contents: read
+  issues: write
   pull-requests: write
 
 jobs:
@@ -35,7 +35,7 @@ jobs:
       - name: Sieve Manager
         uses: actions/github-script@v6
         with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
+          github-token: ${{ secrets.PAT_TOKEN }}
           script: |
             const output = "${{ steps.verify.outputs.result }}";
             await github.rest.issues.createComment({
