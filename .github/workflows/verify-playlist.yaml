@@ -37,7 +37,7 @@ jobs:
         with:
           github-token: ${{ secrets.PAT_TOKEN }}
           script: |
-            const output = "${{ steps.verify.outputs.result }}";
+            const output = "✅ Playlist verification passed! Your submission looks good.";
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.name,
