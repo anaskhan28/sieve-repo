@@ -32,6 +32,10 @@ jobs:
         run: python .github/scripts/verify_playlist.py
         continue-on-error: true
 
+      - name: Get verification result
+        id: get-result
+        run: echo "result=$(grep -oP 'result=.*' $GITHUB_OUTPUT | cut -d'=' -f2-)" >> $GITHUB_ENV
+
       - name: Comment on PR (Success)
         if: steps.verify.outcome == 'success'
         uses: actions/github-script@v6
@@ -56,11 +60,12 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const output = process.env.GITHUB_OUTPUT ? process.env.GITHUB_OUTPUT.split('result=')[1] : "❌ Playlist verification failed.";
+            const output = process.env.result || "❌ Playlist verification failed.";
             const issueNumber = context.payload.pull_request.number;
             const owner = context.repo.owner;
             const repo = context.repo.repo;
             console.log(`Owner: ${owner}, Repo: ${repo}, Issue Number: ${issueNumber}`);
+            console.log(`Output: ${output}`);
             await github.rest.issues.createComment({
               owner: owner,
               repo: repo,
@@ -73,7 +78,7 @@ jobs:
           echo "Repository Owner: ${{ github.repository_owner }}"
           echo "Repository Name: ${{ github.event.repository.name }}"
           echo "Pull Request Number: ${{ github.event.pull_request.number }}"
-          
+
       - name: Set workflow status
         if: steps.verify.outcome == 'failure'
         run: exit 1
