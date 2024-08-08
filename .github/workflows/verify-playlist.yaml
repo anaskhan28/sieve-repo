@@ -60,8 +60,3 @@ jobs:
               body: output
             });
 
-      - name: Debug Information
-        run: |
-          echo "Owner: ${{ github.repository_owner }}"
-          echo "Repo: ${{ github.event.repository.name }}"
-          echo "Issue Number: ${{ steps.verify.outputs.issue_number }}"
