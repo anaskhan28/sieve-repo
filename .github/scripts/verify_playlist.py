@@ -70,7 +70,7 @@ def main():
         except ValueError as e:
             errors.append(str(e))
     
-    message = ""
+    # Create the message
     if errors:
         message = "❌ Playlist verification failed. Please address the following issues:\n\n"
         message += "\n".join(f"- {error}" for error in errors)
@@ -78,10 +78,9 @@ def main():
     else:
         message = "✅ Playlist verification passed! Your submission looks good."
     
-    # Sanitize and write result to result.txt
-    sanitized_message = message.replace('\n', '\\n').replace('\r', '')
+    # Write result to result.txt
     with open('result.txt', 'w') as fh:
-        fh.write(sanitized_message)
+        fh.write(message)
 
 if __name__ == "__main__":
     main()
