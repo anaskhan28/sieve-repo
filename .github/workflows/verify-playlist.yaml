@@ -41,7 +41,7 @@ jobs:
         if: steps.verify.outcome == 'success'  # Only run if verification passed
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}  # Ensure this is correct
+          github-token: ${{ secrets.SIEVE_TOKEN }}  # Ensure this is correct
           script: |
             const output = "✅ Playlist verification passed! Your submission looks good.";
             const issueNumber = context.payload.pull_request.number; // Use pull request number
