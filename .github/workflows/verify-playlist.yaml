@@ -43,9 +43,10 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}  # Ensure this is correct
           script: |
             const output = "✅ Playlist verification passed! Your submission looks good.";
+            const issueNumber = context.payload.pull_request.number; // Use pull request number
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.name,
-              issue_number: context.issue.number,
+              issue_number: issueNumber,
               body: output
             });
