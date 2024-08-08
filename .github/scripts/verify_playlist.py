@@ -1,6 +1,5 @@
 import json
 import jsonschema
-import requests
 import os
 
 def load_playlists(file_path):
