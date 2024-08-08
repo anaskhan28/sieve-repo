@@ -35,7 +35,6 @@ jobs:
         id: read-result
         run: |
           if [ -f result.txt ]; then
-            RESULT=$(<result.txt)
             echo "RESULT<<EOF" >> $GITHUB_ENV
             cat result.txt >> $GITHUB_ENV
             echo "EOF" >> $GITHUB_ENV
