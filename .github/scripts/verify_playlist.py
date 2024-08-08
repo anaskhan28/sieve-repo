@@ -38,7 +38,7 @@ def check_unique_links(playlists):
 
 def check_summary_length(playlists):
     for playlist in playlists:
-        if len(playlist["summary"].split()) < 20:  
+        if len(playlist["summary"].split()) < 20:
             raise ValueError(f"Summary too short for playlist ID {playlist['id']}. It should be at least 20 words long.")
 
 def check_youtube_links(playlists):
@@ -72,6 +72,7 @@ def main():
         except ValueError as e:
             errors.append(str(e))
     
+    message = ""
     if errors:
         message = "❌ Playlist verification failed. Please address the following issues:\n\n"
         message += "\n".join(f"- {error}" for error in errors)
