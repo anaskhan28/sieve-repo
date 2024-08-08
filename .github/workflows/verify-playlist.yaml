@@ -56,7 +56,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const output = "❌ Playlist verification failed. Please check your submission.";
+            const output = process.env.GITHUB_OUTPUT ? process.env.GITHUB_OUTPUT.split('result=')[1] : "❌ Playlist verification failed.";
             const issueNumber = context.payload.pull_request.number;
             const owner = context.repo.owner;
             const repo = context.repo.repo;
