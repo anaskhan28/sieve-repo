@@ -29,13 +29,17 @@ jobs:
 
       - name: Run verification script
         id: verify
-        run: |
-          python .github/scripts/verify_playlist.py
+        run: python .github/scripts/verify_playlist.py
 
-      - name: Capture verification result
-        id: capture-result
+      - name: Read verification result
+        id: read-result
         run: |
-          echo "RESULT=$(cat result.txt)" >> $GITHUB_ENV
+          if [ -f result.txt ]; then
+            RESULT=$(<result.txt)
+            echo "RESULT=$RESULT" >> $GITHUB_ENV
+          else
+            echo "RESULT=Verification script did not produce a result file." >> $GITHUB_ENV
+          fi
 
       - name: Comment on PR (Success)
         if: ${{ steps.verify.outcome == 'success' }}
@@ -47,7 +51,6 @@ jobs:
             const issueNumber = context.payload.pull_request.number;
             const owner = context.repo.owner;
             const repo = context.repo.repo;
-            console.log(`Owner: ${owner}, Repo: ${repo}, Issue Number: ${issueNumber}`);
             await github.rest.issues.createComment({
               owner: owner,
               repo: repo,
@@ -65,8 +68,6 @@ jobs:
             const issueNumber = context.payload.pull_request.number;
             const owner = context.repo.owner;
             const repo = context.repo.repo;
-            console.log(`Owner: ${owner}, Repo: ${repo}, Issue Number: ${issueNumber}`);
-            console.log(`Output: ${output}`);
             await github.rest.issues.createComment({
               owner: owner,
               repo: repo,
