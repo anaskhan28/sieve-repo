@@ -31,12 +31,11 @@ jobs:
         id: verify
         run: |
           python .github/scripts/verify_playlist.py
-        continue-on-error: true
 
       - name: Capture verification result
         id: capture-result
         run: |
-          echo "result=$(grep -oP 'result=.*' $GITHUB_OUTPUT | cut -d'=' -f2-)" >> $GITHUB_ENV
+          echo "result=$(cat result.txt)" >> $GITHUB_ENV
 
       - name: Comment on PR (Success)
         if: steps.verify.outcome == 'success'
