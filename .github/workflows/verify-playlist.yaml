@@ -38,8 +38,8 @@ jobs:
 
       - name: Debug Context Information
         run: |
-          echo "Repository Owner: ${{ github.repository_owner }}"
-          echo "Repository Name: ${{ github.event.repository.name }}"
+          echo "Repository Owner: ${{ github.repository.owner }}"
+          echo "Repository Name: ${{ github.repository.name }}"
           echo "Pull Request Number: ${{ github.event.pull_request.number }}"
       
       - name: Comment on PR (Success)
@@ -60,10 +60,26 @@ jobs:
               body: output
             });
 
+      - name: Comment on PR (Failure)
+        if: steps.verify.outcome == 'failure'
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const output = "❌ Playlist verification failed. Please check your submission.";
+            const issueNumber = context.payload.pull_request.number;
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            console.log(`Owner: ${owner}, Repo: ${repo}, Issue Number: ${issueNumber}`);
+            await github.rest.issues.createComment({
+              owner: owner,
+              repo: repo,
+              issue_number: issueNumber,
+              body: output
+            });
+
       - name: Debug Context Information
         run: |
           echo "Repository Owner: ${{ github.repository_owner }}"
           echo "Repository Name: ${{ github.event.repository.name }}"
           echo "Pull Request Number: ${{ github.event.pull_request.number }}"
-      
-
