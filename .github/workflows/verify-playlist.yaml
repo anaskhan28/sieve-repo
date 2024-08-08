@@ -32,10 +32,15 @@ jobs:
         run: python .github/scripts/verify_playlist.py
         continue-on-error: true
 
+      - name: Check verification result
+        if: steps.verify.outcome != 'success'
+        run: exit 1
+
       - name: Sieve Manager
+        if: steps.verify.outcome == 'success'  # Only run if verification passed
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}  # Ensure this is correct
           script: |
             const output = "✅ Playlist verification passed! Your submission looks good.";
             await github.rest.issues.createComment({
@@ -44,7 +49,3 @@ jobs:
               issue_number: context.issue.number,
               body: output
             });
-
-      - name: Check verification result
-        if: steps.verify.outcome != 'success'
-        run: exit 1
