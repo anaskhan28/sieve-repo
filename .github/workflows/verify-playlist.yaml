@@ -29,12 +29,14 @@ jobs:
 
       - name: Run verification script
         id: verify
-        run: python .github/scripts/verify_playlist.py
+        run: |
+          python .github/scripts/verify_playlist.py
         continue-on-error: true
 
-      - name: Get verification result
-        id: get-result
-        run: echo "result=$(grep -oP 'result=.*' $GITHUB_OUTPUT | cut -d'=' -f2-)" >> $GITHUB_ENV
+      - name: Capture verification result
+        id: capture-result
+        run: |
+          echo "result=$(grep -oP 'result=.*' $GITHUB_OUTPUT | cut -d'=' -f2-)" >> $GITHUB_ENV
 
       - name: Comment on PR (Success)
         if: steps.verify.outcome == 'success'
@@ -73,8 +75,6 @@ jobs:
               body: output
             });
 
-      - name: Debug Context Information
-        run: |
-          echo "Repository Owner: ${{ github.repository_owner }}"
-          echo "Repository Name: ${{ github.event.repository.name }}"
-          echo "Pull Request Number: ${{ github.event.pull_request.number }}";
+      - name: Set workflow status
+        if: steps.verify.outcome == 'failure'
+        run: exit 1
