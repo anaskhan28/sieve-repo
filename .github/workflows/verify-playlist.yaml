@@ -36,6 +36,7 @@ jobs:
         if: steps.verify.outcome != 'success'
         run: exit 1
 
+
       - name: Sieve Manager
         if: steps.verify.outcome == 'success'  # Only run if verification passed
         uses: actions/github-script@v6
@@ -50,3 +51,10 @@ jobs:
               issue_number: issueNumber,
               body: output
             });
+
+      - name: Sieve Manager
+        run: |
+          echo "Owner: ${{ github.repository_owner }}"
+          echo "Repo: ${{ github.event.repository.name }}"
+          echo "Issue Number: ${{ steps.verify.outputs.issue_number }}"
+
