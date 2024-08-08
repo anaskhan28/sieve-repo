@@ -34,7 +34,7 @@ jobs:
       - name: Read verification result
         id: read-result
         run: |
-          if [ -f result.txt ]; then
+          if [ -f result.txt ] then
             echo "RESULT<<EOF" >> $GITHUB_ENV
             cat result.txt >> $GITHUB_ENV
             echo "EOF" >> $GITHUB_ENV
