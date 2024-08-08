@@ -35,7 +35,7 @@ jobs:
       - name: Sieve Manager
         uses: actions/github-script@v6
         with:
-          github-token: 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
+          github-token: ${{ secrets.PAT_TOKEN }}
           script: |
             const output = "✅ Playlist verification passed! Your submission looks good.";
             await github.rest.issues.createComment({
