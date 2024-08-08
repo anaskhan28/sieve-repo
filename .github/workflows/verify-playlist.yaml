@@ -1,7 +1,7 @@
 name: Verify Playlist Submission
 
 on:
-  pull_request_target:
+  pull_request:
     paths:
       - 'playlist.json'
 
@@ -36,16 +36,34 @@ jobs:
         if: steps.verify.outcome != 'success'
         run: exit 1
 
-      - name: Sieve Manager
-        if: steps.verify.outcome == 'success'  # Only run if verification passed
+      - name: Debug Context Information
+        run: |
+          echo "Repository Owner: ${{ github.repository_owner }}"
+          echo "Repository Name: ${{ github.event.repository.name }}"
+          echo "Pull Request Number: ${{ github.event.pull_request.number }}"
+      
+      - name: Comment on PR (Success)
+        if: steps.verify.outcome == 'success'
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}  # Ensure this is correct
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const output = "✅ Playlist verification passed! Your submission looks good.";
+            const issueNumber = context.payload.pull_request.number;
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            console.log(`Owner: ${owner}, Repo: ${repo}, Issue Number: ${issueNumber}`);
             await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.name,
-              issue_number: context.issue.number,
+              owner: owner,
+              repo: repo,
+              issue_number: issueNumber,
               body: output
             });
+
+      - name: Debug Context Information
+        run: |
+          echo "Repository Owner: ${{ github.repository_owner }}"
+          echo "Repository Name: ${{ github.event.repository.name }}"
+          echo "Pull Request Number: ${{ github.event.pull_request.number }}"
+      
+
