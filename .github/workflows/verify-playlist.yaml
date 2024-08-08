@@ -60,3 +60,10 @@ jobs:
               body: output
             });
 
+      - name: Debug Context Information
+        run: |
+          echo "Repository Owner: ${{ github.repository_owner }}"
+          echo "Repository Name: ${{ github.event.repository.name }}"
+          echo "Pull Request Number: ${{ github.event.pull_request.number }}"
+      
+
