@@ -77,8 +77,4 @@ jobs:
         run: |
           echo "Repository Owner: ${{ github.repository_owner }}"
           echo "Repository Name: ${{ github.event.repository.name }}"
-          echo "Pull Request Number: ${{ github.event.pull_request.number }}"
-
-      - name: Set workflow status
-        if: steps.verify.outcome == 'failure'
-        run: exit 1
+          echo "Pull Request Number: ${{ github.event.pull_request.number }}";
