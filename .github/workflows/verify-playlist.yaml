@@ -35,10 +35,10 @@ jobs:
       - name: Capture verification result
         id: capture-result
         run: |
-          echo "result=$(cat result.txt)" >> $GITHUB_ENV
+          echo "RESULT=$(cat result.txt)" >> $GITHUB_ENV
 
       - name: Comment on PR (Success)
-        if: steps.verify.outcome == 'success'
+        if: ${{ steps.verify.outcome == 'success' }}
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -56,12 +56,12 @@ jobs:
             });
 
       - name: Comment on PR (Failure)
-        if: steps.verify.outcome == 'failure'
+        if: ${{ steps.verify.outcome == 'failure' }}
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const output = process.env.result || "❌ Playlist verification failed.";
+            const output = process.env.RESULT || "❌ Playlist verification failed.";
             const issueNumber = context.payload.pull_request.number;
             const owner = context.repo.owner;
             const repo = context.repo.repo;
@@ -75,5 +75,5 @@ jobs:
             });
 
       - name: Set workflow status
-        if: steps.verify.outcome == 'failure'
+        if: ${{ steps.verify.outcome == 'failure' }}
         run: exit 1
