@@ -26,7 +26,11 @@ def validate_schema(playlists):
             "required": ["id", "name", "playlist_link", "summary", "title", "category", "user_profile_link", "user_Image"]
         }
     }
-    jsonschema.validate(instance=playlists, schema=schema)
+    for idx, playlist in enumerate(playlists):
+        try:
+            jsonschema.validate(instance=playlist, schema=schema['items'])
+        except jsonschema.exceptions.ValidationError as e:
+            raise jsonschema.exceptions.ValidationError(f"Error in playlist at index {idx}: {e.message}")
 
 def check_unique_links(playlists):
     links = {}
