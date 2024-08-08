@@ -46,7 +46,7 @@ jobs:
         if: steps.verify.outcome == 'success'
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.SIEVE_TOKEN }}
           script: |
             const output = "✅ Playlist verification passed! Your submission looks good.";
             const issueNumber = context.payload.pull_request.number;
