@@ -39,7 +39,23 @@ jobs:
             echo "RESULT=$RESULT" >> $GITHUB_ENV
           else
             echo "RESULT=Verification script did not produce a result file." >> $GITHUB_ENV
-          fi
+            
+      - name: Comment on PR (Failure)
+        if: ${{ steps.verify.outcome == 'failure' }}
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const output = process.env.RESULT || "❌ Playlist verification failed.";
+            const issueNumber = context.payload.pull_request.number;
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            await github.rest.issues.createComment({
+              owner: owner,
+              repo: repo,
+              issue_number: issueNumber,
+              body: output
+            });
 
       - name: Comment on PR (Success)
         if: ${{ steps.verify.outcome == 'success' }}
