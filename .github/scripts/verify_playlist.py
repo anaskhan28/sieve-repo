@@ -1,7 +1,6 @@
 import json
 import jsonschema
 import requests
-import sys
 import os
 
 def load_playlists(file_path):
@@ -80,6 +79,7 @@ def main():
     else:
         message = "✅ Playlist verification passed! Your submission looks good."
     
+    # Write result to result.txt
     with open('result.txt', 'w') as fh:
         fh.write(message)
 
