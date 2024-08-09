@@ -42,7 +42,6 @@ jobs:
           else
             echo "RESULT=Verification script did not produce a result file." >> $GITHUB_ENV
           fi
-          shell: /usr/bin/bash -e {0}
 
       - name: Comment on PR
         uses: actions/github-script@v6
