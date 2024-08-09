@@ -1,7 +1,7 @@
 name: Verify Playlist Submission
 
 on:
-  pull_request:
+  pull_request_target:
     paths:
       - 'playlist.json'
 
