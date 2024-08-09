@@ -6,9 +6,9 @@ on:
       - 'playlist.json'
 
 permissions:
-  contents: read
-  issues: write
-  pull-requests: write
+  contents: write  # Needed for commenting on PR
+  issues: write    # Needed for commenting on issues
+  pull-requests: write  # Needed for commenting on PR
 
 jobs:
   verify:
@@ -30,25 +30,26 @@ jobs:
       - name: Run verification script
         id: verify
         run: python .github/scripts/verify_playlist.py
-        continue-on-error: true
 
-      - name: Check verification result
-        if: steps.verify.outcome != 'success'
-        run: exit 1
-
-      - name: Debug Context Information
+      - name: Read verification result
+        id: read-result
         run: |
-          echo "Repository Owner: ${{ github.repository_owner }}"
-          echo "Repository Name: ${{ github.event.repository.name }}"
-          echo "Pull Request Number: ${{ github.event.pull_request.number }}"
-      
-      - name: Comment on PR (Success)
-        if: steps.verify.outcome == 'success'
+          if [ -f result.txt ]; then
+            RESULT=$(<result.txt)
+            echo "RESULT<<EOF" >> $GITHUB_ENV
+            echo "$RESULT" >> $GITHUB_ENV
+            echo "EOF" >> $GITHUB_ENV
+          else
+            echo "RESULT=Verification script did not produce a result file." >> $GITHUB_ENV
+          fi
+          shell: /usr/bin/bash -e {0}
+
+      - name: Comment on PR
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const output = "✅ Playlist verification passed! Your submission looks good.";
+            const output = process.env.RESULT || "❌ Playlist verification failed.";
             const issueNumber = context.payload.pull_request.number;
             const owner = context.repo.owner;
             const repo = context.repo.repo;
@@ -60,10 +61,6 @@ jobs:
               body: output
             });
 
-      - name: Debug Context Information
-        run: |
-          echo "Repository Owner: ${{ github.repository_owner }}"
-          echo "Repository Name: ${{ github.event.repository.name }}"
-          echo "Pull Request Number: ${{ github.event.pull_request.number }}"
-      
-
+      - name: Set workflow status
+        if: ${{ env.RESULT != '✅ Playlist verification passed! Your submission looks good.' }}
+        run: exit 1
