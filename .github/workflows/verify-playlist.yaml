@@ -6,9 +6,9 @@ on:
       - 'playlist.json'
 
 permissions:
-  contents: read
-  issues: write
-  pull-requests: write
+  contents: write  # Needed for commenting on PR
+  issues: write    # Needed for commenting on issues
+  pull-requests: write  # Needed for commenting on PR
 
 jobs:
   verify:
@@ -39,9 +39,9 @@ jobs:
             echo "RESULT<<EOF" >> $GITHUB_ENV
             echo "$RESULT" >> $GITHUB_ENV
             echo "EOF" >> $GITHUB_ENV
-          else
-            echo "RESULT=Verification script did not produce a result file." >> $GITHUB_ENV
-          fi
+           else
+             echo "RESULT=Verification script did not produce a result file." >> $GITHUB_ENV
+           fi
           shell: /usr/bin/bash -e {0}
 
       - name: Comment on PR
@@ -53,6 +53,7 @@ jobs:
             const issueNumber = context.payload.pull_request.number;
             const owner = context.repo.owner;
             const repo = context.repo.repo;
+            console.log(`Owner: ${owner}, Repo: ${repo}, Issue Number: ${issueNumber}`);
             await github.rest.issues.createComment({
               owner: owner,
               repo: repo,
