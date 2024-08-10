@@ -60,7 +60,7 @@ console.log(userProfile, 'userProfile')
   return (
       <>
       <nav className="flex relative z-10 shadow-md items-center justify-around h-16 px-4 md:px-6 bg-[#12121b]">
-      <Link className="flex items-center gap-2" href="#">
+      <Link className="flex items-center gap-2" href="/">
         <Image src={NameLogo} alt='Sieve' width={100} height={100}/>
       </Link>
       <nav className="md:flex md:items-center hidden gap-6 ">
