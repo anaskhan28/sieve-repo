@@ -13,6 +13,7 @@ import getUserData from "@/app/actions/getUserData";
 import { redirect } from "next/navigation";
 import { PlaylistType } from "@/types/Types";
 import Filter from "@/components/Filter";
+import { getPlaylistCardData } from "@/utils/getPlaylistCardData";
 
 
 type EnrichedPlaylistType = PlaylistType & {
@@ -31,12 +32,12 @@ const PlaylistDetail = async ({
     redirect('/signup');
   }  
 
-  const dataPlaylist = await getPlaylistData();
+  const dataPlaylist = await getPlaylistCardData();
   const ratings = await getRatings();
 
   if (!dataPlaylist || !ratings) return null;
 
-  const enrichedPlaylists: EnrichedPlaylistType[] = dataPlaylist.map(playlist => ({
+  const enrichedPlaylists: EnrichedPlaylistType[] = dataPlaylist.playlistData.map(playlist => ({
     ...playlist,
     playlistRating: ratings.find(r => r.playlist_id === playlist.id)?.rating || null,
     avgPlaylistRate: playlist.playlist_rates?.toFixed(1) || null
