@@ -5,7 +5,7 @@ import playlists from "@/playlist.json";
 import { getThumbnailUrl } from './fetchThumbnails';
 
 interface JsonPlaylist {
-  id: number;
+  id?: number;
   name: string;
   playlist_link: string;
   summary: string;
@@ -34,17 +34,18 @@ const addOrUpdatePlaylistData = async (): Promise<{ upserted: PlaylistType[], sk
     return null;
   }
 
-  const existingPlaylistMap = new Map(existingPlaylists.map(p => [p.playlist_id, p]));
+  const existingPlaylistMap = new Map(existingPlaylists.map(p => [p.playlist_url, p]));
 
   const playlistsToUpsert: PlaylistType[] = [];
   let skippedCount = 0;
 
   for (const playlist of playlists as JsonPlaylist[]) {
-    const existingPlaylist = existingPlaylistMap.get(playlist.id);
+    const existingPlaylist = existingPlaylistMap.get(playlist.playlist_link);
+    console.log(existingPlaylist, 'existing')
     const thumbnailUrl = await getThumbnailUrl(playlist.playlist_link);
 
     const playlistData: PlaylistType = {
-      playlist_id: playlist.id,
+      // playlist_id: playlist.id,
       user_name: playlist.name,
       playlist_url: playlist.playlist_link,
       playlist_summary: playlist.summary,
@@ -70,13 +71,13 @@ const addOrUpdatePlaylistData = async (): Promise<{ upserted: PlaylistType[], sk
   // Upsert playlists
   const { error: upsertError } = await supabase
     .from('playlistsInfo')
-    .upsert(playlistsToUpsert, { onConflict: 'playlist_id' });
+    .upsert(playlistsToUpsert, { onConflict: 'id' });
 
   if (upsertError) {
     console.error('Error upserting playlists:', upsertError);
     return null;
   }
-
+  
   return { upserted: playlistsToUpsert, skipped: skippedCount };
 }
 

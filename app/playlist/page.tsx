@@ -1,4 +1,3 @@
-
 import React from 'react'
 import getUserData from '../actions/getUserData'
 import { redirect } from 'next/navigation';
@@ -6,6 +5,8 @@ import Filter from '@/components/Filter'
 import addOrUpdatePlaylistData from '../actions/addPlaylistData';
 import { getPlaylistCardData } from '@/utils/getPlaylistCardData';
 import ClientSideSearchWrapper from '@/components/Wrapper';
+import playlistJson from '@/playlist.json'
+import { shouldUpdatePlaylists } from '@/utils/playlistCache';
 
 type Props = {
   [key: string]: string
@@ -17,7 +18,11 @@ const Playlist = async ({ searchParams }: { searchParams: Props }) => {
   if (!userData) {
     redirect('/signup');
   }
-  await addOrUpdatePlaylistData();
+
+  const shouldUpdate = await shouldUpdatePlaylists(playlistJson);
+  if (shouldUpdate) {
+    await addOrUpdatePlaylistData();
+  }
 
   const playlistCardData = await getPlaylistCardData();
   if (!playlistCardData) return null;
