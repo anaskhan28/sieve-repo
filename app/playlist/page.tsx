@@ -19,7 +19,6 @@ const Playlist = async ({ searchParams }: { searchParams: Props }) => {
   }
 
 
-
   const playlistCardData = await getPlaylistCardData();
   if (!playlistCardData) return null;
 
