@@ -47,7 +47,7 @@ def check_youtube_links(playlists):
 def main():
     errors = []
     try:
-        playlists = load_playlists('playlist.json')
+        playlists = load_playlists('../../playlist.json')
         validate_schema(playlists)
     except json.JSONDecodeError as e:
         errors.append(f"Invalid JSON format: {str(e)}")
@@ -72,15 +72,22 @@ def main():
     
     # Create the message
     if errors:
-        message = "❌ Playlist verification failed. Please address the following issues:\n\n"
+        message = "Playlist verification failed. Please address the following issues:\n\n"
         message += "\n".join(f"- {error}" for error in errors)
         message += "\n\nPlease review and update your submission."
     else:
-        message = "✅ Playlist verification passed! Your submission looks good."
+        message = "Playlist verification passed! Your submission looks good."
     
-    # Write result to result.txt
-    with open('result.txt', 'w') as fh:
-        fh.write(message)
+    # Write result to result.txt using UTF-8 encoding
+    try:
+        with open('result.txt', 'w', encoding='utf-8') as fh:
+            fh.write(message)
+    except Exception as e:
+        print(f"Error writing to file: {str(e)}")
+        # Fallback to printing the message if file writing fails
+        print(message)
 
+    # For GitHub Actions
+    print(f"::set-output name=result::{message}")
 if __name__ == "__main__":
     main()
