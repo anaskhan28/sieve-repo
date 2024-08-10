@@ -1,7 +1,7 @@
 import React from 'react'
 import getUserData from '../../actions/getUserData'
 import { redirect } from 'next/navigation';
-import getPlaylistData from '@/app/actions/getPlaylistData';
+import { getPlaylistCardData } from '@/utils/getPlaylistCardData';
 import PlaylistCards from '@/components/PlaylistCards';
 import getRatings from '../../actions/getRatings';
 import { PlaylistType } from '@/types/Types'; // Make sure to import your PlaylistType
@@ -22,13 +22,13 @@ const RatedPlaylist = async () => {
     return redirect('/signup');
   }
 
-  const playlistData = await getPlaylistData();
+  const playlistData = await getPlaylistCardData();
   if (!playlistData) return null;
 
   const getUserRatingDetails = await getRatings();
   if (!getUserRatingDetails) return null;
 
-  const ratedPlaylistDetails: EnrichedPlaylistType[] = playlistData
+  const ratedPlaylistDetails: EnrichedPlaylistType[] = playlistData.playlistData
     .filter((playlist) => getUserRatingDetails.some((rating) => rating.playlist_id === playlist.id))
     .map((playlist) => {
       const userRating = getUserRatingDetails.find((rating) => rating.playlist_id === playlist.id);

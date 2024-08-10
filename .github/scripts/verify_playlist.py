@@ -12,7 +12,6 @@ def validate_schema(playlists):
         "items": {
             "type": "object",
             "properties": {
-                "id": {"type": "integer"},
                 "name": {"type": "string"},
                 "playlist_link": {"type": "string", "format": "uri"},
                 "summary": {"type": "string"},
@@ -21,7 +20,7 @@ def validate_schema(playlists):
                 "user_profile_link": {"type": "string", "format": "uri"},
                 "user_Image": {"type": "string", "format": "uri"}
             },
-            "required": ["id", "name", "playlist_link", "summary", "title", "category", "user_profile_link", "user_Image"]
+            "required": [ "name", "playlist_link", "summary", "title", "category", "user_profile_link", "user_Image"]
         }
     }
     jsonschema.validate(instance=playlists, schema=schema)
@@ -31,18 +30,18 @@ def check_unique_links(playlists):
     for playlist in playlists:
         link = playlist["playlist_link"]
         if link in links:
-            raise ValueError(f"Duplicate playlist link found: '{link}' (IDs: {links[link]}, {playlist['id']})")
-        links[link] = playlist['id']
+            raise ValueError(f"Duplicate playlist link found: '{link}' (Names: {links[link]}, {playlist['name']})")
+        links[link] = playlist['title']
 
 def check_summary_length(playlists):
     for playlist in playlists:
         if len(playlist["summary"].split()) < 20:
-            raise ValueError(f"Summary too short for playlist ID {playlist['id']}. It should be at least 20 words long.")
+            raise ValueError(f"Summary too short for playlist {playlist['title']}. It should be at least 20 words long.")
 
 def check_youtube_links(playlists):
     for playlist in playlists:
         if "youtube.com" not in playlist["playlist_link"] and "youtu.be" not in playlist["playlist_link"]:
-            raise ValueError(f"Invalid YouTube link for playlist ID {playlist['id']}: '{playlist['playlist_link']}'")
+            raise ValueError(f"Invalid YouTube link for playlist name  {playlist['title']}: '{playlist['playlist_link']}'")
 
 def main():
     errors = []
