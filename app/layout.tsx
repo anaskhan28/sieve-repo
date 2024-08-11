@@ -3,6 +3,7 @@ import { Libre_Franklin } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import { Analytics } from "@vercel/analytics/react"
+import type { Metadata } from "next";
 
 const tenor_sans = Tenor_Sans({
   subsets: ['latin'],
@@ -16,6 +17,11 @@ const libre_franklin = Libre_Franklin({
   variable: '--font-libre_franklin',
   weight: '400'
 })
+export const metadata: Metadata = {
+  title: "Sieve is the IMDB For YouTube",
+  description: "It is the ultimate place to find best playlist or videos",
+};
+
 
 
 export default function RootLayout({

@@ -33,13 +33,12 @@ const PlaylistDetail = async ({
   }  
 
   const dataPlaylist = await getPlaylistCardData();
-  const ratings = await getRatings();
 
-  if (!dataPlaylist || !ratings) return null;
+  if (!dataPlaylist) return null;
 
   const enrichedPlaylists: EnrichedPlaylistType[] = dataPlaylist.playlistData.map(playlist => ({
     ...playlist,
-    playlistRating: ratings.find(r => r.playlist_id === playlist.id)?.rating || null,
+    playlistRating: dataPlaylist.ratings.find(r => r.playlist_id === playlist.id)?.rating || null,
     avgPlaylistRate: playlist.playlist_rates?.toFixed(1) || null
   }));
 

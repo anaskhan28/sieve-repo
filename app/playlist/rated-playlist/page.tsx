@@ -25,7 +25,7 @@ const RatedPlaylist = async () => {
   const playlistData = await getPlaylistCardData();
   if (!playlistData) return null;
 
-  const getUserRatingDetails = await getRatings();
+  const getUserRatingDetails = playlistData.ratings;
   if (!getUserRatingDetails) return null;
 
   const ratedPlaylistDetails: EnrichedPlaylistType[] = playlistData.playlistData
