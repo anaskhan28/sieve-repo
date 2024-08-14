@@ -135,6 +135,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## Contact 📧
 
 - **Anas Khan** - [@anaskhan_28](https://x.com/anaskhan_28) - khananasatique@gmail.com
-- **Project Link**: [https://createsieve.vercel.app/](https://createsieve.vercel.app/)
+- **Project Link**: [https://createsieve.vercel.app/](https://sieveit.me)
 
 Thank you for contributing to Sieve! Together, we can build a valuable resource for learners everywhere.
