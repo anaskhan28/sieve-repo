@@ -115,7 +115,6 @@ To add a new playlist, please follow these steps:
 
     ```json
       {
-      "id": 1,
       "name": "Anas Khan",
       "playlist_link": "https://www.youtube.com/playlist?list=PLIY8eNdw5tW_7-QrsY_n9nC0Xfhs1tLEK",
       "summary": "All the concepts, algorithms and protocols related to Network Security which you as an IT student will need the most.",
