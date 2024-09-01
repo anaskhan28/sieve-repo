@@ -273,9 +273,18 @@
   {
     "name": "Anas Khan",
     "playlist_link": "https://youtu.be/cZTHGPn1jdU?si=TvWuSC1kdGw91o9T",
-    "summary": " Deep-diving into the world of Web Crypto APIs, starting from key generation, various encryption algorithms, implementation techniques, and more.",
+    "summary": " Deep-diving into the world of Web Crypto APIs, starting from key generation, various encryption algorithms, implementation techniques. It also teaches alot about security and how you can implement it and more.",
     "title": "Encrypting Data in the Browse Javascript",
     "category": "Backend Development",
+    "user_profile_link": "https://github.com/anaskhan28",
+    "user_Image": "https://avatars.githubusercontent.com/anaskhan28"
+  },
+  {
+    "name": "Anas Khan",
+    "playlist_link": "https://youtube.com/playlist?list=PLPYK3ecn6pnzOE9Ek9Ijx_RyZNh8oBs7a&si=eJIetg2DuVuakO9U",
+    "summary": "This playlist consist of AI related projects, podcast and all the random yet impactful video topics on AI wchich can help you to learn in a better way. Also have a lot of information related to AI, AGI and various other things.",
+    "title": "AI Stuff",
+    "category": "Machine Learning",
     "user_profile_link": "https://github.com/anaskhan28",
     "user_Image": "https://avatars.githubusercontent.com/anaskhan28"
   }
