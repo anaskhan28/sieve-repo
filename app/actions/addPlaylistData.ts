@@ -55,8 +55,10 @@ const addOrUpdatePlaylistData = async (): Promise<{ upserted: PlaylistType[], sk
       user_profile_link: playlist.user_profile_link,
       user_profile_image_link: playlist.user_Image
     };
+    console.log(playlistData, 'playlsit-tobeadded')
 
     if (!existingPlaylist || hasChanges(existingPlaylist, playlistData)) {
+      console.log(playlistData, 'playlsit-addded')
       playlistsToUpsert.push(playlistData);
     } else {
       skippedCount++;
@@ -71,7 +73,9 @@ const addOrUpdatePlaylistData = async (): Promise<{ upserted: PlaylistType[], sk
   // Upsert playlists
   const { error: upsertError } = await supabase
     .from('playlistsInfo')
-    .upsert(playlistsToUpsert, { onConflict: 'id' });
+    .upsert(playlistsToUpsert, { onConflict: 'playlist_url', ignoreDuplicates: false },
+      
+    );
 
   if (upsertError) {
     console.error('Error upserting playlists:', upsertError);
