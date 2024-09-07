@@ -13,7 +13,7 @@ const PlaylistCard = lazy(() => import('./PlaylistCard'));
 type EnrichedPlaylistType = PlaylistType & {
   playlistRating: number | null;
   avgPlaylistRate: string | null;
-  inserted_at: string | null; // Assuming there's a inserted_at field, add it if not present
+  inserted_at: string | undefined; // Assuming there's a inserted_at field, add it if not present
 };
 
 type Props = {
@@ -53,9 +53,9 @@ const ClientSideSearchWrapper = ({ initialData }: Props) => {
         case 'newest':
           console.log(b.inserted_at, 'date of b')
           // console.log( new Date(a.inserted_at), 'date of a')
-          return new Date(b.inserted_at).getTime() - new Date(a.inserted_at).getTime();
+          return new Date(b.inserted_at!).getTime() - new Date(a.inserted_at!).getTime();
         case 'oldest':
-          return new Date(a.inserted_at).getTime() - new Date(b.inserted_at).getTime();
+          return new Date(a.inserted_at!).getTime() - new Date(b.inserted_at!).getTime();
         default:
           return 0;
       }

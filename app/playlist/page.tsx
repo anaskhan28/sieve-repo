@@ -1,7 +1,6 @@
 import React from 'react'
 import getUserData from '../actions/getUserData'
 import { redirect } from 'next/navigation';
-import Filter from '@/components/Filter'
 import addOrUpdatePlaylistData from '../actions/addPlaylistData';
 import { getPlaylistCardData } from '@/utils/getPlaylistCardData';
 import ClientSideSearchWrapper from '@/components/Wrapper';
@@ -30,7 +29,8 @@ const Playlist = async ({ searchParams }: { searchParams: Props }) => {
   const enrichedPlaylistData = playlistData.map(playlist => ({
     ...playlist,
     playlistRating: ratings.find(r => r.playlist_id === playlist.id)?.rating || null,
-    avgPlaylistRate: playlist.playlist_rates?.toFixed(1) || null
+    avgPlaylistRate: playlist.playlist_rates?.toFixed(1) || null,
+    inserted_at: playlist?.inserted_at || undefined
   }));
 
   return (
