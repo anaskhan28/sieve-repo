@@ -79,24 +79,9 @@ const ClientSideSearchWrapper = ({ initialData }: Props) => {
 
   return (
     <>
-      <div className="flex flex-col md:flex-row justify-between w-full max-w-3xl md:items-center items-end mb-2">
-        <Search onSearch={handleSearch} />
-       
-        
-          <select
-         
-            id="sort"
-            value={sortOption || "Sort By"}
-            onChange={(e) => handleSort(e.target.value as SortOption)}
-            className="bg-gray-700 text-sm md:text-md text-white/70 rounded px-2 py-1 items-center mt-4 md:mt-0"
-          >
-            <option value="rating">Rating</option>
-            <option value="newest">Newly Added</option>
-            <option value="oldest">Oldest</option>
-          </select>
-       
-       
-      </div>
+    
+        <Search onSort={handleSort} onSearch={handleSearch} />
+    
       <Filter onFilter={handleFilter} />
       
       {isLoading ? (
