@@ -4,6 +4,7 @@ import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import playlists from '@/playlist.json'
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 
 type Props = {
   onFilter: (filter: string) => void;
@@ -11,20 +12,30 @@ type Props = {
 
 const filterByCategory = Array.from(new Set(playlists.map((playlist) => playlist.category)));
 
-const Filter = ({ onFilter }: Props) => {
+const Filter = () => {
     const [activeArrow, setActiveArrow] = useState<'left' | 'right' | null>(null);
     const [activeButton, setActiveButton] = useState<string>("All");
     const [currentIndex, setCurrentIndex] = useState(0);
+    const router = useRouter()
 
-    const path = usePathname();
+   const setFilter =(tag: string) => {
+    if(tag){
+        router.push("?tag=" + tag)
+        setActiveButton(tag);
+    }
+    if(!tag){
+        router.push("/playlist")
+    }
+   }
 
     const nextSlide = useCallback(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % filterByCategory.length);
         setActiveArrow('right');
         setTimeout(() => setActiveArrow(null), 300);
         setActiveButton("All")
-        onFilter("All")
-    }, [onFilter]);
+        setFilter("")
+        
+    }, []);
     
     const prevSlide = useCallback(() => {
         setCurrentIndex((prevIndex) => 
@@ -33,13 +44,10 @@ const Filter = ({ onFilter }: Props) => {
         setActiveArrow('left');
         setTimeout(() => setActiveArrow(null), 300);
         setActiveButton("All")
-        onFilter("All")
-    }, [onFilter]);
+        setFilter("")
+    }, []);
     
-    const handleFilterClick = (filter: string) => {
-        setActiveButton(filter);
-        onFilter(filter);
-    }
+ 
 
     return (
         <div className='container flex flex-row mt-2 mb-6 md:mb-0 md:mt-0 max-w-full md:max-w-7xl lg:max-w-8xl p-2 md:p-8 overflow-hidden items-center justify-between'>
@@ -62,7 +70,7 @@ const Filter = ({ onFilter }: Props) => {
                         animate={{ x: -currentIndex * 120 }} // Adjust this value based on your button width
                         transition={{ type: "spring", stiffness: 300, damping: 30 }}
                         className={`text-white cursor-pointer bg-[#17191A] border border-[#555454] rounded-lg p-2 md:p-3 text-center whitespace-nowrap text-sm md:text-base ${activeButton === filter ? 'bg-[#766FFA]' : ''}`} 
-                        onClick={() => handleFilterClick(filter)}
+                        onClick={() => setFilter(filter)}
                     >
                         {filter}
                     </motion.div>

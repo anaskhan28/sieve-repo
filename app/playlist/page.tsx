@@ -5,38 +5,50 @@ import addOrUpdatePlaylistData from '../actions/addPlaylistData';
 import { getPlaylistCardData } from '@/utils/getPlaylistCardData';
 import ClientSideSearchWrapper from '@/components/Wrapper';
 import playlistJson from '@/playlist.json'
-
+import { getQueryClient } from '@/utils/query';
+import getPlaylistData from '../actions/getPlaylistData';
+import { HydrationBoundary, dehydrate } from '@tanstack/react-query';
+import getRatings from '../actions/getRatings';
+import { PlaylistType } from '@/types/Types';
 type Props = {
   [key: string]: string
 }
 
+
+
 const Playlist = async ({ searchParams }: { searchParams: Props }) => {
+
   const userData = await getUserData();
   
   if (!userData) {
     redirect('/signup');
   }
 
+  const queryClient = getQueryClient()
+  await queryClient.prefetchQuery({
+    queryKey: ["playlists"],
+    queryFn: getPlaylistData,
+  },)
 
-  const playlistCardData = await getPlaylistCardData();
-  if (!playlistCardData) return null;
+  await queryClient.prefetchQuery({
+    queryKey: ["ratings"],
+    queryFn: getRatings
+  })
+  
 
-  if(playlistCardData.playlistData.length !== playlistJson.length){
-    await addOrUpdatePlaylistData()
+  const playlistCardData = await queryClient.getQueryData(['playlists']);
+ 
+  if (playlistCardData && Array.isArray(playlistCardData) && playlistCardData.length !== playlistJson.length) {
+    await addOrUpdatePlaylistData();
   }
-  const { ratings, playlistData } = playlistCardData;
 
-  const enrichedPlaylistData = playlistData.map(playlist => ({
-    ...playlist,
-    playlistRating: ratings.find(r => r.playlist_id === playlist.id)?.rating || null,
-    avgPlaylistRate: playlist.playlist_rates?.toFixed(1) || null,
-    inserted_at: playlist?.inserted_at || undefined
-  }));
-
+ 
   return (
     <div className='bg-[#0E0E0E] w-full min-h-screen'>
       <div className='container p-2  flex flex-col justify-center items-center py-16'>
-        <ClientSideSearchWrapper initialData={enrichedPlaylistData} />
+        <HydrationBoundary state={dehydrate(queryClient)}>
+        <ClientSideSearchWrapper />
+        </HydrationBoundary>
       </div>
     </div>
   )
