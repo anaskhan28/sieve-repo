@@ -44,7 +44,7 @@ const addOrUpdatePlaylistData = async (): Promise<{ upserted: PlaylistType[], sk
     console.log(existingPlaylist, 'existing')
     const thumbnailUrl = await getThumbnailUrl(playlist.playlist_link);
 
-    const playlistData: PlaylistType = {
+    const playlistData: any = {
       // playlist_id: playlist.id,
       user_name: playlist.name,
       playlist_url: playlist.playlist_link,

@@ -1,3 +1,4 @@
+
 import React from "react";
 import playlists from "@/playlist.json";
 import PlaylistCard from "@/components/PlaylistCard";
@@ -14,6 +15,8 @@ import { redirect } from "next/navigation";
 import { PlaylistType } from "@/types/Types";
 import Filter from "@/components/Filter";
 import { getPlaylistCardData } from "@/utils/getPlaylistCardData";
+import { useQuery } from "@tanstack/react-query";
+import { getQueryClient } from "@/utils/query";
 
 
 type EnrichedPlaylistType = PlaylistType & {
@@ -34,9 +37,25 @@ const PlaylistDetail = async ({
 
   const dataPlaylist = await getPlaylistCardData();
 
+
+  // const { 
+  //   data: playlistData, 
+  //   error: playlistError, 
+  //   isLoading
+  // } = useQuery({
+  //   queryKey: ["playlists"],
+  //   queryFn: getPlaylistData,
+  // });
+
+  // const queryClient = getQueryClient()
+
+  // const playlistCardData = await queryClient.getQueryData(['playlists']);
+
+  // console.log(playlistCardData, 'data-playlist')
+
   if (!dataPlaylist) return null;
 
-  const enrichedPlaylists: EnrichedPlaylistType[] = dataPlaylist.playlistData.map(playlist => ({
+  const enrichedPlaylists: EnrichedPlaylistType[] = dataPlaylist.playlistData.data!.map(playlist => ({
     ...playlist,
     playlistRating: dataPlaylist.ratings.find(r => r.playlist_id === playlist.id)?.rating || null,
     avgPlaylistRate: playlist.playlist_rates?.toFixed(1) || null

@@ -28,7 +28,7 @@ const RatedPlaylist = async () => {
   const getUserRatingDetails = playlistData.ratings;
   if (!getUserRatingDetails) return null;
 
-  const ratedPlaylistDetails: EnrichedPlaylistType[] = playlistData.playlistData
+  const ratedPlaylistDetails: EnrichedPlaylistType[] = playlistData.playlistData.data!
     .filter((playlist) => getUserRatingDetails.some((rating) => rating.playlist_id === playlist.id))
     .map((playlist) => {
       const userRating = getUserRatingDetails.find((rating) => rating.playlist_id === playlist.id);

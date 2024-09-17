@@ -1,106 +1,136 @@
 "use client";
 
-import { useState, useEffect, Suspense, lazy } from 'react';
-import { useDebounce } from 'use-debounce';
+import { lazy, Suspense, useMemo, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { useSearchParams } from 'next/navigation';
+import Image from 'next/image';
+import InfiniteScroll from 'react-infinite-scroller';
 import Search from './Search';
 import Filter from './Filter';
 import Loading from './loading';
-import Image from 'next/image';
+import getPlaylistData from '@/app/actions/getPlaylistData';
+import getRatings from '@/app/actions/getRatings';
 import { PlaylistType } from "@/types/Types";
-
+import addOrUpdatePlaylistData from '@/app/actions/addPlaylistData';
+import playlistJson from '@/playlist.json'
 const PlaylistCard = lazy(() => import('./PlaylistCard'));
 
 type EnrichedPlaylistType = PlaylistType & {
   playlistRating: number | null;
   avgPlaylistRate: string | null;
-  inserted_at: string | undefined; // Assuming there's a inserted_at field, add it if not present
-};
-
-type Props = {
-  initialData: EnrichedPlaylistType[];
+  inserted_at: string | undefined;
 };
 
 type SortOption = 'rating' | 'newest' | 'oldest';
 
-const ClientSideSearchWrapper = ({ initialData }: Props) => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [filterTerm, setFilterTerm] = useState('All');
-  const [sortOption, setSortOption] = useState<SortOption>('rating');
-  const [debouncedSearchTerm] = useDebounce(searchTerm, 300);
-  const [filteredData, setFilteredData] = useState(initialData);
-  const [isLoading, setIsLoading] = useState(true);
+const ClientSideSearchWrapper = () => {
+  const params = useSearchParams();
+  const tag = params.get("tag");
+  const search = params.get("search");
+  const sort = params.get("sort") as SortOption | null;
 
-  useEffect(() => {
-    setIsLoading(true);
-    let filtered = initialData.filter(item => {
-      const searchTerms = debouncedSearchTerm.toLowerCase().split(' ');
-      const titleMatches = searchTerms.every(term => 
-        item.playlist_title.toLowerCase().includes(term)
-      );
-      const categoryMatches = searchTerms.every(term => 
-        item.playlist_category!.toLowerCase().includes(term)
-      );
-      const matchesSearch = titleMatches || categoryMatches;
-      const matchesFilter = filterTerm === 'All' || item.playlist_category === filterTerm;
-      return matchesSearch && matchesFilter;
-    });
+  const [displayCount, setDisplayCount] = useState(6);
 
-    // Sort the filtered data
-    filtered.sort((a, b) => {
-      switch (sortOption) {
+  const { data: ratingData, error: ratingError } = useQuery({
+    queryKey: ["ratings"],
+    queryFn: getRatings,
+  });
+
+  const { 
+    data: playlistData, 
+    error: playlistError, 
+    isLoading
+  } = useQuery({
+    queryKey: ["playlists"],
+    queryFn: getPlaylistData,
+  });
+
+  const enrichedPlaylistData = useMemo(() => {
+    if (!playlistData?.data || !ratingData) return [];
+
+    return playlistData.data.map(playlist => ({
+      ...playlist,
+      playlistRating: ratingData.find(r => r.playlist_id === playlist.id)?.rating ?? null,
+      avgPlaylistRate: playlist.playlist_rates?.toFixed(1) ?? null,
+      inserted_at: playlist?.inserted_at,
+    }));
+  }, [playlistData, ratingData]);
+
+ 
+
+  const filteredData = useMemo(() => {
+    let result = enrichedPlaylistData;
+
+    if (tag) {
+      result = result.filter((playlist) => playlist?.playlist_category === tag);
+    }
+
+    if (search) {
+      const searchTerms = search.toLowerCase().split(' ');
+      result = result.filter((playlist) => 
+        searchTerms.every(term => 
+          playlist.playlist_title.toLowerCase().includes(term) ||
+          playlist.playlist_category?.toLowerCase().includes(term)
+        )
+      );
+    }
+
+    if (sort) {
+      switch (sort) {
         case 'rating':
-          return ((b.avgPlaylistRate ?? 0) as number) - ((a.avgPlaylistRate ?? 0) as number);
+          result.sort((a, b) => Number(b.avgPlaylistRate || 0) - Number(a.avgPlaylistRate || 0));
+          break;
         case 'newest':
-          console.log(b.inserted_at, 'date of b')
-          // console.log( new Date(a.inserted_at), 'date of a')
-          return new Date(b.inserted_at!).getTime() - new Date(a.inserted_at!).getTime();
+          result.sort((a, b) => 
+            new Date(b.inserted_at || 0).getTime() - new Date(a.inserted_at || 0).getTime()
+          );
+          break;
         case 'oldest':
-          return new Date(a.inserted_at!).getTime() - new Date(b.inserted_at!).getTime();
-        default:
-          return 0;
+          result.sort((a, b) => 
+            new Date(a.inserted_at || 0).getTime() - new Date(b.inserted_at || 0).getTime()
+          );
+          break;
       }
-    });
+    }
 
-    setFilteredData(filtered);
-    setIsLoading(false);
-  }, [debouncedSearchTerm, filterTerm, sortOption, initialData]);
-   
-  const handleSearch = (term: string) => {
-    setSearchTerm(term);
-  };
-   
-  const handleFilter = (term: string) => {
-    setFilterTerm(term);
-  };
+    return result;
+  }, [enrichedPlaylistData, tag, search, sort]);
 
-  const handleSort = (option: SortOption) => {
-    setSortOption(option);
+  const loadMore = () => {
+    setDisplayCount((prevCount) => prevCount + 6);
   };
 
   return (
     <>
-    
-        <Search onSort={handleSort} onSearch={handleSearch} />
-    
-      <Filter onFilter={handleFilter} />
+      <Search />
+      <Filter />
       
       {isLoading ? (
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center mt-8">
           <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-purple-500"></div>
         </div>
-      ) : filteredData.length > 0 ? (
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-8 mb-2 w-full max-w-7xl'>
-          {filteredData.map(playlist => (
-            <Suspense key={playlist.id} fallback={<Loading />}>
-              <PlaylistCard {...playlist} />
-            </Suspense>
-          ))}
-        </div>
-      ) : (
+      ) : filteredData.length === 0 ? (
         <div className='flex flex-col gap-7 justify-center items-center p-8'>
           <p className='w-full text-center text-md text-gray-100'>No Playlist Found</p>
           <Image src="/not-found.svg" alt='not-found' width={150} height={150}/>
         </div>
+      ) : (
+        <InfiniteScroll
+          pageStart={0}
+          loadMore={loadMore}
+          hasMore={displayCount < filteredData.length}
+          loader={<Loading key={0} />}
+          className='w-full max-w-7xl'
+          
+        >
+          <div className='grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-8 mb-2 w-full max-w-7xl'>
+            {filteredData.slice(0, displayCount).map((playlist, index) => (
+              <Suspense key={`${playlist.id}-${index}`} fallback={<Loading />}>
+                <PlaylistCard {...playlist} />
+              </Suspense>
+            ))}
+          </div>
+        </InfiniteScroll>
       )}
     </>
   );
