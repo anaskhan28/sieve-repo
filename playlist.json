@@ -295,5 +295,14 @@
     "category": "Frontend Development",
     "user_profile_link": "https://github.com/DrasticCoder",
     "user_Image": "https://avatars.githubusercontent.com/DrasticCoder"
+  },
+  {
+    "name": "Anas Khan",
+    "playlist_link": "https://www.youtube.com/playlist?list=PLQGFK8RiEPSKsY3QbZ8zUTj8RGJ6NnvAZ",
+    "summary": "This playlist offers an immersive learning experience, making it easy to dive into Frappe Framework, whether you're a beginner or looking to sharpen your skills. ",
+    "title": "Frappe Framework App",
+    "category": "Full-Stack Development",
+    "user_profile_link": "https://github.com/anaskhan28",
+    "user_Image": "https://avatars.githubusercontent.com/anaskhan28"
   }
 ]

@@ -36,9 +36,9 @@ const Playlist = async ({ searchParams }: { searchParams: Props }) => {
   })
   
 
-  const playlistCardData = await queryClient.getQueryData(['playlists']);
+  const playlistCardData:any = await queryClient.getQueryData(['playlists']);
  
-  if (playlistCardData && Array.isArray(playlistCardData) && playlistCardData.length !== playlistJson.length) {
+  if (playlistCardData.data.length < playlistJson.length){
     await addOrUpdatePlaylistData();
   }
 
