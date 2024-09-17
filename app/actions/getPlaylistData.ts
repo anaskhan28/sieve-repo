@@ -31,7 +31,6 @@ const getPlaylistData = async (): Promise<{ data: PlaylistType[] | null; totalCo
             console.log("No Data", data);
             return { data: null, totalCount: 0 };
         }
-        console.log(data, 'data')
     
         return { data, totalCount: count ?? 0 };
     } catch (error) {
