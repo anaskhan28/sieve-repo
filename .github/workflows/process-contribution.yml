@@ -1,0 +1,117 @@
+name: Process Contribution
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  process-contribution:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install jsonschema
+
+    - name: Validate JSON and process contribution
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        import json
+        import jsonschema
+        import os
+        import requests
+
+        # Function to get issue body
+        def get_issue_body(issue_number):
+            url = f"https://api.github.com/repos/{os.environ['GITHUB_REPOSITORY']}/issues/{issue_number}"
+            headers = {
+                "Authorization": f"token {os.environ['GITHUB_TOKEN']}",
+                "Accept": "application/vnd.github.v3+json"
+            }
+            response = requests.get(url, headers=headers)
+            return response.json()["body"]
+
+        # Get the issue body
+        issue_number = os.environ['GITHUB_EVENT_PATH']
+        issue_body = get_issue_body(issue_number)
+
+        # Extract JSON from issue body
+        json_data = json.loads(issue_body)
+
+        # Define JSON schema
+        schema = {
+            "type": "object",
+            "properties": {
+                "name": {"type": "string"},
+                "playlist_link": {"type": "string", "format": "uri"},
+                "summary": {"type": "string"},
+                "title": {"type": "string"},
+                "category": {"type": "string"},
+                "user_profile_link": {"type": "string", "format": "uri"},
+                "user_Image": {"type": "string", "format": "uri"}
+            },
+            "required": [ "name", "playlist_link", "summary", "title", "category", "user_profile_link", "user_Image"]
+        }
+
+        # Validate JSON
+        try:
+            jsonschema.validate(instance=json_data, schema=schema)
+        except jsonschema.exceptions.ValidationError as e:
+            print(f"JSON validation failed: {e}")
+            exit(1)
+
+        # If validation passes, append to playlist.json
+        with open('playlist.json', 'r+') as f:
+            playlists = json.load(f)
+            playlists.append(json_data)
+            f.seek(0)
+            json.dump(playlists, f, indent=2)
+
+        # Create a new branch
+        os.system(f"git checkout -b contribution-{issue_number}")
+        os.system("git add playlist.json")
+        os.system('git config user.name "GitHub Actions Bot"')
+        os.system('git config user.email "actions@github.com"')
+        os.system(f'git commit -m "Add contribution from issue #{issue_number}"')
+        os.system("git push origin HEAD")
+
+        # Create a pull request
+        pr_url = f"https://api.github.com/repos/{os.environ['GITHUB_REPOSITORY']}/pulls"
+        pr_data = {
+            "title": f"Contribution from issue #{issue_number}",
+            "body": f"This PR adds the contribution from issue #{issue_number}",
+            "head": f"contribution-{issue_number}",
+            "base": "main"
+        }
+        headers = {
+            "Authorization": f"token {os.environ['GITHUB_TOKEN']}",
+            "Accept": "application/vnd.github.v3+json"
+        }
+        response = requests.post(pr_url, json=pr_data, headers=headers)
+        if response.status_code == 201:
+            print(f"Pull request created successfully: {response.json()['html_url']}")
+        else:
+            print(f"Failed to create pull request: {response.text}")
+
+      shell: python
+
+    - name: Comment on issue
+      uses: actions/github-script@v6
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.name,
+            body: 'Thank you for your contribution! A pull request has been created with your changes. The repository owner will review and merge it soon.'
+          })
