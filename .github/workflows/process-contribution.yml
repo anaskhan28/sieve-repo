@@ -12,10 +12,7 @@ permissions:
 jobs:
   process-contribution:
     runs-on: ubuntu-latest
-    env:
-      PR_TITLE: ${{ fromJson(steps.extract_pr_info.outputs.pr_info).title }}
-      PR_BODY: ${{ fromJson(steps.extract_pr_info.outputs.pr_info).body }}
-      PR_BRANCH: ${{ fromJson(steps.extract_pr_info.outputs.pr_info).head }}
+  
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
@@ -124,6 +121,10 @@ jobs:
       shell: bash
       
     - name: Create Pull Request
+      env:
+        PR_TITLE: ${{ fromJson(steps.extract_pr_info.outputs.pr_info).title }}
+        PR_BODY: ${{ fromJson(steps.extract_pr_info.outputs.pr_info).body }}
+        PR_BRANCH: ${{ fromJson(steps.extract_pr_info.outputs.pr_info).head }}
       uses: peter-evans/create-pull-request@v5
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
