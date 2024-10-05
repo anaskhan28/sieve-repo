@@ -20,7 +20,6 @@ assignees: ''
   "user_Image": "Link to your profile image"
 }
 ```
-
 ## 📚 Playlist Categories
 ### Choose one category from the list below:
 ```
