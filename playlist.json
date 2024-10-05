@@ -313,5 +313,14 @@
     "category": "Frontend Development",
     "user_profile_link": "https://github.com/CODEX108",
     "user_image": "https://avatars.githubusercontent.com/u/82377810?v=4"
+  },
+  {
+    "name": "Anas Khan",
+    "playlist_link": "https://www.youtube.com/watch?v=hkKdRrKf_0o&list=PL-my9REMIFtEsQv2rezRY7E9Ih9nmJ2TZ",
+    "summary": "This playlist, created by You suck at programming, provides an in-depth and beginner-friendly course on Bash scripting. It covers the core concepts of Bash with clear explanations and practical examples, making it a valuable resource for developers looking to strengthen their Unix shell fundamentals.",
+    "title": "You suck at programming",
+    "category": "Cyber Security",
+    "user_profile_link": "https://github.com/anaskhan28",
+    "user_image": "https://avatars.githubusercontent.com/anaskhan28"
   }
 ]
