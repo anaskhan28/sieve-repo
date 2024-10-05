@@ -4,6 +4,11 @@ on:
   issues:
     types: [opened, edited]
 
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
 jobs:
   process-contribution:
     runs-on: ubuntu-latest
@@ -26,13 +31,13 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         import json
-        import jsonschema
         import os
         import requests
         import sys
+        import subprocess
 
         def get_issue_data(issue_number):
-            url = f"https://api.github.com/repos/{os.environ['GITHUB_REPOSITORY']}/issues/{issue_number}"
+            url = f"https://api.github.com/repos/${{github.repository}}/issues/{issue_number}"
             headers = {
                 "Authorization": f"token {os.environ['GITHUB_TOKEN']}",
                 "Accept": "application/vnd.github.v3+json"
@@ -66,27 +71,18 @@ jobs:
             print(f"Failed to extract JSON from issue body: {e}")
             sys.exit(1)
 
-        # Define JSON schema
-        schema = {
-            "type": "object",
-            "properties": {
-                "name": {"type": "string"},
-                "playlist_link": {"type": "string", "format": "uri"},
-                "summary": {"type": "string"},
-                "title": {"type": "string"},
-                "category": {"type": "string"},
-                "user_profile_link": {"type": "string", "format": "uri"},
-                "user_Image": {"type": "string", "format": "uri"}
-            },
-            "required": [ "name", "playlist_link", "summary", "title", "category", "user_profile_link", "user_Image"]
-        }
+        # Write the extracted JSON to a temporary file
+        with open('temp_playlist.json', 'w') as f:
+            json.dump(json_data, f)
 
-        # Validate JSON
-        try:
-            jsonschema.validate(instance=json_data, schema=schema)
-        except jsonschema.exceptions.ValidationError as e:
-            print(f"JSON validation failed: {e}")
+        # Run the verify_playlist.py script
+        result = subprocess.run(['python', '.github/scripts/verify_playlist.py', 'temp_playlist.json'], capture_output=True, text=True)
+        
+        if result.returncode != 0:
+            print(f"Playlist verification failed: {result.stdout}\n{result.stderr}")
             sys.exit(1)
+
+        print("Playlist verification passed")
 
         # If validation passes, append to playlist.json
         with open('playlist.json', 'r+') as f:
@@ -96,19 +92,20 @@ jobs:
             json.dump(playlists, f, indent=2)
 
         # Create a new branch
-        os.system(f"git checkout -b contribution-{issue_number}")
+        branch_name = f"contribution-{issue_number}"
+        os.system(f"git checkout -b {branch_name}")
         os.system("git add playlist.json")
-        os.system('git config user.name "GitHub Actions Bot"')
-        os.system('git config user.email "actions@github.com"')
+        os.system('git config user.name "github-actions[bot]"')
+        os.system('git config user.email "github-actions[bot]@users.noreply.github.com"')
         os.system(f'git commit -m "Add contribution from issue #{issue_number}"')
-        os.system(f"git push origin contribution-{issue_number}")
+        os.system(f"git push origin {branch_name}")
 
         # Create a pull request
-        pr_url = f"https://api.github.com/repos/{os.environ['GITHUB_REPOSITORY']}/pulls"
+        pr_url = f"https://api.github.com/repos/${{github.repository}}/pulls"
         pr_data = {
             "title": f"Contribution from issue #{issue_number}",
             "body": f"This PR adds the contribution from issue #{issue_number}",
-            "head": f"contribution-{issue_number}",
+            "head": branch_name,
             "base": "main"
         }
         headers = {
