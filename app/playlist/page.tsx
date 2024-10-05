@@ -38,11 +38,12 @@ const Playlist = async ({ searchParams }: { searchParams: Props }) => {
 
   const playlistCardData = await queryClient.getQueryData(['playlists']);
  
-  if (playlistCardData && Array.isArray(playlistCardData) && playlistCardData.length !== playlistJson.length) {
-    await addOrUpdatePlaylistData();
-  }
+  // if (playlistCardData &&  && playlistCardData.length !== playlistJson.length) {
+  //   await addOrUpdatePlaylistData();
+  // }
 
- 
+ await addOrUpdatePlaylistData()
+  
   return (
     <div className='bg-[#0E0E0E] w-full min-h-screen'>
       <div className='container p-2  flex flex-col justify-center items-center py-16'>
