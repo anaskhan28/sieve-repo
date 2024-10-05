@@ -102,37 +102,27 @@ jobs:
         os.system(f"git push origin {branch_name}")
 
         # Create a pull request
-        pr_info = {
+        pr_url = f"https://api.github.com/repos/${{github.repository}}/pulls"
+        pr_data = {
             "title": f"Contribution from issue #{issue_number}",
             "body": f"This PR adds the contribution from issue #{issue_number}",
             "head": branch_name,
             "base": "main"
         }
-        with open('pr_info.json', 'w') as f:
-            json.dump(pr_info, f)
+
+        headers = {
+            "Authorization": f"token {os.environ['GITHUB_TOKEN']}",
+            "Accept": "application/vnd.github.v3+json"
+        }
+        response = requests.post(pr_url, json=pr_data, headers=headers)
+        if response.status_code == 201:
+            print(f"Pull request created successfully: {response.json()['html_url']}")
+        else:
+            print(f"Failed to create pull request: {response.text}")
+            sys.exit(1)
+        
 
       shell: python
-
-    - name: Extract PR Info
-      id: extract_pr_info
-      run: |
-        PR_INFO=$(cat pr_info.json)
-        echo "pr_info=$PR_INFO" >> $GITHUB_OUTPUT
-      shell: bash
-      
-    - name: Create Pull Request
-      env:
-        PR_TITLE: ${{ fromJson(steps.extract_pr_info.outputs.pr_info).title }}
-        PR_BODY: ${{ fromJson(steps.extract_pr_info.outputs.pr_info).body }}
-        PR_BRANCH: ${{ fromJson(steps.extract_pr_info.outputs.pr_info).head }}
-      uses: peter-evans/create-pull-request@v5
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        commit-message: Add contribution from issue
-        title: ${{ env.PR_TITLE }}
-        body: ${{ env.PR_BODY }}
-        branch: ${{ env.PR_BRANCH }}
-        base: main
 
     - name: Comment on issue
       if: success()
@@ -140,12 +130,14 @@ jobs:
       with:
         github-token: ${{secrets.GITHUB_TOKEN}}
         script: |
-          github.rest.issues.createComment({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.name,
-            body: 'Thank you for your contribution! A pull request has been created with your changes. The repository owner will review and merge it soon.'
-          })
+
+          await github.rest.issues.createComment({
+              ...context.repo,
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.name,
+              body: 'Thank you for your contribution! A pull request has been created with your changes. The repository owner will review and merge it soon.'
+          });
 
     - name: Comment on issue if failed
       if: failure()
@@ -153,7 +145,7 @@ jobs:
       with:
         github-token: ${{secrets.GITHUB_TOKEN}}
         script: |
-          github.rest.issues.createComment({
+          await github.rest.issues.createComment({
             issue_number: context.issue.number,
             owner: context.repo.owner,
             repo: context.repo.name,
