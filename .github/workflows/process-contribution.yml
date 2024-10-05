@@ -1,0 +1,153 @@
+name: Process Contribution
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  process-contribution:
+    runs-on: ubuntu-latest
+  
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install jsonschema requests
+
+    - name: Validate JSON and process contribution
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        import json
+        import os
+        import requests
+        import sys
+        import subprocess
+
+        def get_issue_data(issue_number):
+            url = f"https://api.github.com/repos/${{github.repository}}/issues/{issue_number}"
+            headers = {
+                "Authorization": f"token {os.environ['GITHUB_TOKEN']}",
+                "Accept": "application/vnd.github.v3+json"
+            }
+            response = requests.get(url, headers=headers)
+            if response.status_code != 200:
+                print(f"Failed to fetch issue data: {response.text}")
+                sys.exit(1)
+            return response.json()
+
+        # Get the issue number from the event payload
+        with open(os.environ['GITHUB_EVENT_PATH'], 'r') as f:
+            event_data = json.load(f)
+        issue_number = event_data['issue']['number']
+
+        # Get the issue data
+        issue_data = get_issue_data(issue_number)
+        issue_body = issue_data.get('body', '')
+
+        if not issue_body:
+            print("Issue body is empty")
+            sys.exit(1)
+
+        # Extract JSON from issue body
+        try:
+            start = issue_body.index('{')
+            end = issue_body.rindex('}') + 1
+            json_str = issue_body[start:end]
+            json_data = json.loads(json_str)
+        except (ValueError, json.JSONDecodeError) as e:
+            print(f"Failed to extract JSON from issue body: {e}")
+            sys.exit(1)
+
+        # Write the extracted JSON to a temporary file
+        with open('temp_playlist.json', 'w') as f:
+            json.dump(json_data, f)
+
+        # Run the verify_playlist.py script
+        result = subprocess.run(['python', '.github/scripts/verify_playlist.py', 'temp_playlist.json'], capture_output=True, text=True)
+        
+        if result.returncode != 0:
+            print(f"Playlist verification failed: {result.stdout}\n{result.stderr}")
+            sys.exit(1)
+
+        print("Playlist verification passed")
+
+        # If validation passes, append to playlist.json
+        with open('playlist.json', 'r+') as f:
+            playlists = json.load(f)
+            playlists.append(json_data)
+            f.seek(0)
+            json.dump(playlists, f, indent=2)
+
+        # Create a new branch
+        branch_name = f"contribution-{issue_number}"
+        os.system(f"git checkout -b {branch_name}")
+        os.system("git add playlist.json")
+        os.system('git config user.name "github-actions[bot]"')
+        os.system('git config user.email "github-actions[bot]@users.noreply.github.com"')
+        os.system(f'git commit -m "Add contribution from issue #{issue_number}"')
+        os.system(f"git push origin {branch_name}")
+
+        # Create a pull request
+        pr_url = f"https://api.github.com/repos/${{github.repository}}/pulls"
+        pr_data = {
+            "title": f"Contribution from issue #{issue_number}",
+            "body": f"This PR adds the contribution from issue #{issue_number}",
+            "head": branch_name,
+            "base": "main"
+        }
+
+        headers = {
+            "Authorization": f"token {os.environ['GITHUB_TOKEN']}",
+            "Accept": "application/vnd.github.v3+json"
+        }
+        response = requests.post(pr_url, json=pr_data, headers=headers)
+        if response.status_code == 201:
+            print(f"Pull request created successfully: {response.json()['html_url']}")
+        else:
+            print(f"Failed to create pull request: {response.text}")
+            sys.exit(1)
+        
+
+      shell: python
+
+    - name: Comment on issue
+      if: success()
+      uses: actions/github-script@v6
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+
+          await github.rest.issues.createComment({
+              ...context.repo,
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.name,
+              body: 'Thank you for your contribution! A pull request has been created with your changes. The repository owner will review and merge it soon.'
+          });
+
+    - name: Comment on issue if failed
+      if: failure()
+      uses: actions/github-script@v6
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+          await github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.name,
+            body: 'There was an error processing your contribution. Please check that your JSON is correctly formatted and includes all required fields.'
+          })
