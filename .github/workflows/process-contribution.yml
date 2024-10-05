@@ -12,6 +12,7 @@ permissions:
 jobs:
   process-contribution:
     runs-on: ubuntu-latest
+  
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
@@ -108,6 +109,7 @@ jobs:
             "head": branch_name,
             "base": "main"
         }
+
         headers = {
             "Authorization": f"token {os.environ['GITHUB_TOKEN']}",
             "Accept": "application/vnd.github.v3+json"
@@ -118,6 +120,7 @@ jobs:
         else:
             print(f"Failed to create pull request: {response.text}")
             sys.exit(1)
+        
 
       shell: python
 
@@ -127,12 +130,14 @@ jobs:
       with:
         github-token: ${{secrets.GITHUB_TOKEN}}
         script: |
-          github.rest.issues.createComment({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.name,
-            body: 'Thank you for your contribution! A pull request has been created with your changes. The repository owner will review and merge it soon.'
-          })
+
+          await github.rest.issues.createComment({
+              ...context.repo,
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.name,
+              body: 'Thank you for your contribution! A pull request has been created with your changes. The repository owner will review and merge it soon.'
+          });
 
     - name: Comment on issue if failed
       if: failure()
@@ -140,7 +145,7 @@ jobs:
       with:
         github-token: ${{secrets.GITHUB_TOKEN}}
         script: |
-          github.rest.issues.createComment({
+          await github.rest.issues.createComment({
             issue_number: context.issue.number,
             owner: context.repo.owner,
             repo: context.repo.name,

@@ -126,7 +126,7 @@ const PlaylistDetail = async ({
             <div className="flex flex-col  gap-4 w-full ">
               <div>
                 <h1 className="text-xs md:text-sm font-medium text-gray-400">
-                  Created by
+                  Contributed by
                 </h1>
                 <Link href={selectedPlaylist.user_profile_link!} target="_blank">
                 <h1 className="text-sm md:text-lg text-white">

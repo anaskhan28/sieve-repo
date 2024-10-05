@@ -304,5 +304,23 @@
     "category": "Cyber Security",
     "user_profile_link": "https://github.com/Dark-Kernel",
     "user_Image": "https://avatars.githubusercontent.com/Dark-Kernel"
+  },
+  {
+    "name": "Manjiri C",
+    "playlist_link": "https://www.youtube.com/watch?v=pN6jk0uUrD8&list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP",
+    "summary": "This playlist, created by Akshay Saini, provides an in-depth and beginner-friendly course on JavaScript. It covers the core concepts of JavaScript with clear explanations and practical examples, making it a valuable resource for developers looking to strengthen their JS fundamentals.",
+    "title": "Namaste JavaScript \ud83d\ude4f by Akshay Saini",
+    "category": "Frontend Development",
+    "user_profile_link": "https://github.com/CODEX108",
+    "user_image": "https://avatars.githubusercontent.com/u/82377810?v=4"
+  },
+  {
+    "name": "Anas Khan",
+    "playlist_link": "https://www.youtube.com/watch?v=hkKdRrKf_0o&list=PL-my9REMIFtEsQv2rezRY7E9Ih9nmJ2TZ",
+    "summary": "This playlist, created by You suck at programming, provides an in-depth and beginner-friendly course on Bash scripting. It covers the core concepts of Bash with clear explanations and practical examples, making it a valuable resource for developers looking to strengthen their Unix shell fundamentals.",
+    "title": "You suck at programming",
+    "category": "Cyber Security",
+    "user_profile_link": "https://github.com/anaskhan28",
+    "user_image": "https://avatars.githubusercontent.com/anaskhan28"
   }
 ]
