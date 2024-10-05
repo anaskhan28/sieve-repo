@@ -295,5 +295,14 @@
     "category": "Frontend Development",
     "user_profile_link": "https://github.com/DrasticCoder",
     "user_Image": "https://avatars.githubusercontent.com/DrasticCoder"
+  },
+  {
+    "name": "Dark-Kernel",
+    "playlist_link": "https://www.youtube.com/watch?v=oSZI11ilWjU&list=PL1H1sBF1VAKVmjZZr162aUNCt2Uy5ozAG",
+    "summary": "Beginner-friendly tutorial on cybercrime investigation, whcih Provides practical examples for effective management and collection of data. by john hammond",
+    "title": "Cybercrime Investigation",
+    "category": "Cyber Security",
+    "user_profile_link": "https://github.com/Dark-Kernel",
+    "user_Image": "https://avatars.githubusercontent.com/Dark-Kernel"
   }
 ]
