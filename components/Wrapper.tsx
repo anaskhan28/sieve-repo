@@ -46,11 +46,11 @@ const ClientSideSearchWrapper = () => {
   });
 
   const enrichedPlaylistData = useMemo(() => {
-    if (!playlistData?.data || !ratingData) return [];
+    if (!playlistData?.data) return [];
 
     return playlistData.data.map(playlist => ({
       ...playlist,
-      playlistRating: ratingData.find(r => r.playlist_id === playlist.id)?.rating ?? null,
+      playlistRating: ratingData?.find(r => r.playlist_id === playlist.id)?.rating ?? null,
       avgPlaylistRate: playlist.playlist_rates?.toFixed(1) ?? null,
       inserted_at: playlist?.inserted_at,
     }));
@@ -95,7 +95,8 @@ const ClientSideSearchWrapper = () => {
 
     return result;
   }, [enrichedPlaylistData, tag, search, sort]);
-
+  
+console.log(ratingData, 'filtered')
   const loadMore = () => {
     setDisplayCount((prevCount) => prevCount + 6);
   };

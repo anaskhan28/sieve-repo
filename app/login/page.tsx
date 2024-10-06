@@ -14,6 +14,8 @@ const Login = (props: Props) => {
 
 
   const socialAuth =  async (provider: Provider) =>{
+
+    
    await supabase.auth.signInWithOAuth({
      provider,
      options: {

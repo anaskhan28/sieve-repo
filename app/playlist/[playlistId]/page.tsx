@@ -1,5 +1,6 @@
+"use client"
 
-import React from "react";
+import React, { useMemo } from "react";
 import playlists from "@/playlist.json";
 import PlaylistCard from "@/components/PlaylistCard";
 import Image from "next/image";
@@ -24,18 +25,47 @@ type EnrichedPlaylistType = PlaylistType & {
   avgPlaylistRate: string | null;
 };
 
-const PlaylistDetail = async ({
+const PlaylistDetail =  ({
   params,
 }: {
   params: { playlistId: string };
 }) => {
-  const userData = await getUserData();
+  // const userData = await getUserData();
   
-  if (!userData) {
-    redirect('/signup');
-  }  
+  // if (!userData) {
+  //   redirect('/signup');
+  // }  
 
-  const dataPlaylist = await getPlaylistCardData();
+  const { data: ratingData, error: ratingError } = useQuery({
+    queryKey: ["ratings"],
+    queryFn: getRatings,
+  });
+
+  const { 
+    data: playlistData, 
+    error: playlistError, 
+    isLoading
+  } = useQuery({
+    queryKey: ["playlists"],
+    queryFn: getPlaylistData,
+  });
+
+  console.log(playlistData, 'playlsitData')
+
+  const enrichedPlaylistData = useMemo(() => {
+    if (!playlistData?.data) return [];
+
+    return playlistData.data.map(playlist => ({
+      ...playlist,
+      playlistRating: ratingData?.find(r => r.playlist_id === playlist.id)?.rating ?? null,
+      avgPlaylistRate: playlist.playlist_rates?.toFixed(1) ?? null,
+      inserted_at: playlist?.inserted_at,
+    }));
+  }, [playlistData, ratingData]);
+
+  console.log(enrichedPlaylistData, 'enrichedPlaylistData')
+
+  // const dataPlaylist = await getPlaylistCardData();
 
 
   // const { 
@@ -53,20 +83,20 @@ const PlaylistDetail = async ({
 
   // console.log(playlistCardData, 'data-playlist')
 
-  if (!dataPlaylist) return null;
+  // if (!dataPlaylist) return null;
 
-  const enrichedPlaylists: EnrichedPlaylistType[] = dataPlaylist.playlistData.data!.map(playlist => ({
-    ...playlist,
-    playlistRating: dataPlaylist.ratings.find(r => r.playlist_id === playlist.id)?.rating || null,
-    avgPlaylistRate: playlist.playlist_rates?.toFixed(1) || null
-  }));
+  // const enrichedPlaylists: EnrichedPlaylistType[] = dataPlaylist.playlistData.data!.map(playlist => ({
+  //   ...playlist,
+  //   playlistRating: dataPlaylist.ratings.find(r => r.playlist_id === playlist.id)?.rating || null,
+  //   avgPlaylistRate: playlist.playlist_rates?.toFixed(1) || null
+  // }));
 
-  const selectedPlaylist = enrichedPlaylists.find(pl => pl.id === params.playlistId);
+  const selectedPlaylist = enrichedPlaylistData.find(pl => pl.id === params.playlistId);
 
   if (!selectedPlaylist) {
-    return <p className="flex justify-around items-center text-xl">Playlist not found.</p>;
+    return <p className="flex justify-around items-center text-xl text-white">Playlist not found.</p>;
   }
-  const filteredPlaylists = enrichedPlaylists.filter(pl => pl.id !== params.playlistId);
+  const filteredPlaylists = enrichedPlaylistData.filter(pl => pl.id !== params.playlistId);
   const sortedPlaylists = filteredPlaylists.sort((a, b) => Number(b.avgPlaylistRate) - Number(a.avgPlaylistRate));
 
 

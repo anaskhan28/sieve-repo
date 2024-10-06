@@ -6,12 +6,12 @@ const getPlaylistData = async (): Promise<{ data: PlaylistType[] | null; totalCo
     try {
         const supabase = await SupabaseServerClient();
        
-        const { data: { user } } = await supabase.auth.getUser();
+        // const { data: { user } } = await supabase.auth.getUser();
     
-        if (!user) {
-            console.log('NO USER', user);
-            return { data: null, totalCount: 0 };
-        }
+        // if (!user) {
+        //     console.log('NO USER', user);
+        //     return { data: null, totalCount: 0 };
+        // }
     
         let queryBuilder = supabase
             .from('playlistsInfo')

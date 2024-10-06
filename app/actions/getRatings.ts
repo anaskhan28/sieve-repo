@@ -9,11 +9,11 @@ const supabase = await SupabaseServerClient();
 
 const{ data: {user}} = await supabase.auth.getUser();
 
-if(!user){
-    console.log('NO USER', user);
-    return null;
-}
-const {data, error} = await supabase.from('ratings').select().eq('user_id', user.id);
+// if(!user){
+//     console.log('NO USER', user);
+//     return null;
+// }
+const {data, error} = await supabase.from('ratings').select().eq('user_id', user?.id);
 if(error){
     console.log(error, 'error');
     return null

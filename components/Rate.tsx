@@ -21,12 +21,18 @@ import { DialogClose } from "@radix-ui/react-dialog"
 import getPlaylistData from "@/app/actions/getPlaylistData"
 import Rating from '@/components/Rating';
 import { useOptimistic } from "react"
+import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation'
+
 export default function Rate(playlist: PlaylistType) {
   const [rating, setRating] = useState<number>();
+  const router = useRouter()
+
   const [optimisticPlaylist, addOptimisticPlaylist] = useOptimistic(
     playlist,
     (state, newRating: number) => ({ ...state, playlistRating: newRating })
   );
+
     function onChange(newValue: number) {
       console.log(newValue);
       setRating(newValue);
@@ -35,7 +41,11 @@ export default function Rate(playlist: PlaylistType) {
     const onSubmit = useCallback(async () => {
       const userData: any = await getUserData();
       
-      if (!userData) return null;
+      if (!userData){
+        return router.push('/signup');
+      };
+
+
     
       // Optimistically update the UI
       addOptimisticPlaylist(rating || 0);
@@ -53,7 +63,7 @@ export default function Rate(playlist: PlaylistType) {
         console.error('Error submitting rating:', error);
         // You might want to revert the optimistic update or show an error message
       }
-    }, [rating, playlist.id, addOptimisticPlaylist]);
+    }, [rating, playlist.id,router, addOptimisticPlaylist]);
 
 
 
