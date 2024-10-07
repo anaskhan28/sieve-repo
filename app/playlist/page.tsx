@@ -66,9 +66,7 @@ if (playlistData && playlistData?.data?.length !== playlistJson.length) {
   return (
     <div className='bg-[#0E0E0E] w-full min-h-screen'>
       <div className='container p-2  flex flex-col justify-center items-center py-16'>
-        {/* <HydrationBoundary state={dehydrate(queryClient)}> */}
         <ClientSideSearchWrapper />
-        {/* </HydrationBoundary> */}
       </div>
     </div>
   )
