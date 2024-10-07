@@ -1,38 +1,20 @@
 'use client'
 
 import React, { useMemo } from 'react'
-import getUserData from '../../actions/getUserData'
-import { redirect } from 'next/navigation';
-import { getPlaylistCardData } from '@/utils/getPlaylistCardData';
 import PlaylistCards from '@/components/PlaylistCards';
 import getRatings from '../../actions/getRatings';
 import { PlaylistType } from '@/types/Types'; // Make sure to import your PlaylistType
 import Image from 'next/image';
 import { useQuery } from '@tanstack/react-query';
 import getPlaylistData from '@/app/actions/getPlaylistData';
-type Props = {
-  [key:string]: string
-}
-
+export const dynamic = 'force-dynamic'
 type EnrichedPlaylistType = PlaylistType & {
   playlistRating: number | null;
   avgPlaylistRate: string | null;
 };
 
 const RatedPlaylist =  () => {
-  // const userData = await getUserData();
-  
-  // if (!userData) {
-  //   return redirect('/signup');
-  // }
-
-  // // const playlistData = await getPlaylistCardData();
-  // if (!playlistData) return null;
-
-  // const getUserRatingDetails = playlistData.ratings;
-  // if (!getUserRatingDetails) return null;
-
-
+ 
 
  const { data: ratingData, error: ratingError } = useQuery({
     queryKey: ["ratings"],
@@ -66,18 +48,10 @@ const RatedPlaylist =  () => {
       };
     });
   }, [playlistData, ratingData])
-  // const enrichedPlaylistData = useMemo(() => {
-  //   if (!playlistData?.data || !ratingData) return [];
 
-  //   return playlistData.data.map(playlist => ({
-  //     ...playlist,
-  //     playlistRating: ratingData.find(r => r.playlist_id === playlist.id)?.rating ?? null,
-  //     avgPlaylistRate: playlist.playlist_rates?.toFixed(1) ?? null,
-  //     inserted_at: playlist?.inserted_at,
-  //   }));
-  // }, [playlistData, ratingData]);
+  // if (isLoading) return <div>Loading...</div>;
+  // if (playlistError || ratingError) return <div>Error loading data</div>;
 
-  // console.log(enrichedPlaylistData, 'enrichedPlaylistData')
 
   return (
     <div className='bg-[#0E0E0E] w-full min-h-screen '>
