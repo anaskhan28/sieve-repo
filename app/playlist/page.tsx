@@ -11,6 +11,8 @@ import getPlaylistData from '../actions/getPlaylistData';
 import { HydrationBoundary, dehydrate, useQuery } from '@tanstack/react-query';
 import getRatings from '../actions/getRatings';
 import { PlaylistType } from '@/types/Types';
+export const dynamic = 'force-dynamic'
+
 type Props = {
   [key: string]: string
 }
