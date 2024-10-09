@@ -331,5 +331,14 @@
     "category": "Full-Stack Development",
     "user_profile_link": "https://github.com/anaskhan28",
     "user_Image": "https://avatars.githubusercontent.com/anaskhan28"
+  },
+  {
+    "name": "Abusha Ansari",
+    "playlist_link": "https://youtube.com/playlist?list=PLVwbZ9sSg3wNRf4BLhnFUi0fn8KVorM-T&si=YjPeCzC1YGRm7IGh",
+    "summary": "This is a playlist for new developers to learn React in a very simple way and gain confidence by building projects and learning new concepts along the way. It is especially helpful for those who are starting with React from scratch.",
+    "title": "Mastering React",
+    "category": "Frontend Development",
+    "user_profile_link": "https://github.com/Abusha-Ansari",
+    "user_Image": "https://avatars.githubusercontent.com/abusha-ansari"
   }
 ]
