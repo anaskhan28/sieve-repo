@@ -331,5 +331,23 @@
     "category": "Full-Stack Development",
     "user_profile_link": "https://github.com/anaskhan28",
     "user_Image": "https://avatars.githubusercontent.com/anaskhan28"
+  },
+  {
+    "name": "Abusha Ansari",
+    "playlist_link": "https://youtube.com/playlist?list=PLVwbZ9sSg3wNRf4BLhnFUi0fn8KVorM-T&si=YjPeCzC1YGRm7IGh",
+    "summary": "This playlist is perfect for developers new to React, offering a step-by-step approach to learning the framework. It breaks down key concepts like components, state management, and hooks in a simple and easy-to-follow way. By building hands-on projects, learners can apply these concepts practically, gaining confidence and reinforcing their understanding. Whether you are starting from scratch or transitioning from another language, this playlist will help you grasp React’s fundamentals and build real-world applications with ease.",
+    "title": "Mastering React",
+    "category": "Frontend Development",
+    "user_profile_link": "https://github.com/Abusha-Ansari",
+    "user_Image": "https://avatars.githubusercontent.com/abusha-ansari"
+  },
+  {
+    "name": "Abusha Ansari",
+    "playlist_link": "https://youtube.com/playlist?list=PLbtI3_MArDOlJ4036mWiUKaQToUS8MZVu&si=4BSjC3AylcSjoK4P",
+    "summary": "This GitHub series offers a step-by-step guide from basics to advanced topics, covering version control, branching, merging, and GitHub Actions. With practical examples, it’s easy to follow for all skill levels, helping you confidently manage projects and collaborate effectively.",
+    "title": "Learning Git-Github From Scratch",
+    "category": "Devops",
+    "user_profile_link": "https://github.com/Abusha-Ansari",
+    "user_Image": "https://avatars.githubusercontent.com/abusha-ansari"
   }
 ]
