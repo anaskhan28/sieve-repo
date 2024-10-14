@@ -16,7 +16,7 @@ const PlaylistCard = (props: PlaylistCardProps) => {
   return (
     <Suspense key={props.playlist_id} fallback={<Loading/>}>
     <div className=' w-full rounded-xl overflow-hidden'>
-      <Link className='block relative aspect-video' href={`/playlist/${props.id}`}>
+      <Link className='block relative aspect-video hover:opacity-90 transition-opacity duration-250' href={`/playlist/${props.id}`}>
         <Image 
           src={props.playlist_image} 
           alt={props.playlist_title}
