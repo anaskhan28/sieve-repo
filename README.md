@@ -43,7 +43,7 @@ To get a local copy up and running, follow these simple steps:
 1. **Clone the repository**:
     ```bash
     git clone https://github.com/anaskhan28/sieve-repo.git
-    cd sieve
+    cd sieve-repo
     ```
 
 2. **Install dependencies**:
