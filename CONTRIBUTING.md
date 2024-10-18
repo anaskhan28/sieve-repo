@@ -1,6 +1,8 @@
-## Contributing 🤝
+## Contributing to Code 🤝
 
 We welcome contributions from the community! To contribute:
+
+Please check the available [Issues](https://github.com/anaskhan28/sieve-repo/issues) for the website first then statrt contributing!
 
 1. **Fork the repository**:
 
@@ -9,7 +11,7 @@ We welcome contributions from the community! To contribute:
 
    ```bash
    git clone https://github.com/anaskhan28/sieve-repo.git
-   cd sieve
+   cd sieve-repo
    ```
 3. **Create a new branch**:
 
@@ -30,7 +32,7 @@ We welcome contributions from the community! To contribute:
 
    - Navigate to the original repository and click the "New Pull Request" button.
 
-### Adding Playlists/Video 🫡
+### Contributing Playlists/Video 🫡
 
 To add a new playlist, please follow these steps:
 
