@@ -11,13 +11,14 @@ Welcome to **Sieve**, an IMDB-like platform for discovering and rating the best 
 - [Tech Stack](#tech-stack-🛠️)
 - [Installation](#installation-📥)
 - [Usage](#usage-🚀)
-- [Contributing](#contributing-🤝)
+- [Contributing](CONTRIBUTING.md)
 - [License](#license-📄)
 - [Contact](#contact-📧)
 
 ## Project Overview 📝
 
 Sieve is designed to be a comprehensive and user-friendly platform where users can:
+
 - Discover curated YouTube playlists on various technical topics.
 - Rate and review playlists to provide feedback and help others find valuable content.
 - Contribute by adding new playlists and enhancing the platform’s content library.
@@ -41,27 +42,28 @@ Sieve is designed to be a comprehensive and user-friendly platform where users c
 To get a local copy up and running, follow these simple steps:
 
 1. **Clone the repository**:
-    ```bash
-    git clone https://github.com/anaskhan28/sieve-repo.git
-    cd sieve
-    ```
 
+   ```bash
+   git clone https://github.com/anaskhan28/sieve-repo.git
+   cd sieve
+   ```
 2. **Install dependencies**:
-    ```bash
-    npm install
-    ```
 
+   ```bash
+   npm install
+   ```
 3. **Set up environment variables**: Create a `.env` file in the root directory and add the necessary environment variables.
-    ```
-    NEXT_PUBLIC_SUPABASE_URL=your_supabase_uri
-    NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-    YOUTUBE_API_KEY=your_youtube_api_key
-    ```
 
+   ```
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_uri
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   YOUTUBE_API_KEY=your_youtube_api_key
+   ```
 4. **Run the development server**:
-    ```bash
-    npm run dev
-    ```
+
+   ```bash
+   npm run dev
+   ```
 
 ## Usage 🚀
 
@@ -75,15 +77,15 @@ Once the development server is running, you can:
 
 ![Sieve Screenshot](public/playlist.png)
 
-
-
 ## License 📄
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
-## Contact 📧
+## Thanks to our Contributors 🫂
 
-- **Anas Khan** - [@anaskhan_28](https://x.com/anaskhan_28) - khananasatique@gmail.com
-- **Project Link**: [https://createsieve.vercel.app/](https://sieveit.me)
 
-Thank you for contributing to Sieve! Together, we can build a valuable resource for learners everywhere.
+<a href="https://github.com/anaskhan28/sieve-repo/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=anaskhan28/sieve-repo" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
