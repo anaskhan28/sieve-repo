@@ -1,0 +1,47 @@
+name: Add Playlist
+description: Submit a new playlist
+title: "[Playlist]: "
+labels: ["playlist-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to submit a playlist!
+        
+  - type: input
+    id: playlist-name
+    attributes:
+      label: Playlist Name
+      description: What is the name of your playlist?
+      placeholder: e.g., Awesome Coding Music
+    validations:
+      required: true
+      
+  - type: input
+    id: playlist-url
+    attributes:
+      label: Playlist URL
+      description: Please provide the URL to your playlist
+      placeholder: e.g., https://open.spotify.com/playlist/...
+    validations:
+      required: true
+      
+  - type: textarea
+    id: playlist-description
+    attributes:
+      label: Description
+      description: Provide a brief description of your playlist
+      placeholder: What kind of music is this? What's the theme?
+    validations:
+      required: true
+      
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Submission Guidelines
+      description: By submitting this playlist, you agree to our contribution terms
+      options:
+        - label: This is my original playlist or I have permission to share it
+          required: true
+        - label: I understand that this submission will be reviewed before being added
+          required: true
