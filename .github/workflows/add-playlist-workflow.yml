@@ -1,0 +1,143 @@
+name: Process Contribution
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  process-contribution:
+    if: contains(github.event.issue.labels.*.name, 'playlist-submission')
+    runs-on: ubuntu-latest
+  
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install jsonschema requests
+
+    - name: Validate JSON and process contribution
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        BODY="${{ github.event.issue.body }}"
+        PLAYLIST_TITLE=$(echo "$BODY" | grep "### Playlist Title" -A 2 | tail -n 1)
+        PLAYLIST_URL=$(echo "$BODY" | grep "### Playlist URL" -A 2 | tail -n 1)
+        PLAYLIST_SUMMARY=$(echo "$BODY" | grep "### Playlist Summary" -A 2 | tail -n 1)
+        PLAYLIST_CATEGORY=$(echo "$BODY" | grep "Category" -A 2 | tail -n 1)
+        CREATOR="${{ github.event.issue.user.login }}"
+
+        echo """
+        {
+          \"name\": \"$CREATOR\",
+          \"playlist_link\": \"$PLAYLIST_URL\",
+          \"summary\": \"$PLAYLIST_SUMMARY\",
+          \"title\": \"$PLAYLIST_TITLE\",
+          \"category\": \"$PLAYLIST_CATEGORY\",
+          \"user_profile_link\": \"https://github.com/$CREATOR\",
+          \"user_image\": \"https://avatars.githubusercontent.com/$CREATOR\"
+        }
+        """ > temp_playlist.json
+
+          
+        # # Set outputs
+        # echo "creator=$CREATOR" >> $GITHUB_OUTPUT
+        # echo "playlist_title=$PLAYLIST_TITLE" >> $GITHUB_OUTPUT
+        # # Extract JSON from issue body
+
+        # Run the verify_playlist.py script
+        # Verify the playlist
+        python .github/scripts/verify_playlist.py temp_playlist.json
+        if [[ $? -ne 0 ]]; then
+          echo "Playlist verification failed"
+          exit 1
+        fi
+        echo "Playlist verification passed"
+        # Append to playlist.json
+        if [[ -f "playlist.json" ]]; then
+          json_data=$(<temp_playlist.json)
+          jq ". += [$json_data]" playlist.json > playlist_temp.json && mv playlist_temp.json playlist.json
+        else
+          echo "playlist.json not found!"
+          exit 1
+        fi
+
+
+
+        # Create a new branch
+        
+        issue_number="123" # Replace with your actual issue number logic
+        branch_name="contribution-$issue_number"
+        git checkout -b "$branch_name"
+        git add playlist.json
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git commit -m "Add contribution from issue #$issue_number"
+        git push origin "$branch_name"
+
+        # Create a pull request
+        pr_url="https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls"
+        pr_data=$(jq -n --arg title "Contribution from issue #$issue_number" \
+              --arg body "This PR adds the contribution from issue #$issue_number" \
+              --arg head "$branch_name" \
+              --arg base "main" \
+              '{title: $title, body: $body, head: $head, base: $base}')
+
+        response=$(curl -s -w "%{http_code}" -o response.json -X POST \
+          -H "Authorization: token $GITHUB_TOKEN" \
+          -H "Accept: application/vnd.github.v3+json" \
+          -d "$pr_data" \
+          "$pr_url")
+
+        http_code=${response:(-3)}
+        if [[ $http_code -eq 201 ]]; then
+          pr_link=$(jq -r '.html_url' response.json)
+          echo "Pull request created successfully: $pr_link"
+        else
+          echo "Failed to create pull request"
+          jq '.' response.json
+          exit 1
+        fi
+        
+
+      shell: sh
+
+    - name: Comment on issue
+      if: success()
+      uses: actions/github-script@v6
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+
+          await github.rest.issues.createComment({
+              ...context.repo,
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.name,
+              body: 'Thank you for your contribution! A pull request has been created with your changes. The repository owner will review and merge it soon.'
+          });
+
+    - name: Comment on issue if failed
+      if: failure()
+      uses: actions/github-script@v6
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+          await github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.name,
+            body: 'There was an error processing your contribution. Please check that your JSON is correctly formatted and includes all required fields.'
+          })
