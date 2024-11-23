@@ -1,47 +1,60 @@
-name: Add Playlist
-description: Submit a new playlist
+name: Add YouTube Playlist
+description: Submit an educational YouTube playlist
 title: "[Playlist]: "
 labels: ["playlist-submission"]
 body:
-  - type: markdown
-    attributes:
-      value: |
-        Thanks for taking the time to submit a playlist!
-        
   - type: input
-    id: playlist-name
+    id: title
     attributes:
-      label: Playlist Name
-      description: What is the name of your playlist?
-      placeholder: e.g., Awesome Coding Music
+      label: Playlist Title
+      description: The full title of the YouTube playlist
+      placeholder: "e.g., < Name > by < Creator >"
     validations:
       required: true
       
   - type: input
-    id: playlist-url
+    id: playlist_link
     attributes:
-      label: Playlist URL
-      description: Please provide the URL to your playlist
-      placeholder: e.g., https://open.spotify.com/playlist/...
+      label: YouTube Playlist URL
+      description: Full link to the YouTube playlist
+      placeholder: "https://www.youtube.com/playlist?list=..."
     validations:
       required: true
       
   - type: textarea
-    id: playlist-description
+    id: summary
     attributes:
-      label: Description
-      description: Provide a brief description of your playlist
-      placeholder: What kind of music is this? What's the theme?
+      label: Playlist Summary
+      description: Provide a detailed description of what this playlist teaches
+      placeholder: "Describe the content, teaching style, and what learners can expect from this playlist..."
     validations:
       required: true
       
-  - type: checkboxes
-    id: terms
+  - type: dropdown
+    id: category
     attributes:
-      label: Submission Guidelines
-      description: By submitting this playlist, you agree to our contribution terms
+      label: Category
+      description: Select the main category for this educational playlist
       options:
-        - label: This is my original playlist or I have permission to share it
-          required: true
-        - label: I understand that this submission will be reviewed before being added
-          required: true
+        - Frontend Development
+        - Backend Development
+        - Full Stack Development
+        - DevOps
+        - Mobile Development
+        - Data Structures & Algorithms
+        - System Design
+        - Cloud Computing
+        - Machine Learning/AI
+        - Blockchain
+        - Other
+    validations:
+      required: true
+      
+  # - type: input
+  #   id: name
+  #   attributes:
+  #     label: Your GitHub Username
+  #     description: Enter your GitHub username (without @)
+  #     placeholder: "e.g., CODEX108"
+  #   validations:
+  #     required: true
