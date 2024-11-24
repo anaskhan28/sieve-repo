@@ -1,8 +1,6 @@
 name: Process Contribution
 
-on:
-  issues:
-    types: [opened, edited]
+on: push
 
 permissions:
   contents: write
