@@ -33,14 +33,14 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GITHUB_CONTEXT: ${{ toJson(github) }}
-        EVENT_ID: ${{ github.event.issue.id }}
+        EVENT_ID: ${{ github.event.issue.number }}
         ISSUE_BODY: ${{ github.event.issue.body }}
       run: |
         echo "eventid: $EVENT_ID, Github context: cool"
         BODY="$ISSUE_BODY"
         echo "body ===> $BODY"
         PLAYLIST_TITLE=$(echo "$BODY" | grep "### Playlist Title" -A 2 | tail -n 1)
-        PLAYLIST_URL=$(echo "$BODY" | grep "### YouTube Playlist URL" -A 1 | tail -n 1)
+        PLAYLIST_URL=$(echo "$BODY" | grep "### YouTube Playlist URL" -A 2 | tail -n 1)
         PLAYLIST_SUMMARY=$(echo "$BODY" | grep "### Playlist Summary" -A 2 | tail -n 1)
         PLAYLIST_CATEGORY=$(echo "$BODY" | grep "Category" -A 2 | tail -n 1)
         CREATOR="${{ github.event.issue.user.login }}"
@@ -95,7 +95,7 @@ jobs:
         # Create a pull request
         pr_url="https://api.github.com/repos/${{github.repository}}/pulls"
         pr_data=$(jq -n --arg title "Contribution from issue #$issue_number" \
-              --arg body "This PR adds the contribution from issue #$issue_number" \
+              --arg body "This PR adds the contribution from issue #$issue_number with\n $(<temp_playlist.json)" \
               --arg head "$branch_name" \
               --arg base "main" \
               '{title: $title, body: $body, head: $head, base: $base}')
@@ -126,19 +126,22 @@ jobs:
         github-token: ${{secrets.GITHUB_TOKEN}}
         script: |
 
-          await github.rest.issues.createComment({
-              ...context.repo,
+          try {            
+            await github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
-              repo: context.repo.name,
+              repo: context.repo.repo,
               body: 'Thank you for your contribution! A pull request has been created with your changes. The repository owner will review and merge it soon.'
-          });
-
-    - name: Add  comment
-      if: always()
+            });
+          } catch (error) {
+            core.setFailed('Failed to post comment');
+          }
+          
+    - name: Comment on issue if failed
+      if: failure()
       uses: actions/github-script@v6
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+        github-token: ${{secrets.GITHUB_TOKEN}}
         script: |
           
           try {            
@@ -151,16 +154,3 @@ jobs:
           } catch (error) {
             core.setFailed('Failed to post comment');
           }
-          
-    - name: Comment on issue if failed
-      if: failure()
-      uses: actions/github-script@v6
-      with:
-        github-token: ${{secrets.GITHUB_TOKEN}}
-        script: |
-          await github.rest.issues.createComment({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.name,
-            body: 'There was an error processing your contribution. Please check that your JSON is correctly formatted and includes all required fields.'
-          })
