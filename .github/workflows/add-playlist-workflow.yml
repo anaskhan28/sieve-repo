@@ -39,7 +39,7 @@ jobs:
         BODY="$ISSUE_BODY"
         PLAYLIST_TITLE=$(echo "$BODY" | grep "### Playlist Title" -A 2 | tail -n 1)
         PLAYLIST_URL=$(echo "$BODY" | grep "### YouTube Playlist URL" -A 2 | tail -n 1)
-        PLAYLIST_SUMMARY=$(echo "$BODY" | grep "### Playlist Summary" -A 2 | tail -n 1)
+        PLAYLIST_SUMMARY=$(echo "$BODY" | sed -n '/### Playlist Summary/,/### Category/{//!p}' | sed '$d')
         PLAYLIST_CATEGORY=$(echo "$BODY" | grep "Category" -A 2 | tail -n 1)
         CREATOR="${{ github.event.issue.user.login }}"
 
@@ -89,7 +89,7 @@ jobs:
         # Create a pull request
         pr_url="https://api.github.com/repos/${{github.repository}}/pulls"
         pr_data=$(jq -n --arg title "Contribution from issue #$issue_number" \
-              --arg body "$(printf "### Description\n\nThis PR adds the contribution from issue #$issue_number.\n\n#### Playlist Details:\n\`\`\`json\n%s\n\`\`\`" "$(cat temp_playlist.json)")" \
+              --arg body "$(printf "### Description\n\nThis PR adds the contribution from issue #$issue_number by @%s.\n\n#### Playlist Details:\n\`\`\`json\n%s\n\`\`\`"  "$CREATOR" "$(cat temp_playlist.json)")" \
               --arg head "$branch_name" \
               --arg base "main" \
               '{title: $title, body: $body, head: $head, base: $base}')
