@@ -25,7 +25,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        apt update && apt install jq curl -y
+        sudo apt update && sudo apt install jq curl -y
 
     - name: Validate JSON and process contribution
       env:
@@ -132,7 +132,24 @@ jobs:
               body: 'Thank you for your contribution! A pull request has been created with your changes. The repository owner will review and merge it soon.'
           });
 
-
+    - name: Add  comment
+      if: always()
+      uses: actions/github-script@v6
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          
+          try {            
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'There was an error processing your contribution. Please check that your JSON is correctly formatted and includes all required fields.'
+            });
+          } catch (error) {
+            core.setFailed('Failed to post comment');
+          }
+          
     - name: Comment on issue if failed
       if: failure()
       uses: actions/github-script@v6
