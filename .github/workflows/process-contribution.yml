@@ -1,6 +1,6 @@
 name: Process Contribution
 
-on: push
+on: release
 
 permissions:
   contents: write
