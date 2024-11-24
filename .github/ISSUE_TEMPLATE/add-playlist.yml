@@ -1,7 +1,8 @@
 name: Add YouTube Playlist
 description: Submit an educational YouTube playlist
 title: "[Playlist]: "
-labels: "playlist"
+labels:
+  - playlist-submission
 body:
   - type: input
     id: title
