@@ -26,6 +26,8 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt update && sudo apt install jq curl -y
+        python -m pip install --upgrade pip
+        pip install jsonschema requests
 
     - name: Validate JSON and process contribution
       env:
@@ -34,7 +36,7 @@ jobs:
         EVENT_ID: ${{ github.event.payload.issue.number }}
         ISSUE_BODY: ${{ github.event.issue.body }}
       run: |
-        echo "Github context: $GITHUB_CONTEXT"
+        echo "eventid: $EVENT_ID, Github context: cool"
         BODY="$ISSUE_BODY"
         echo "body ===> $BODY"
         PLAYLIST_TITLE=$(echo "$BODY" | grep "### Playlist Title" -A 2 | tail -n 1)
@@ -53,7 +55,7 @@ jobs:
           \"user_profile_link\": \"https://github.com/$CREATOR\",
           \"user_image\": \"https://avatars.githubusercontent.com/$CREATOR\"
         }
-        """ > temp_playlist.json
+        """ | tee temp_playlist.json
 
           
         # # Set outputs
