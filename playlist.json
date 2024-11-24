@@ -309,7 +309,7 @@
     "name": "Manjiri C",
     "playlist_link": "https://www.youtube.com/watch?v=pN6jk0uUrD8&list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP",
     "summary": "This playlist, created by Akshay Saini, provides an in-depth and beginner-friendly course on JavaScript. It covers the core concepts of JavaScript with clear explanations and practical examples, making it a valuable resource for developers looking to strengthen their JS fundamentals.",
-    "title": "Namaste JavaScript \ud83d\ude4f by Akshay Saini",
+    "title": "Namaste JavaScript 🙏 by Akshay Saini",
     "category": "Frontend Development",
     "user_profile_link": "https://github.com/CODEX108",
     "user_Image": "https://avatars.githubusercontent.com/u/82377810?v=4"
@@ -331,5 +331,14 @@
     "category": "Full-Stack Development",
     "user_profile_link": "https://github.com/anaskhan28",
     "user_Image": "https://avatars.githubusercontent.com/anaskhan28"
+  },
+  {
+    "name": "Dark-Kernel",
+    "playlist_link": "https://www.youtube.com/playlist?list=PLbtI3_MArDOlJ4036mWiUKaQToUS8MZVu&si=4BSjC3AylcSjoK4P",
+    "summary": "asdfdfasdgsdgsdgf",
+    "title": "Master git & github series by Sheryians Coding School",
+    "category": "Blockchain",
+    "user_profile_link": "https://github.com/Dark-Kernel",
+    "user_image": "https://avatars.githubusercontent.com/Dark-Kernel"
   }
 ]
