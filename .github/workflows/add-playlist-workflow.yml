@@ -1,4 +1,4 @@
-name: Process Contribution
+name: Process Contribution New
 
 on:
   issues:
@@ -25,14 +25,16 @@ jobs:
 
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install jsonschema requests
+        apt update && apt install jq curl -y
 
     - name: Validate JSON and process contribution
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        EVENT_ID: ${{ event.payload.issue.number }}
+        ISSUE_BODY: ${{ github.event.issue.body }}
       run: |
-        BODY="${{ github.event.issue.body }}"
+        BODY="$ISSUE_BODY"
+        echo "body ===> $BODY"
         PLAYLIST_TITLE=$(echo "$BODY" | grep "### Playlist Title" -A 2 | tail -n 1)
         PLAYLIST_URL=$(echo "$BODY" | grep "### Playlist URL" -A 2 | tail -n 1)
         PLAYLIST_SUMMARY=$(echo "$BODY" | grep "### Playlist Summary" -A 2 | tail -n 1)
@@ -75,10 +77,9 @@ jobs:
         fi
 
 
-
         # Create a new branch
-        
-        issue_number="123" # Replace with your actual issue number logic
+        issue_number=$EVENT_ID
+        echo "eventid====> $EVENT_ID"
         branch_name="contribution-$issue_number"
         git checkout -b "$branch_name"
         git add playlist.json
@@ -88,7 +89,7 @@ jobs:
         git push origin "$branch_name"
 
         # Create a pull request
-        pr_url="https://api.github.com/repos/${GITHUB_REPOSITORY}/pulls"
+        pr_url="https://api.github.com/repos/${{github.repository}}/pulls"
         pr_data=$(jq -n --arg title "Contribution from issue #$issue_number" \
               --arg body "This PR adds the contribution from issue #$issue_number" \
               --arg head "$branch_name" \
@@ -128,6 +129,7 @@ jobs:
               repo: context.repo.name,
               body: 'Thank you for your contribution! A pull request has been created with your changes. The repository owner will review and merge it soon.'
           });
+
 
     - name: Comment on issue if failed
       if: failure()
