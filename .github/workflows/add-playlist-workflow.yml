@@ -30,9 +30,11 @@ jobs:
     - name: Validate JSON and process contribution
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        EVENT_ID: ${{ event.payload.issue.number }}
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+        EVENT_ID: ${{ github.event.payload.issue.number }}
         ISSUE_BODY: ${{ github.event.issue.body }}
       run: |
+        echo "Github context: $GITHUB_CONTEXT"
         BODY="$ISSUE_BODY"
         echo "body ===> $BODY"
         PLAYLIST_TITLE=$(echo "$BODY" | grep "### Playlist Title" -A 2 | tail -n 1)
