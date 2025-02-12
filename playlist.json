@@ -340,5 +340,14 @@
     "category": "Other",
     "user_profile_link": "https://github.com/Dark-Kernel",
     "user_image": "https://avatars.githubusercontent.com/Dark-Kernel"
+  },
+  {
+    "name": "anaskhan28",
+    "playlist_link": "https://youtube.com/playlist?list=PLBqEQje7T7jFVVDdj_NYWAeDebpUEEUo_",
+    "summary": "\nIt teaches about renting server, hosting our stuffs on it. How to connect to server with ssh keys, setup domain for it, etc.\nHe is an Arch Linux user so you can except everything at grass level :)",
+    "title": "Self Hosting Series",
+    "category": "Other",
+    "user_profile_link": "https://github.com/anaskhan28",
+    "user_image": "https://avatars.githubusercontent.com/anaskhan28"
   }
 ]
