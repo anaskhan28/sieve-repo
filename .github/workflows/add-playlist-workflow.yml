@@ -51,7 +51,7 @@ jobs:
           \"title\": \"$PLAYLIST_TITLE\",
           \"category\": \"$PLAYLIST_CATEGORY\",
           \"user_profile_link\": \"https://github.com/$CREATOR\",
-          \"user_image\": \"https://avatars.githubusercontent.com/$CREATOR\"
+          \"user_Image\": \"https://avatars.githubusercontent.com/$CREATOR\"
         }
         """ | tee temp_playlist.json
 

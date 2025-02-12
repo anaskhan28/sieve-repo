@@ -55,7 +55,6 @@ const addOrUpdatePlaylistData = async (): Promise<{ upserted: PlaylistType[], sk
       user_profile_link: playlist.user_profile_link,
       user_profile_image_link: playlist.user_Image
     };
-    console.log(playlistData, 'playlsit-tobeadded')
 
     if (!existingPlaylist || hasChanges(existingPlaylist, playlistData)) {
       console.log(playlistData, 'playlsit-addded')

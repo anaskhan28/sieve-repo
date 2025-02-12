@@ -331,14 +331,7 @@
     "category": "Full-Stack Development",
     "user_profile_link": "https://github.com/anaskhan28",
     "user_Image": "https://avatars.githubusercontent.com/anaskhan28"
-  },
-  {
-    "name": "Dark-Kernel",
-    "playlist_link": "https://youtube.com/playlist?list=PLBqEQje7T7jFVVDdj_NYWAeDebpUEEUo_&si=5Fki9sIu3rgHieO5",
-    "summary": "It teaches about renting server, hosting our stuffs on it. How to connect to server with ssh keys, setup domain for it, etc. \r",
-    "title": "Self Hosting Series by BugsWriter",
-    "category": "Other",
-    "user_profile_link": "https://github.com/Dark-Kernel",
-    "user_image": "https://avatars.githubusercontent.com/Dark-Kernel"
   }
+
+ 
 ]

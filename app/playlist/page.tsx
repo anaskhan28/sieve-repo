@@ -1,5 +1,5 @@
 'use client'
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import getUserData from '../actions/getUserData'
 import { redirect } from 'next/navigation';
 import addOrUpdatePlaylistData from '../actions/addPlaylistData';
@@ -58,7 +58,9 @@ const updatePlaylistData = useCallback(async () => {
   await addOrUpdatePlaylistData();
 }, []);
 
-console.log(playlistData, 'data')
+
+
+console.log(playlistJson, 'data')
 if (playlistData && playlistData?.data?.length !== playlistJson.length) {
   updatePlaylistData();
 }
