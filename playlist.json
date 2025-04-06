@@ -349,5 +349,14 @@
     "category": "Frontend Development",
     "user_profile_link": "https://github.com/anaskhan28",
     "user_Image": "https://avatars.githubusercontent.com/anaskhan28"
+  },
+  {
+    "name": "ikamalagrahari",
+    "playlist_link": "https://youtube.com/playlist?list=PLMCXHnjXnTnvo6alSjVkgxV-VH6EPyvoX&si=pMtqWuafEyJQgycs",
+    "summary": "\nThis curated collection of videos focuses on various aspects of system design, offering insights into designing scalable and efficient systems.",
+    "title": "System Design",
+    "category": "System Design",
+    "user_profile_link": "https://github.com/ikamalagrahari",
+    "user_Image": "https://avatars.githubusercontent.com/ikamalagrahari"
   }
 ]
