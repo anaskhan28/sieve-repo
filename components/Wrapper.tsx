@@ -15,11 +15,11 @@ import addOrUpdatePlaylistData from '@/app/actions/addPlaylistData';
 import playlistJson from '@/playlist.json'
 const PlaylistCard = lazy(() => import('./PlaylistCard'));
 
-type EnrichedPlaylistType = PlaylistType & {
-  playlistRating: number | null;
-  avgPlaylistRate: string | null;
-  inserted_at: string | undefined;
-};
+// type EnrichedPlaylistType = PlaylistType & {
+//   playlistRating: number | null;
+//   avgPlaylistRate: string | null;
+//   inserted_at: string | undefined;
+// };
 
 type SortOption = 'rating' | 'newest' | 'oldest';
 
@@ -44,6 +44,9 @@ const ClientSideSearchWrapper = () => {
     queryKey: ["playlists"],
     queryFn: getPlaylistData,
   });
+
+console.log(playlistError, 'playlistError');
+
 
   const enrichedPlaylistData = useMemo(() => {
     if (!playlistData?.data) return [];
